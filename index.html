@@ -340,11 +340,13 @@
 
     /* Actual game image - centered and properly sized */
     .game-card-image img {
-      width: 80%;
-      height: 80%;
+     /* width: 80%;
+      height: 80%;*/
    /*   aspect-ratio: 1/1;*/
       /*background-size: ;*/
-      object-fit: contain;
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
       z-index: 2;
       position: relative;
       border-radius: 8px;
@@ -1411,7 +1413,10 @@
       .game-card-content {
         padding: 8px;
       }
-
+      .game-card-image img{
+        width: 135px;
+        height: 135px;
+      }
 
       .stars {
         font-size: 0.72rem;
