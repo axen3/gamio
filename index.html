@@ -327,6 +327,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background-image: var(--before-bg,none);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -341,6 +342,8 @@
     .game-card-image img {
       width: 80%;
       height: 80%;
+   /*   aspect-ratio: 1/1;*/
+      /*background-size: ;*/
       object-fit: contain;
       z-index: 2;
       position: relative;
@@ -354,186 +357,7 @@
     }
 
     /* Dynamic backgrounds for each game */
-    .game-card[data-game="rdr2-mobile"] .game-card-image::before {
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg');
-    }
-
-    .game-card[data-game="gta-5-mobile"] .game-card-image::before {
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png');
-    }
-
-    .game-card[data-game="god-of-war-mobile"] .game-card-image::before {
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg');
-    }
-
-    .game-card[data-game="the-last-of-us-2-mobile"] .game-card-image::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_QLpsv0DmfifEZ2VzQikiK0MwI9q67zBfmLhdAyY2jjvz9bJQ50TH3Wo8K_7u-nmAfgo&usqp=CAU');
-    }
-
-    .game-card[data-game="ghost-of-tsushima-mobile"] .game-card-image::before {
-      background-image: url('https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/b3iB2zf2xHj9shC0XDTULxND.png');
-    }
-
-    .game-card[data-game="assassins-creed-mirage-mobile"] .game-card-image::before {
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/2/23/Assassin%27s_Creed_Mirage_cover.jpeg');
-    }
-
-    .game-card[data-game="inside-mobile"] .game-card-image::before {
-      background-image: url('https://i.pinimg.com/originals/1c/f3/18/1cf3189182c0590efb17a040fd06ce26.jpg');
-    }
-
-    .game-card[data-game="watch-dogs-2-mobile"] .game-card-image::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUDaodqzabJjva89BxfdNBoiQKKi9fxiIFqrcagehTh0jUsErvqMcg-qO_SB7kVBSJSl0&usqp=CAU');
-    }
-
-    .game-card[data-game="dragon-ball-fighterz-mobile"] .game-card-image::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1o7xnV5SSOYbeaS-HVFZHEzwOw9xyMicsiXAVz5ozzzeCqrrw75yaGiaW6szFdYqpCrc&usqp=CAU');
-    }
-
-    .game-card[data-game="attack-on-titan-2-mobile"] .game-card-image::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkZv0OWHlfzoO76qR_ODMksRDO0LZJBM_dCUA9lwq7bIimmWXVdkHc0Bd_ncEzoSxQ1kA&usqp=CAU');
-    }
-
-    .game-card[data-game="naruto-ultimate-ninja-storm-4"] .game-card-image::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMgpJvG3oMtOazNyEO85gmgbUaCNUPT2ZTZs4j23Ld7EvrRSNAkAiUNTKEHkSEj1cKm6I&usqp=CAU');
-    }
-
-    .game-card[data-game="minecraft"] .game-card-image::before {
-      background-image: url('https://static.vecteezy.com/system/resources/thumbnails/002/948/768/small_2x/pixel-minecraft-style-land-background-vector.jpg');
-    }
-
-    .game-card[data-game="spider-man-2-mobile"] .game-card-image::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUigJth3hPq66ph0P44XG3gME4UMQm2NFj5vqjajLViFe1cqAoqIXC84t0hoTl8W2-4D4&usqp=CAU');
-    }
-
-    .game-card[data-game="cuphead-mobile"] .game-card-image::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/907134/4bafba8d6811e04e85c7e9646cf5177a.png');
-    }
-
-    .game-card[data-game="counter-strike-2-mobile"] .game-card-image::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/3271386/3c83b35f11599402266a671290beb516.jpg');
-    }
-
-    .game-card[data-game="jump-force"] .game-card-image::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/883593/4b392164f89981c794c943b22936cff3.jpg');
-    }
-
-    .game-card[data-game="forza-horizon-5-mobile"] .game-card-image::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg');
-    }
-
-    .game-card[data-game="Ride5mobile"] .game-card-image::before {
-      background-image: url('https://cdn1.epicgames.com/offer/82aa77fde0b14916a86b66b1e6345c30/EGS_RIDE5_MilestoneSrl_S2_1200x1600-abc515266abe022f93ee7517ca8ec7fa');
-    }
-
-    .game-card[data-game="Ridersrepublicmobile"] .game-card-image::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/1344069/a17ee42b0c520fbc992df2f7a4465cf2.jpg');
-    }
-
-    .game-card[data-game="Rooftops"] .game-card-image::before {
-      background-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2703850/7a62174321720853b2b79ab1dfd554e8f0a491f7/header.jpg?t=1753808929');
-    }
-
-    .game-card[data-game="Beamngdrivemobile"] .game-card-image::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/1653727/4508fc3bbbcf6b9c440498af6900703b.jpg');
-    }
-
-    .game-card[data-game="Rematchmobile"] .game-card-image::before {
-      background-image: url('https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/bf53eec311119801d096ef4c5e05ef0feb20c365e568e344.png');
-    }
-
-    .game-card[data-game="Sifumobile"] .game-card-image::before {
-      background-image: url('https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b');
-    }
-
-    .game-card[data-game="Sifumobile"] .game-card-image::before {
-      background-image: url('https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b');
-    }
-
-    .game-card[data-game="Sifumobile"] .game-card-image::before {
-      background-image: url('https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b');
-    }
-
-    .game-card[data-game="Sifumobile"] .game-card-image::before {
-      background-image: url('https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b');
-    }
-
-    .game-card[data-game="Sifumobile"] .game-card-image::before {
-      background-image: url('https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b');
-    }
-
-    .game-card[data-game="Sifumobile"] .game-card-image::before {
-      background-image: url('https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b');
-    }
-
-    .game-card[data-game="Sifumobile"] .game-card-image::before {
-      background-image: url('https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b');
-    }
-
-    .game-card[data-game="Onepiecemugen"] .game-card-image::before {
-      background-image: url('https://i.postimg.cc/rmjTJBnW/images-5.jpg');
-    }
-
-    .game-card[data-game="Onepiecefightingpath"] .game-card-image::before {
-      background-image: url('https://i.postimg.cc/G2drvLQd/images-4.jpg');
-    }
-
-    .game-card[data-game="Hollowknghithsilksongmobile"] .game-card-image::before {
-      background-image: url('https://i.postimg.cc/YS1M4GQd/images-3.jpg');
-    }
-
-    .game-card[data-game="Kimetsunoyaibathc2mobile"] .game-card-image::before {
-      background-image: url('https://i.postimg.cc/BQpX7zyq/Screenshot-2025-09-19-211151.png');
-    }
-
-    .game-card[data-game="EliteautobrasilMod"] .game-card-image::before {
-      background-image: url('https://i.postimg.cc/cC5SqQNL/unnamed.jpg');
-    }
-
-    .game-card[data-game="Rocketleaguemobile"] .game-card-image::before {
-      background-image: url('https://i.postimg.cc/s2F3D9GB/images-2.jpg');
-    }
-
-    .game-card[data-game="Getway2"] .game-card-image::before {
-      background-image: url('https://i.postimg.cc/W1q2vfzL/images-1.jpg');
-    }
-
-    .game-card[data-game="MinisoccerstarMod"] .game-card-image::before {
-      background-image: url('https://i.postimg.cc/L5sp0xwW/images.jpg');
-    }
-
-
-    .modal-game-banner[data-game="Onepiecemugen"]::before {
-      background-image: url('https://i.postimg.cc/rmjTJBnW/images-5.jpg');
-    }
-
-    .modal-game-banner[data-game="Onepiecefightingpath"]::before {
-      background-image: url('https://i.postimg.cc/G2drvLQd/images-4.jpg');
-    }
-
-    .modal-game-banner[data-game="Hollowknghithsilksongmobile"]::before {
-      background-image: url('https://i.postimg.cc/YS1M4GQd/images-3.jpg');
-    }
-
-    .modal-game-banner[data-game="Kimetsunoyaibathc2mobile"]::before {
-      background-image: url('https://i.postimg.cc/BQpX7zyq/Screenshot-2025-09-19-211151.png');
-    }
-
-    .modal-game-banner[data-game="Rocketleaguemobile"]::before {
-      background-image: url('https://i.postimg.cc/s2F3D9GB/images-2.jpg');
-    }
-
-    .modal-game-banner[data-game="Getway2"]::before {
-      background-image: url('https://i.postimg.cc/W1q2vfzL/images-1.jpg');
-    }
-
-    .modal-game-banner[data-game="EliteautobrasilMod"]::before {
-      background-image: url('https://i.postimg.cc/cC5SqQNL/unnamed.jpg');
-    }
-
-    .modal-game-banner[data-game="MinisoccerstarMod"]::before {
-      background-image: url('https://i.postimg.cc/L5sp0xwW/images.jpg');
-    }
+    /* / here */
 
     .game-card-badge {
       position: absolute;
@@ -1637,12 +1461,12 @@
 </head>
 <body>
   <!-- Blur Overlay (new element) -->
-  <div class="blur-overlay" bis_skin_checked="1"></div>
+  <div class="blur-overlay" ></div>
   <header>
-    <div class="container header-content" bis_skin_checked="1">
-      <div class="logo" bis_skin_checked="1">
-        <div class="logo-icon" bis_skin_checked="1"><i class="fas fa-gamepad"></i></div>
-        <div class="logo-text" bis_skin_checked="1">
+    <div class="container header-content" >
+      <div class="logo" >
+        <div class="logo-icon" ><i class="fas fa-gamepad"></i></div>
+        <div class="logo-text" >
           <h1>GAMIO Store</h1>
           <p>Premium modded apps collection.</p>
         </div>
@@ -1651,902 +1475,86 @@
   </header>
 
   <main class="container">
-    <div class="search-bar" bis_skin_checked="1">
-      <div class="search-container" bis_skin_checked="1">
+    <div class="search-bar" >
+      <div class="search-container" >
         <span class="search-icon"><i class="fas fa-search"></i></span>
         <input type="text" class="searchy" placeholder="Search for apps, games, developers...">
       </div>
     </div>
 
-    <div class="section-header" bis_skin_checked="1">
+    <div class="section-header" >
       <h2>Featured Mods</h2>
       <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="featured-games" bis_skin_checked="1">
-      <div class="featured-games-container" bis_skin_checked="1" style="transition: transform 0.5s; transform: translateX(-720px);">
+    <div class="featured-games" >
+      <div class="featured-games-container"  style="transition: transform 0.5s; transform: translateX(-720px);">
     </div>
     </div>
 
     <!-- Limited Time Offer -->
-    <div class="limited-offer" bis_skin_checked="1">
-      <div class="limited-offer-content" bis_skin_checked="1">
+    <div class="limited-offer" >
+      <div class="limited-offer-content" >
         <h3><i class="fas fa-fire"></i> Limited Time Offer!</h3>
         <p>Get exclusive mod packs for free - Offer ends soon!</p>
       </div>
-      <div class="limited-offer-timer" bis_skin_checked="1">
+      <div class="limited-offer-timer" >
         <span id="countdown">23:59:45</span>
       </div>
     </div>
 
-    <div class="section-header" bis_skin_checked="1">
+    <div class="section-header" >
       <h2>All Modded Apps</h2>
       <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="all-games" bis_skin_checked="1">
-      <!-- Game Card 1 -->
-      <!-- The Last of Us 2 Mobile -->
-      <div class="game-card" data-game="Ride5mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://cdn1.epicgames.com/offer/82aa77fde0b14916a86b66b1e6345c30/EGS_RIDE5_MilestoneSrl_S2_1200x1600-abc515266abe022f93ee7517ca8ec7fa" alt="The Last of Us 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Ride 5 mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Naughty </p>
-          <p class="game-card-desc">Ride 5 mobile Riders republic mobile Rooftops &amp; alleys Beamng drive mobile Rematch mobile</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 820MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 8.9</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- The Last of Us 2 Mobile -->
-      <div class="game-card" data-game="Sifumobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b" alt="The Last of Us 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Sifu mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by leber </p>
-          <p class="game-card-desc">Kung-fu combat with skill, precision, and revenge.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 820MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 8.9</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- The Last of Us 2 Mobile -->
-      <div class="game-card" data-game="Rooftops" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2703850/7a62174321720853b2b79ab1dfd554e8f0a491f7/header.jpg?t=1753808929" alt="The Last of Us 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Rooftops &amp; alleys
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Naughty Dog</p>
-          <p class="game-card-desc">Dynamic parkour action across rooftops and hidden alleys.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 890MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 7.9</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- The Last of Us 2 Mobile -->
-      <div class="game-card" data-game="Beamngdrivemobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://s3.amazonaws.com/gameopedia_covers/covers/1653727/4508fc3bbbcf6b9c440498af6900703b.jpg" alt="The Last of Us 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Beamng drive mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by konati</p>
-          <p class="game-card-desc">Realistic driving and crash physics in open environments.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 876MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★8.9</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-      <!-- The Last of Us 2 Mobile -->
-      <div class="game-card" data-game="Rematchmobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/bf53eec311119801d096ef4c5e05ef0feb20c365e568e344.png" alt="The Last of Us 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Rematch mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Naughty Dog</p>
-          <p class="game-card-desc">Fast-paced competitive battles built for instant rematches.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 587MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 9.3</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- The Last of Us 2 Mobile -->
-      <div class="game-card" data-game="the-last-of-us-2-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_QLpsv0DmfifEZ2VzQikiK0MwI9q67zBfmLhdAyY2jjvz9bJQ50TH3Wo8K_7u-nmAfgo&amp;usqp=CAU" alt="The Last of Us 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            The Last of Us 2 Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Naughty Dog</p>
-          <p class="game-card-desc">Emotional post-apocalyptic adventure with stealth and survival elements.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 1.5GB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 7.9</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-
-      <!-- Ghost of Tsushima Mobile -->
-      <div class="game-card" data-game="ghost-of-tsushima-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img style="width: 220px;
-  height: 220px;
-  object-fit: cover;" src="https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/b3iB2zf2xHj9shC0XDTULxND.png" alt="Ghost of Tsushima Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Ghost of Tsushima Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Sucker Punch</p>
-          <p class="game-card-desc">Explore feudal Japan with samurai combat and stunning landscapes.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 530MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 6.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Assassin’s Creed Mirage Mobile -->
-      <div class="game-card" data-game="assassins-creed-mirage-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img style="width: 220px;
-  height: 220px;
-  object-fit: cover;" src="https://upload.wikimedia.org/wikipedia/en/2/23/Assassin%27s_Creed_Mirage_cover.jpeg" alt="Assassin’s Creed Mirage Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Assassin’s Creed Mirage Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Ubisoft</p>
-          <p class="game-card-desc">Classic stealth adventure set in vibrant historical Baghdad streets.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 674MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 7.9</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Inside Mobile -->
-      <div class="game-card" data-game="inside-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.pinimg.com/originals/1c/f3/18/1cf3189182c0590efb17a040fd06ce26.jpg" alt="Inside Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Inside Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Playdead</p>
-          <p class="game-card-desc">Dark atmospheric puzzle platformer with haunting story and visuals.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 800MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 8.2</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Red Dead Redemption 2 Mobile -->
-      <div class="game-card" data-game="rdr2-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img style="width: 220px;
-  height: 220px;
-  object-fit: cover;" src="https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg" alt="RDR2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Red Dead Redemption 2 Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Rockstar Games</p>
-          <p class="game-card-desc">Epic western story-driven game with vast open-world exploration.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 934MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 5.9</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- God of War Mobile -->
-      <div class="game-card" data-game="god-of-war-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img style="width: 220px;
-  height: 220px;
-  object-fit: cover;" src="https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg" alt="God of War Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            God of War Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Santa Monica Studio</p>
-          <p class="game-card-desc">Mythology-based action game with brutal combat and epic boss fights.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 850MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 6.8</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Watch Dogs 2 Mobile -->
-      <div class="game-card" data-game="watch-dogs-2-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img style="width: 220px;
-  height: 220px;
-  object-fit: cover;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUDaodqzabJjva89BxfdNBoiQKKi9fxiIFqrcagehTh0jUsErvqMcg-qO_SB7kVBSJSl0&amp;usqp=CAU" alt="Watch Dogs 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Watch Dogs 2 Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Ubisoft</p>
-          <p class="game-card-desc">Open-world hacking game with missions, exploration, and stealth.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 960MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 7.0</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Dragon Ball FighterZ Mobile -->
-      <div class="game-card" data-game="dragon-ball-fighterz-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img style="width: 220px;
-  height: 220px;
-  object-fit: cover;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1o7xnV5SSOYbeaS-HVFZHEzwOw9xyMicsiXAVz5ozzzeCqrrw75yaGiaW6szFdYqpCrc&amp;usqp=CAU" alt="Dragon Ball FighterZ Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Dragon Ball FighterZ Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Arc System Works</p>
-          <p class="game-card-desc">Fast-paced fighting game with iconic Dragon Ball characters.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 1.4GB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 8.4</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-
-      <!-- Attack on Titan 2 Mobile -->
-      <div class="game-card" data-game="attack-on-titan-2-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkZv0OWHlfzoO76qR_ODMksRDO0LZJBM_dCUA9lwq7bIimmWXVdkHc0Bd_ncEzoSxQ1kA&amp;usqp=CAU" alt="Attack on Titan 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Attack on Titan 2 Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Koei Tecmo</p>
-          <p class="game-card-desc">Fight massive Titans with maneuver gear in intense battles.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 635MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 6.6</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Naruto Ultimate Ninja Storm 4 -->
-      <div class="game-card" data-game="naruto-ultimate-ninja-storm-4" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMgpJvG3oMtOazNyEO85gmgbUaCNUPT2ZTZs4j23Ld7EvrRSNAkAiUNTKEHkSEj1cKm6I&amp;usqp=CAU" alt="Naruto Ultimate Ninja Storm 4">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Naruto Ultimate Ninja Storm 4
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by CyberConnect2</p>
-          <p class="game-card-desc">Epic ninja battles with cinematic moves and story mode.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 867MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 7.2</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- GTA 5 Mobile -->
-      <div class="game-card" data-game="gta-5-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img style="width: 220px;
-  height: 220px;
-  object-fit: cover;" src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="GTA 5 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            GTA 5 Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Rockstar Games</p>
-          <p class="game-card-desc">Open-world crime, missions, and multiplayer chaos on mobile.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 1.3GB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 8.9</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Minecraft -->
-      <div class="game-card" data-game="minecraft" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://static.vecteezy.com/system/resources/thumbnails/002/948/768/small_2x/pixel-minecraft-style-land-background-vector.jpg" alt="Minecraft">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Minecraft
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Mojang Studios</p>
-          <p class="game-card-desc">Build, explore, and survive in endless blocky worlds.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 1.0GB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 6.8</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Cuphead Mobile -->
-      <div class="game-card" data-game="cuphead-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://s3.amazonaws.com/gameopedia_covers/covers/907134/4bafba8d6811e04e85c7e9646cf5177a.png" alt="Cuphead Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Cuphead Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Studio MDHR</p>
-          <p class="game-card-desc">Classic run and gun with vintage cartoon art style.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 900MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 7.7</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Spider-Man 2 Mobile -->
-      <div class="game-card" data-game="spider-man-2-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUigJth3hPq66ph0P44XG3gME4UMQm2NFj5vqjajLViFe1cqAoqIXC84t0hoTl8W2-4D4&amp;usqp=CAU" alt="Spider-Man 2 Mobile">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Spider-Man 2 Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Insomniac Games</p>
-          <p class="game-card-desc">Web-slinging adventure with fluid combat and open-world NYC.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 730MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 4.8</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <!-- Counter-Strike 2 Mobile -->
-      <div class="game-card" data-game="counter-strike-2-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://s3.amazonaws.com/gameopedia_covers/covers/3271386/3c83b35f11599402266a671290beb516.jpg" counter-strike="" 2="" mobile"="">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Counter-Strike 2 Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Valve</p>
-          <p class="game-card-desc">Competitive tactical shooter with team-based objectives.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 820MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 7.6</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-      <!-- Jump Force -->
-      <div class="game-card" data-game="jump-force" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://s3.amazonaws.com/gameopedia_covers/covers/883593/4b392164f89981c794c943b22936cff3.jpg" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Jump Force
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Spike Chunsoft</p>
-          <p class="game-card-desc">Fighting game featuring popular manga heroes in epic battles.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 540MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 6.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-
-
-      <div class="game-card" data-game="EliteautobrasilMod" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.postimg.cc/cC5SqQNL/unnamed.jpg" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Elite auto brasil Mod
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Spike Chunsoft</p>
-          <p class="game-card-desc">Car game with Brazilian streets and mods.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 243MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 8.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <div class="game-card" data-game="Hollowknghithsilksongmobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.postimg.cc/YS1M4GQd/images-3.jpg" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Hollow knghith silksong
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Spike trolor</p>
-          <p class="game-card-desc">A popular game with a dark, beautiful world featuring exploration and challenges.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 2GB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 6.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <div class="game-card" data-game="Rocketleaguemobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.postimg.cc/s2F3D9GB/images-2.jpg" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Rocket league mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Chunsoft</p>
-          <p class="game-card-desc"> A mobile version of the popular Rocket League game.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 1.2GB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 5.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-      <div class="game-card" data-game="Onepiecemugen" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.postimg.cc/rmjTJBnW/images-5.jpg" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            One piece mugen
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Spike trolor</p>
-          <p class="game-card-desc">A fighting game likely featuring characters from the One Piece anime using the MUGEN engine.
-
-          </p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 780MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 6.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-      <div class="game-card" data-game="Onepiecefightingpath" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.postimg.cc/G2drvLQd/images-4.jpg" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            One piece fighting path
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Spike </p>
-          <p class="game-card-desc">A fighting game likely featuring characters from the One Piece anime using the MUGEN engine.
-
-          </p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 1.9GB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 9.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-      <div class="game-card" data-game="Getway2" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.postimg.cc/W1q2vfzL/images-1.jpg" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Getway 2
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by mi </p>
-          <p class="game-card-desc"> Probably a mod adding extra content to a racing game.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 140MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 7.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-
-      <div class="game-card" data-game="MinisoccerstarMod" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.postimg.cc/L5sp0xwW/images.jpg" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Mini soccer star Mod
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by kleuh</p>
-          <p class="game-card-desc"> A sequel or expansion to Hollow Knight.
-            A sequel or expansion to Hollow Knight.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 100MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 6.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-
-      <div class="game-card" data-game="Kimetsunoyaibathc2mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <img src="https://i.postimg.cc/BQpX7zyq/Screenshot-2025-09-19-211151.png" alt="Jump Force">
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Kimetsu noy aiba thc 2
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by libe </p>
-          <p class="game-card-desc"> Could be a fighting or action game inspired by the Demon Slayer series..</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 2.6GB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 4.5</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
-
-
-
-      <!-- Forza Horizon 5 Mobile -->
-      <div class="game-card" data-game="forza-horizon-5-mobile" bis_skin_checked="1">
-        <div class="game-card-image" bis_skin_checked="1">
-          <div class="game-card-image" bis_skin_checked="1">
-            <img src="https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg" alt="Forza Horizon 5 Mobile">
-          </div>
-
-          <style>
-            .game-card-image img {
-              width: 220px;
-              height: 220px;
-              object-fit: cover;
-              border-radius: 8px;
-              transition: var(--transition);
-              position: relative;
-              z-index: 2;
-            }
-
-            @media (max-width: 480px) {
-              .game-card-image img {
-                width: 110px !important;
-                height: 110px !important;
-              }
-            }
-          </style>
-        </div>
-        <div class="game-card-content" bis_skin_checked="1">
-          <h3 class="game-card-title">
-            Forza Horizon 5 Mobile
-            <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
-          </h3>
-          <p class="game-card-author">by Playground Games</p>
-          <p class="game-card-desc">Stunning open-world racing with hundreds of cars and events.</p>
-          <div class="game-card-footer" bis_skin_checked="1">
-            <div class="platforms" bis_skin_checked="1">
-              <span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>
-              <span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>
-              <span class="file-size"><i class="fas fa-sd-card"></i> 658MB</span>
-            </div>
-            <div class="game-rating" bis_skin_checked="1">
-              <div class="stars" bis_skin_checked="1">★ 5.8</div>
-            </div>
-          </div>
-          <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-        </div>
-      </div>
+    <div class="all-games">
 
     </div>
   </main>
   </div>
 
   <!-- Trending Games Section -->
-  <div class="section-header" bis_skin_checked="1">
+  <div class="section-header" >
     <h2>Trending Right Now</h2>
     <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
   </div>
 
-  <div class="trending-games" bis_skin_checked="1">
-    <div class="trending-games-container" bis_skin_checked="1">
-      <div class="trending-game" bis_skin_checked="1">
-        <div class="trending-game-image" bis_skin_checked="1">
+  <div class="trending-games" >
+    <div class="trending-games-container" >
+      <div class="trending-game" >
+        <div class="trending-game-image" >
           <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png" alt="Pokemon GO Spoofer">
         </div>
-        <div class="trending-game-content" bis_skin_checked="1">
+        <div class="trending-game-content" >
           <h3 class="trending-game-title">GTA 5 Mobile</h3>
-          <div class="trending-game-stats" bis_skin_checked="1">
+          <div class="trending-game-stats" >
             <span class="stars">★ 8.9</span>
           </div>
           <p class="trending-game-desc">The famous open-world game is now on mobile with new missions and a vast map.</p>
         </div>
       </div>
 
-      <div class="trending-game" bis_skin_checked="1">
-        <div class="trending-game-image" bis_skin_checked="1">
+      <div class="trending-game" >
+        <div class="trending-game-image" >
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkZv0OWHlfzoO76qR_ODMksRDO0LZJBM_dCUA9lwq7bIimmWXVdkHc0Bd_ncEzoSxQ1kA&amp;usqp=CAU" alt="FC Mobile 25">
         </div>
-        <div class="trending-game-content" bis_skin_checked="1">
+        <div class="trending-game-content" >
           <h3 class="trending-game-title">Attack on Titan 2 Mobile</h3>
-          <div class="trending-game-stats" bis_skin_checked="1">
+          <div class="trending-game-stats" >
             <span class="stars">★ 6.6</span>
           </div>
           <p class="trending-game-desc">Fight titans alongside your friends in this thrilling mobile action experience.</p>
         </div>
       </div>
 
-      <div class="trending-game" bis_skin_checked="1">
-        <div class="trending-game-image" bis_skin_checked="1">
+      <div class="trending-game" >
+        <div class="trending-game-image" >
           <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg" alt="Schedule 1">
         </div>
-        <div class="trending-game-content" bis_skin_checked="1">
+        <div class="trending-game-content" >
           <h3 class="trending-game-title">Red Dead Redemption 2 Mobile</h3>
-          <div class="trending-game-stats" bis_skin_checked="1">
+          <div class="trending-game-stats" >
             <span class="stars">★ 5.9</span>
           </div>
           <p class="trending-game-desc">Dive into the Wild West with deep stories and epic adventures.</p>
@@ -2556,65 +1564,65 @@
   </div>
 
   <!-- Trust Badges -->
-  <div class="trust-badges" bis_skin_checked="1">
-    <div class="trust-badge" bis_skin_checked="1">
+  <div class="trust-badges" >
+    <div class="trust-badge" >
       <i class="fas fa-shield-alt"></i> 100% Safe
     </div>
-    <div class="trust-badge" bis_skin_checked="1">
+    <div class="trust-badge" >
       <i class="fas fa-bug-slash"></i> No Malware
     </div>
-    <div class="trust-badge" bis_skin_checked="1">
+    <div class="trust-badge" >
       <i class="fas fa-check-double"></i> Verified Mods
     </div>
-    <div class="trust-badge" bis_skin_checked="1">
+    <div class="trust-badge" >
       <i class="fas fa-bolt"></i> Fast Downloads
     </div>
   </div>
 
   <!-- FAQ Section -->
-  <div class="faq-section" bis_skin_checked="1">
-    <div class="section-header" bis_skin_checked="1">
+  <div class="faq-section" >
+    <div class="section-header" >
       <h2>Frequently Asked Questions</h2>
     </div>
 
-    <div class="faq-item" bis_skin_checked="1">
-      <div class="faq-question" bis_skin_checked="1">
+    <div class="faq-item" >
+      <div class="faq-question" >
         <span>Is this safe to use?</span>
         <span>+</span>
       </div>
-      <div class="faq-answer" bis_skin_checked="1">
+      <div class="faq-answer" >
         <p>Yes! All our mods are thoroughly scanned for malware before being uploaded. We prioritize your device's safety and only provide clean, working mods.</p>
       </div>
     </div>
 
-    <div class="faq-item" bis_skin_checked="1">
-      <div class="faq-question" bis_skin_checked="1">
+    <div class="faq-item" >
+      <div class="faq-question" >
         <span>Why do I need to verify?</span>
         <span>+</span>
       </div>
-      <div class="faq-answer" bis_skin_checked="1">
+      <div class="faq-answer" >
         <p>Verification helps prevent abuse from bots and ensures fair distribution of our mods to real users. It's a quick, one-time process.</p>
       </div>
     </div>
 
-    <div class="faq-item" bis_skin_checked="1">
-      <div class="faq-question" bis_skin_checked="1">
+    <div class="faq-item" >
+      <div class="faq-question" >
         <span>How do I install these mods?</span>
         <span>+</span>
       </div>
-      <div class="faq-answer" bis_skin_checked="1">
+      <div class="faq-answer" >
         <p>1. Download the mod file<br>
           2. Open the file and follow installation prompts<br>
           3. Launch the game and enjoy premium features!</p>
       </div>
     </div>
 
-    <div class="faq-item" bis_skin_checked="1">
-      <div class="faq-question" bis_skin_checked="1">
+    <div class="faq-item" >
+      <div class="faq-question" >
         <span>Will I get banned for using mods?</span>
         <span>+</span>
       </div>
-      <div class="faq-answer" bis_skin_checked="1">
+      <div class="faq-answer" >
         <p>While we can't guarantee 100% safety as it depends on the game's anti-cheat system, our mods are designed to be as undetectable as possible.</p>
       </div>
     </div>
@@ -2622,52 +1630,52 @@
 
 
   <!-- Social Proof Notification -->
-  <div class="social-proof" bis_skin_checked="1">
-    <div class="social-proof-avatar" bis_skin_checked="1">E</div>
-    <div class="social-proof-text" bis_skin_checked="1"><strong>User Emma</strong> just downloaded <strong>The Last Of Us 2</strong></div>
+  <div class="social-proof" >
+    <div class="social-proof-avatar" >E</div>
+    <div class="social-proof-text" ><strong>User Emma</strong> just downloaded <strong>The Last Of Us 2</strong></div>
   </div>
 
   <!-- Installation Popup Modal -->
-  <div class="modal-overlay" id="installModal" bis_skin_checked="1">
-    <div class="modal-container" bis_skin_checked="1">
+  <div class="modal-overlay" id="installModal" >
+    <div class="modal-container" >
       <button class="modal-close" id="closeModal">×</button>
-      <div class="modal-header" bis_skin_checked="1">
-        <div class="modal-game-banner" id="modalGameBanner" data-game="" bis_skin_checked="1">
+      <div class="modal-header" >
+        <div class="modal-game-banner" id="modalGameBanner" data-game="" >
           <img id="modalGameBannerImg" src="" alt="Game Banner">
         </div>
         <h2 class="modal-game-title" id="modalGameTitle">
           Game Title
           <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
         </h2>
-        <div class="modal-game-meta" bis_skin_checked="1">
-          <div class="modal-game-downloads" bis_skin_checked="1">
+        <div class="modal-game-meta" >
+          <div class="modal-game-downloads" >
             <i class="fas fa-download"></i> <span id="modalGameDownloads">1.2M+ downloads</span>
           </div>
         </div>
 
-        <div class="testimonial" bis_skin_checked="1">
+        <div class="testimonial" >
           "Script plugin works flawlessly! Unlocked everything right away, no issues at all."
-          <div class="testimonial-author" bis_skin_checked="1">- John, 145K users</div>
+          <div class="testimonial-author" >- John, 145K users</div>
         </div>
       </div>
 
-      <div class="modal-body" bis_skin_checked="1">
-        <div class="modal-description" bis_skin_checked="1">
+      <div class="modal-body" >
+        <div class="modal-description" >
           <p id="modalGameDesc">Game description goes here.</p>
         </div>
 
-        <div class="modal-progress" bis_skin_checked="1">
-          <div class="progress-text" bis_skin_checked="1">
+        <div class="modal-progress" >
+          <div class="progress-text" >
             <span>Installation readiness</span>
             <span id="progressPercent">0%</span>
           </div>
-          <div class="progress-bar-container" bis_skin_checked="1">
-            <div class="progress-bar-fill" id="modalProgressBar" bis_skin_checked="1"></div>
+          <div class="progress-bar-container" >
+            <div class="progress-bar-fill" id="modalProgressBar" ></div>
           </div>
         </div>
       </div>
 
-      <div class="modal-footer" bis_skin_checked="1">
+      <div class="modal-footer" >
         <button class="btn-start-install" id="startInstall">
           <i class="fas fa-play"></i> <span>Start the Installation</span>
         </button>
@@ -2679,46 +1687,46 @@
   </div>
 
   <!-- Processing Screen -->
-  <div class="processing-screen" id="processingScreen" bis_skin_checked="1">
-    <div class="processing-content" bis_skin_checked="1">
-      <div class="processing-animation" bis_skin_checked="1">
-        <div class="processing-spinner" bis_skin_checked="1">
+  <div class="processing-screen" id="processingScreen" >
+    <div class="processing-content" >
+      <div class="processing-animation" >
+        <div class="processing-spinner" >
           <i class="fas fa-cog"></i>
         </div>
-        <div class="processing-check" bis_skin_checked="1">
+        <div class="processing-check" >
           <i class="fas fa-check"></i>
         </div>
       </div>
       <h2 class="processing-title">Processing...</h2>
       <p class="processing-message" id="processingMessage">Preparing installation for <span id="processingGameName">Game Name</span></p>
 
-      <div class="progress-bar" bis_skin_checked="1">
-        <div class="progress" id="installProgress" bis_skin_checked="1"></div>
+      <div class="progress-bar" >
+        <div class="progress" id="installProgress" ></div>
       </div>
 
-      <div class="processing-steps" bis_skin_checked="1">
-        <div class="processing-step" id="step1" bis_skin_checked="1">
-          <div class="step-icon" bis_skin_checked="1">1</div>
-          <div class="step-text" bis_skin_checked="1">Verifying device compatibility</div>
+      <div class="processing-steps" >
+        <div class="processing-step" id="step1" >
+          <div class="step-icon" >1</div>
+          <div class="step-text" >Verifying device compatibility</div>
         </div>
-        <div class="processing-step" id="step2" bis_skin_checked="1">
-          <div class="step-icon" bis_skin_checked="1">2</div>
-          <div class="step-text" bis_skin_checked="1">Downloading mod files</div>
+        <div class="processing-step" id="step2" >
+          <div class="step-icon" >2</div>
+          <div class="step-text" >Downloading mod files</div>
         </div>
-        <div class="processing-step" id="step3" bis_skin_checked="1">
-          <div class="step-icon" bis_skin_checked="1">3</div>
-          <div class="step-text" bis_skin_checked="1">Applying modifications</div>
+        <div class="processing-step" id="step3" >
+          <div class="step-icon" >3</div>
+          <div class="step-text" >Applying modifications</div>
         </div>
-        <div class="processing-step" id="step4" bis_skin_checked="1">
-          <div class="step-icon" bis_skin_checked="1">4</div>
-          <div class="step-text" bis_skin_checked="1">Finalizing installation</div>
+        <div class="processing-step" id="step4" >
+          <div class="step-icon" >4</div>
+          <div class="step-text" >Finalizing installation</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- AdBlue Media Locker (will be shown when verification is needed) -->
-  <div id="adblue-locker" style="display:none;" bis_skin_checked="1"></div>
+  <div id="adblue-locker" style="display:none;" ></div>
   </div>
   </div>
   <script>
@@ -2815,12 +1823,12 @@
         gameCard.setAttribute('bis_skin_checked', '1');
 
         gameCard.innerHTML = `
-          <div class="featured-game-icon" bis_skin_checked="1">
+          <div class="featured-game-icon" >
             <img style="width: 130px; height: 140px; object-fit: cover;" src="${game.imageSrc}" alt="${game.alt}">
           </div>
           <h3 class="featured-game-title">${game.title}</h3>
-          <div class="game-rating" bis_skin_checked="1">
-            <div class="stars" bis_skin_checked="1">★ ${game.rating}</div>
+          <div class="game-rating" >
+            <div class="stars" >★ ${game.rating}</div>
           </div>
         `;
 
@@ -2828,6 +1836,350 @@
       });
     }
     rendFeatGames();
+        // All Games.
+    const allGames = [
+  {
+    id: "Ride5mobile",
+    title: "Ride 5 mobile",
+    author: "Naughty",
+    description: "Ride 5 mobile Riders republic mobile Rooftops & alleys Beamng drive mobile Rematch mobile",
+    image: "https://cdn1.epicgames.com/offer/82aa77fde0b14916a86b66b1e6345c30/EGS_RIDE5_MilestoneSrl_S2_1200x1600-abc515266abe022f93ee7517ca8ec7fa",
+    platforms: ["android", "ios"],
+    fileSize: "820MB",
+    rating: "8.9"
+  },
+  {
+    id: "Sifumobile",
+    title: "Sifu mobile",
+    author: "leber",
+    description: "Kung-fu combat with skill, precision, and revenge.",
+    image: "https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b",
+    platforms: ["android", "ios"],
+    fileSize: "820MB",
+    rating: "8.9"
+  },
+  {
+    id: "Rooftops",
+    title: "Rooftops & alleys",
+    author: "Naughty Dog",
+    description: "Dynamic parkour action across rooftops and hidden alleys.",
+    image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2703850/7a62174321720853b2b79ab1dfd554e8f0a491f7/header.jpg?t=1753808929",
+    platforms: ["android", "ios"],
+    fileSize: "890MB",
+    rating: "7.9"
+  },
+  {
+    id: "Beamngdrivemobile",
+    title: "Beamng drive mobile",
+    author: "konati",
+    description: "Realistic driving and crash physics in open environments.",
+    image: "https://s3.amazonaws.com/gameopedia_covers/covers/1653727/4508fc3bbbcf6b9c440498af6900703b.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "876MB",
+    rating: "8.9"
+  },
+  {
+    id: "Rematchmobile",
+    title: "Rematch mobile",
+    author: "Naughty Dog",
+    description: "Fast-paced competitive battles built for instant rematches.",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/bf53eec311119801d096ef4c5e05ef0feb20c365e568e344.png",
+    platforms: ["android", "ios"],
+    fileSize: "587MB",
+    rating: "9.3"
+  },
+  {
+    id: "the-last-of-us-2-mobile",
+    title: "The Last of Us 2 Mobile",
+    author: "Naughty Dog",
+    description: "Emotional post-apocalyptic adventure with stealth and survival elements.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_QLpsv0DmfifEZ2VzQikiK0MwI9q67zBfmLhdAyY2jjvz9bJQ50TH3Wo8K_7u-nmAfgo&usqp=CAU",
+    platforms: ["android", "ios"],
+    fileSize: "1.5GB",
+    rating: "7.9"
+  },
+  {
+    id: "ghost-of-tsushima-mobile",
+    title: "Ghost of Tsushima Mobile",
+    author: "Sucker Punch",
+    description: "Explore feudal Japan with samurai combat and stunning landscapes.",
+    image: "https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/b3iB2zf2xHj9shC0XDTULxND.png",
+    platforms: ["android", "ios"],
+    fileSize: "530MB",
+    rating: "6.5"
+  },
+  {
+    id: "assassins-creed-mirage-mobile",
+    title: "Assassin’s Creed Mirage Mobile",
+    author: "Ubisoft",
+    description: "Classic stealth adventure set in vibrant historical Baghdad streets.",
+    image: "https://upload.wikimedia.org/wikipedia/en/2/23/Assassin%27s_Creed_Mirage_cover.jpeg",
+    platforms: ["android", "ios"],
+    fileSize: "674MB",
+    rating: "7.9"
+  },
+  {
+    id: "inside-mobile",
+    title: "Inside Mobile",
+    author: "Playdead",
+    description: "Dark atmospheric puzzle platformer with haunting story and visuals.",
+    image: "https://i.pinimg.com/originals/1c/f3/18/1cf3189182c0590efb17a040fd06ce26.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "800MB",
+    rating: "8.2"
+  },
+  {
+    id: "rdr2-mobile",
+    title: "Red Dead Redemption 2 Mobile",
+    author: "Rockstar Games",
+    description: "Epic western story-driven game with vast open-world exploration.",
+    image: "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "934MB",
+    rating: "5.9"
+  },
+  {
+    id: "god-of-war-mobile",
+    title: "God of War Mobile",
+    author: "Santa Monica Studio",
+    description: "Mythology-based action game with brutal combat and epic boss fights.",
+    image: "https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "850MB",
+    rating: "6.8"
+  },
+  {
+    id: "watch-dogs-2-mobile",
+    title: "Watch Dogs 2 Mobile",
+    author: "Ubisoft",
+    description: "Open-world hacking game with missions, exploration, and stealth.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUDaodqzabJjva89BxfdNBoiQKKi9fxiIFqrcagehTh0jUsErvqMcg-qO_SB7kVBSJSl0&usqp=CAU",
+    platforms: ["android", "ios"],
+    fileSize: "960MB",
+    rating: "7.0"
+  },
+  {
+    id: "dragon-ball-fighterz-mobile",
+    title: "Dragon Ball FighterZ Mobile",
+    author: "Arc System Works",
+    description: "Fast-paced fighting game with iconic Dragon Ball characters.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:GCs1o7xnV5SSOYbeaS-HVFZHEzwOw9xyMicsiXAVz5ozzzeCqrrw75yaGiaW6szFdYqpCrc&usqp=CAU",
+    platforms: ["android", "ios"],
+    fileSize: "1.4GB",
+    rating: "8.4"
+  },
+  {
+    id: "attack-on-titan-2-mobile",
+    title: "Attack on Titan 2 Mobile",
+    author: "Koei Tecmo",
+    description: "Fight massive Titans with maneuver gear in intense battles.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:GCQkZv0OWHlfzoO76qR_ODMksRDO0LZJBM_dCUA9lwq7bIimmWXVdkHc0Bd_ncEzoSxQ1kA&usqp=CAU",
+    platforms: ["android", "ios"],
+    fileSize: "635MB",
+    rating: "6.6"
+  },
+  {
+    id: "naruto-ultimate-ninja-storm-4",
+    title: "Naruto Ultimate Ninja Storm 4",
+    author: "CyberConnect2",
+    description: "Epic ninja battles with cinematic moves and story mode.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:GCQMgpJvG3oMtOazNyEO85gmgbUaCNUPT2ZTZs4j23Ld7EvrRSNAkAiUNTKEHkSEj1cKm6I&usqp=CAU",
+    platforms: ["android", "ios"],
+    fileSize: "867MB",
+    rating: "7.2"
+  },
+  {
+    id: "gta-5-mobile",
+    title: "GTA 5 Mobile",
+    author: "Rockstar Games",
+    description: "Open-world crime, missions, and multiplayer chaos on mobile.",
+    image: "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
+    platforms: ["android", "ios"],
+    fileSize: "1.3GB",
+    rating: "8.9"
+  },
+  {
+    id: "minecraft",
+    title: "Minecraft",
+    author: "Mojang Studios",
+    description: "Build, explore, and survive in endless blocky worlds.",
+    image: "https://static.vecteezy.com/system/resources/thumbnails/002/948/768/small_2x/pixel-minecraft-style-land-background-vector.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "1.0GB",
+    rating: "6.8"
+  },
+  {
+    id: "cuphead-mobile",
+    title: "Cuphead Mobile",
+    author: "Studio MDHR",
+    description: "Classic run and gun with vintage cartoon art style.",
+    image: "https://s3.amazonaws.com/gameopedia_covers/covers/907134/4bafba8d6811e04e85c7e9646cf5177a.png",
+    platforms: ["android", "ios"],
+    fileSize: "900MB",
+    rating: "7.7"
+  },
+  {
+    id: "spider-man-2-mobile",
+    title: "Spider-Man 2 Mobile",
+    author: "Insomniac Games",
+    description: "Web-slinging adventure with fluid combat and open-world NYC.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:GCTUigJth3hPq66ph0P44XG3gME4UMQm2NFj5vqjajLViFe1cqAoqIXC84t0hoTl8W2-4D4&usqp=CAU",
+    platforms: ["android", "ios"],
+    fileSize: "730MB",
+    rating: "4.8"
+  },
+  {
+    id: "counter-strike-2-mobile",
+    title: "Counter-Strike 2 Mobile",
+    author: "Valve",
+    description: "Competitive tactical shooter with team-based objectives.",
+    image: "https://s3.amazonaws.com/gameopedia_covers/covers/3271386/3c83b35f11599402266a671290beb516.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "820MB",
+    rating: "7.6"
+  },
+  {
+    id: "jump-force",
+    title: "Jump Force",
+    author: "Spike Chunsoft",
+    description: "Fighting game featuring popular manga heroes in epic battles.",
+    image: "https://s3.amazonaws.com/gameopedia_covers/covers/883593/4b392164f89981c794c943b22936cff3.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "540MB",
+    rating: "6.5"
+  },
+  {
+    id: "EliteautobrasilMod",
+    title: "Elite auto brasil Mod",
+    author: "Spike Chunsoft",
+    description: "Car game with Brazilian streets and mods.",
+    image: "https://i.postimg.cc/cC5SqQNL/unnamed.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "243MB",
+    rating: "8.5"
+  },
+  {
+    id: "Hollowknghithsilksongmobile",
+    title: "Hollow knghith silksong",
+    author: "Spike trolor",
+    description: "A popular game with a dark, beautiful world featuring exploration and challenges.",
+    image: "https://i.postimg.cc/YS1M4GQd/images-3.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "2GB",
+    rating: "6.5"
+  },
+  {
+    id: "Rocketleaguemobile",
+    title: "Rocket league mobile",
+    author: "Chunsoft",
+    description: "A mobile version of the popular Rocket League game.",
+    image: "https://i.postimg.cc/s2F3D9GB/images-2.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "1.2GB",
+    rating: "5.5"
+  },
+  {
+    id: "Onepiecemugen",
+    title: "One piece mugen",
+    author: "Spike trolor",
+    description: "A fighting game likely featuring characters from the One Piece anime using the MUGEN engine.",
+    image: "https://i.postimg.cc/rmjTJBnW/images-5.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "780MB",
+    rating: "6.5"
+  },
+  {
+    id: "Onepiecefightingpath",
+    title: "One piece fighting path",
+    author: "Spike",
+    description: "A fighting game likely featuring characters from the One Piece anime using the MUGEN engine.",
+    image: "https://i.postimg.cc/G2drvLQd/images-4.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "1.9GB",
+    rating: "9.5"
+  },
+  {
+    id: "Getway2",
+    title: "Getway 2",
+    author: "mi",
+    description: "Probably a mod adding extra content to a racing game.",
+    image: "https://i.postimg.cc/W1q2vfzL/images-1.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "140MB",
+    rating: "7.5"
+  },
+  {
+    id: "MinisoccerstarMod",
+    title: "Mini soccer star Mod",
+    author: "kleuh",
+    description: "A sequel or expansion to Hollow Knight.",
+    image: "https://i.postimg.cc/L5sp0xwW/images.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "100MB",
+    rating: "6.5"
+  },
+  {
+    id: "Kimetsunoyaibathc2mobile",
+    title: "Kimetsu noy aiba thc 2",
+    author: "libe",
+    description: "Could be a fighting or action game inspired by the Demon Slayer series.",
+    image: "https://i.postimg.cc/BQpX7zyq/Screenshot-2025-09-19-211151.png",
+    platforms: ["android", "ios"],
+    fileSize: "2.6GB",
+    rating: "4.5"
+  },
+  {
+    id: "forza-horizon-5-mobile",
+    title: "Forza Horizon 5 Mobile",
+    author: "Playground Games",
+    description: "Stunning open-world racing with hundreds of cars and events.",
+    image: "https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg",
+    platforms: ["android", "ios"],
+    fileSize: "658MB",
+    rating: "5.8"
+  }
+];
+    // Function to generate game cards
+    function renderAllGames(gameList) {
+      const container = document.querySelector('.all-games');
+      container.innerHTML = ''; // Clear existing content
+
+      gameList.forEach(game => {
+        const card = document.createElement('div');
+        card.classList.add('game-card');
+        card.setAttribute('data-game', game.id);
+
+        card.innerHTML = `
+          <div class="game-card-image">
+            <img src="${game.image}" alt="${game.title}">
+          </div>
+          <div class="game-card-content">
+            <h3 class="game-card-title">
+              ${game.title}
+              <span class="verified-badge" title="Verified Mod"><i class="fas fa-check-circle"></i></span>
+            </h3>
+            <p class="game-card-author">by ${game.author}</p>
+            <p class="game-card-desc">${game.description}</p>
+            <div class="game-card-footer">
+              <div class="platforms">
+                ${game.platforms.includes('android') ? '<span class="platform-icon android" title="Android" style="color: white; font-weight: bold;"><i class="fab fa-android"></i></span>' : ''}
+                ${game.platforms.includes('ios') ? '<span class="platform-icon ios" title="iOS" style="color: white; font-weight: bold;"><i class="fab fa-apple"></i></span>' : ''}
+                <span class="file-size"><i class="fas fa-sd-card"></i> ${game.fileSize}</span>
+              </div>
+              <div class="game-rating">
+                <div class="stars">★ ${game.rating}</div>
+              </div>
+            </div>
+            <button class="download-btn"><i class="fas fa-download"></i> Download</button>
+          </div>
+        `;
+/* Add background to the ::before pseudo-element */
+  const imgDiv = card.querySelector('.game-card-image');
+  imgDiv.style.setProperty('--before-bg', `url("${game.image}")`);
+        container.appendChild(card);
+      });
+    }
+    renderAllGames(allGames);
     // Game data
     const games = {
       'EliteautobrasilMod': {
