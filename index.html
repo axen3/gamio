@@ -744,6 +744,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background-image: var(--banner-bg,none);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -754,137 +755,12 @@
     }
 
     .modal-game-banner img {
-      width: 80%;
-      height: 80%;
-      object-fit: contain;
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
       border-radius: 8px;
       z-index: 2;
       position: relative;
-    }
-
-    /* Dynamic backgrounds for modal banners */
-    .modal-game-banner[data-game="rdr2-mobile"]::before {
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg');
-    }
-
-    .modal-game-banner[data-game="gta-5-mobile"]::before {
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png');
-    }
-
-    .modal-game-banner[data-game="god-of-war-mobile"]::before {
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg');
-    }
-
-    .modal-game-banner[data-game="the-last-of-us-2-mobile"]::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_QLpsv0DmfifEZ2VzQikiK0MwI9q67zBfmLhdAyY2jjvz9bJQ50TH3Wo8K_7u-nmAfgo&usqp=CAU');
-    }
-
-    .modal-game-banner[data-game="ghost-of-tsushima-mobile"]::before {
-      background-image: url('https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/b3iB2zf2xHj9shC0XDTULxND.png');
-    }
-
-    .modal-game-banner[data-game="assassins-creed-mirage-mobile"]::before {
-      background-image: url('https://upload.wikimedia.org/wikipedia/en/2/23/Assassin%27s_Creed_Mirage_cover.jpeg');
-    }
-
-    .modal-game-banner[data-game="inside-mobile"]::before {
-      background-image: url('https://i.pinimg.com/originals/1c/f3/18/1cf3189182c0590efb17a040fd06ce26.jpg');
-    }
-
-    .modal-game-banner[data-game="watch-dogs-2-mobile"]::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUDaodqzabJjva89BxfdNBoiQKKi9fxiIFqrcagehTh0jUsErvqMcg-qO_SB7kVBSJSl0&usqp=CAU');
-    }
-
-    .modal-game-banner[data-game="dragon-ball-fighterz-mobile"]::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1o7xnV5SSOYbeaS-HVFZHEzwOw9xyMicsiXAVz5ozzzeCqrrw75yaGiaW6szFdYqpCrc&usqp=CAU');
-    }
-
-    .modal-game-banner[data-game="attack-on-titan-2-mobile"]::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkZv0OWHlfzoO76qR_ODMksRDO0LZJBM_dCUA9lwq7bIimmWXVdkHc0Bd_ncEzoSxQ1kA&usqp=CAU');
-    }
-
-    .modal-game-banner[data-game="naruto-ultimate-ninja-storm-4"]::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMgpJvG3oMtOazNyEO85gmgbUaCNUPT2ZTZs4j23Ld7EvrRSNAkAiUNTKEHkSEj1cKm6I&usqp=CAU');
-    }
-
-    .modal-game-banner[data-game="minecraft"]::before {
-      background-image: url('https://static.vecteezy.com/system/resources/thumbnails/002/948/768/small_2x/pixel-minecraft-style-land-background-vector.jpg');
-    }
-
-    .modal-game-banner[data-game="spider-man-2-mobile"]::before {
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUigJth3hPq66ph0P44XG3gME4UMQm2NFj5vqjajLViFe1cqAoqIXC84t0hoTl8W2-4D4&usqp=CAU');
-    }
-
-    .modal-game-banner[data-game="cuphead-mobile"]::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/907134/4bafba8d6811e04e85c7e9646cf5177a.png');
-    }
-
-    .modal-game-banner[data-game="counter-strike-2-mobile"]::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/3271386/3c83b35f11599402266a671290beb516.jpg');
-    }
-
-    .modal-game-banner[data-game="jump-force"]::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/883593/4b392164f89981c794c943b22936cff3.jpg');
-    }
-
-    .modal-game-banner[data-game="forza-horizon-5-mobile"]::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg');
-    }
-
-    .modal-game-banner[data-game="Ride5mobile"]::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg');
-    }
-
-    .modal-game-banner[data-game="Ridersrepublicmobile"]::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg');
-    }
-
-    .modal-game-banner[data-game="Rooftops&alleys"]::before {
-      background-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2703850/7a62174321720853b2b79ab1dfd554e8f0a491f7/header.jpg?t=1753808929');
-    }
-
-    .modal-game-banner[data-game="Beamngdrivemobile"]::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg');
-    }
-
-    .modal-game-banner[data-game="Rematchmobile"]::before {
-      background-image: url('https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg');
-    }
-
-    .modal-game-banner[data-game="Sifumobile"]::before {
-      background-image: url('https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b');
-    }
-
-    .modal-game-banner[data-game="Onepiecemugen"]::before {
-      background-image: url('https://i.postimg.cc/rmjTJBnW/images-5.jpg');
-    }
-
-    .modal-game-banner[data-game="Onepiecefightingpath"]::before {
-      background-image: url('https://i.postimg.cc/G2drvLQd/images-4.jpg');
-    }
-
-    .modal-game-banner[data-game="Hollowknghithsilksongmobile"]::before {
-      background-image: url('https://i.postimg.cc/YS1M4GQd/images-3.jpg');
-    }
-
-    .modal-game-banner[data-game="Kimetsunoyaibathc2mobile"]::before {
-      background-image: url('https://i.postimg.cc/BQpX7zyq/Screenshot-2025-09-19-211151.png');
-    }
-
-    .modal-game-banner[data-game="Rocketleaguemobile"]::before {
-      background-image: url('https://i.postimg.cc/s2F3D9GB/images-2.jpg');
-    }
-
-    .modal-game-banner[data-game="Getway2"]::before {
-      background-image: url('https://i.postimg.cc/W1q2vfzL/images-1.jpg');
-    }
-
-    .modal-game-banner[data-game="EliteautobrasilMod"]::before {
-      background-image: url('https://i.postimg.cc/cC5SqQNL/unnamed.jpg');
-    }
-
-    .modal-game-banner[data-game="MinisoccerstarMod"]::before {
-      background-image: url('https://i.postimg.cc/L5sp0xwW/images.jpg');
     }
 
     .modal-game-title {
@@ -1829,7 +1705,7 @@
 
         gameCard.innerHTML = `
           <div class="featured-game-icon" >
-            <img style="width: 130px; height: 140px; object-fit: cover;" src="${game.imageSrc}" alt="${game.alt}">
+            <img style="width: 130px; height: 140px; object-fit: cover;" src="${game.imageSrc}" alt="${game.alt}" loading="lazy">
           </div>
           <h3 class="featured-game-title">${game.title}</h3>
           <div class="game-rating" >
@@ -2216,7 +2092,7 @@
 
         card.innerHTML = `
           <div class="game-card-image">
-            <img src="${game.image}" alt="${game.title}">
+            <img src="${game.image}" alt="${game.title}" loading="lazy">
           </div>
           <div class="game-card-content">
             <h3 class="game-card-title">
@@ -2451,12 +2327,14 @@
         currentGame = allGames.find(game=> game.id === gameId);
         if(!currentGame){
         console.log("no game found with that id.");
+        return;
       }
 
         // Update modal content
         document.getElementById('modalGameTitle').textContent = currentGame.title;
         modalGameBanner.setAttribute('data-game', gameId);
-        modalGameBannerImg.src = currentGame.image;
+        modalGameBanner.style.setProperty('--banner-bg', `url("${currentGame.image}")`);
+        modalGameBannerImg.src = currentGame.image || "https://via.placeholder.com/1200x1600?text=Game+Image+Not+Found";
         document.getElementById('modalGameDownloads').textContent = currentGame.downloads;
         document.getElementById('modalGameDesc').textContent = currentGame.longDesc;
         processingGameName.textContent = currentGame.title;
@@ -2605,22 +2483,27 @@
     });
   </script>
   <script>
-    document.querySelector('.searchy').addEventListener('input', function(e) {
-      const searchText = e.target.value.toLowerCase();
-      const gameCards = document.querySelectorAll('.game-card');
+    function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
 
-      gameCards.forEach(card => {
-        const title = card.querySelector('.game-card-title').textContent.toLowerCase();
-        const desc = card.querySelector('.game-card-desc').textContent.toLowerCase();
-        const author = card.querySelector('.game-card-author').textContent.toLowerCase();
+document.querySelector('.searchy').addEventListener('input', debounce(function (e) {
+  const searchText = e.target.value.toLowerCase();
+  const gameCards = document.querySelectorAll('.game-card');
 
-        if (title.includes(searchText) || desc.includes(searchText) || author.includes(searchText)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
+  gameCards.forEach(card => {
+    const title = card.querySelector('.game-card-title').textContent.toLowerCase();
+    const desc = card.querySelector('.game-card-desc').textContent.toLowerCase();
+    const author = card.querySelector('.game-card-author').textContent.toLowerCase();
+
+    card.style.display = title.includes(searchText) || desc.includes(searchText) || author.includes(searchText) ? 'block' : 'none';
+  });
+}, 300));
+    
   </script>
 <!--  <script type="text/javascript">
     var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
