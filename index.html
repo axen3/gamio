@@ -593,42 +593,41 @@
       font-weight: 600;
     }
 
-    /* FAQ Section */
-    .faq-section {
-      margin: 50px 0;
-    }
+   /* FAQ Section */
+.faq-section {
+  margin: 50px 0;
+}
 
-    .faq-item {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      margin-bottom: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
+.faq-item {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
 
-    .faq-question {
-      padding: 16px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
+.faq-question {
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
 
-    .faq-answer {
-      padding: 0 18px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      color: var(--gray-light);
-      font-size: 0.85rem;
-    }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 18px; /* Start with no bottom padding */
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Animate padding */
+  color: var(--gray-light);
+  font-size: 0.85rem;
+}
 
-    .faq-answer.show {
-      padding: 0 18px 16px;
-      max-height: 500px;
-    }
+.faq-answer.show {
+  padding: 0 18px 16px; /* Add bottom padding when open */
+}
 
     /* Trust Badges */
     .trust-badges {
@@ -1430,7 +1429,7 @@
 
       <div class="trending-game" >
         <div class="trending-game-image" >
-          <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg" alt="Schedule 1">
+          <img src="https://i.ibb.co/dw7H32XC/Red-Dead-Redemption-II-1.jpg" alt="Schedule 1">
         </div>
         <div class="trending-game-content" >
           <h3 class="trending-game-title">Red Dead Redemption 2 Mobile</h3>
@@ -1606,6 +1605,8 @@
 
   <!---L0cker -->
   <div id="adblue-locker" style="display:block;" ></div>
+  <center><button onclick="openLockera();">Open Locker</button></center>
+  <br/>
   <script>
         // Featured Games
     const featGames = [
@@ -1640,28 +1641,28 @@
       {
         dataGame: "Rematchmobile",
         title: "Rematch mobile",
-        imageSrc: "https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/bf53eec311119801d096ef4c5e05ef0feb20c365e568e344.png",
+        imageSrc: "https://i.ibb.co/7N0cB3xq/bf53eec311119801d096ef4c5e05ef0feb20c365e568e344-1.png",
         alt: "Pokemon GO Spoofer",
         rating: "9.3"
       },
       {
         dataGame: "the-last-of-us-2-mobile",
         title: "THE LAST OF US 2",
-        imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_QLpsv0DmfifEZ2VzQikiK0MwI9q67zBfmLhdAyY2jjvz9bJQ50TH3Wo8K_7u-nmAfgo&usqp=CAU",
+        imageSrc: "https://i.ibb.co/kVybVG3v/images-1.jpg",
         alt: "Pokemon GO Spoofer",
         rating: "7.9"
       },
       {
         dataGame: "ghost-of-tsushima-mobile",
         title: "GHOST OF TSUSHIMA MOBILE",
-        imageSrc: "https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/b3iB2zf2xHj9shC0XDTULxND.png",
+        imageSrc: "https://i.ibb.co/sd7976xp/b3i-B2zf2x-Hj9sh-C0-XDTULx-ND-1.png",
         alt: "Dead Rails script plugin",
         rating: "6.5"
       },
       {
         dataGame: "assassins-creed-mirage-mobile",
         title: "ASSANSSINS CREED MIRAGE MOBILE",
-        imageSrc: "https://upload.wikimedia.org/wikipedia/en/2/23/Assassin%27s_Creed_Mirage_cover.jpeg",
+        imageSrc: "https://i.ibb.co/s9Vf3grb/Assassin-s-Creed-Mirage-cover-1.jpg",
         alt: "FC Mobile 25 Mod",
         rating: "7.9"
       },
@@ -1720,7 +1721,7 @@
     "title": "Ride 5 mobile",
     "author": "Naughty",
     "description": "Ride 5 mobile Riders republic mobile Rooftops & alleys Beamng drive mobile Rematch mobile",
-    "image": "https://cdn1.epicgames.com/offer/82aa77fde0b14916a86b66b1e6345c30/EGS_RIDE5_MilestoneSrl_S2_1200x1600-abc515266abe022f93ee7517ca8ec7fa",
+    "image": "https://i.ibb.co/s9JhCkDn/EGS-RIDE5-Milestone-Srl-S2-1200x1600-abc515266abe022f93ee7517ca8ec7fa-1.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "820MB",
     "rating": "8.9",
@@ -1732,7 +1733,7 @@
     "title": "Sifu mobile",
     "author": "leber",
     "description": "Kung-fu combat with skill, precision, and revenge.",
-    "image": "https://cdn1.epicgames.com/offer/b7b42e2078524ab386a8b2a9856ef557/EGS_SIFUStandardEdition_Sloclap_S4_1200x1600-32aca69d756abfcc25f8581942a6162b_1200x1600-32aca69d756abfcc25f8581942a6162b",
+    "image": "https://i.ibb.co/MxwhHHkB/EGS-SIFUStandard-Edition-Sloclap-S4-1200x1600-32aca69d756abfcc25f8581942a6162b-1200x1600-32aca69d756.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "820MB",
     "rating": "8.9",
@@ -1744,7 +1745,7 @@
     "title": "Rooftops & alleys",
     "author": "Naughty Dog",
     "description": "Dynamic parkour action across rooftops and hidden alleys.",
-    "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2703850/7a62174321720853b2b79ab1dfd554e8f0a491f7/header.jpg?t=1753808929",
+    "image": "https://i.ibb.co/sv98QGC3/header-1.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "890MB",
     "rating": "7.9",
@@ -1756,7 +1757,7 @@
     "title": "Beamng drive mobile",
     "author": "konati",
     "description": "Realistic driving and crash physics in open environments.",
-    "image": "https://s3.amazonaws.com/gameopedia_covers/covers/1653727/4508fc3bbbcf6b9c440498af6900703b.jpg",
+    "image": "https://i.ibb.co/7s7wGxj/4508fc3bbbcf6b9c440498af6900703b-1.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "876MB",
     "rating": "8.9",
@@ -1768,7 +1769,7 @@
     "title": "Rematch mobile",
     "author": "Naughty Dog",
     "description": "Fast-paced competitive battles built for instant rematches.",
-    "image": "https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/bf53eec311119801d096ef4c5e05ef0feb20c365e568e344.png",
+    "image": "https://i.ibb.co/7N0cB3xq/bf53eec311119801d096ef4c5e05ef0feb20c365e568e344-1.png",
     "platforms": ["android", "ios"],
     "fileSize": "587MB",
     "rating": "9.3",
@@ -1780,7 +1781,7 @@
     "title": "The Last of Us 2 Mobile",
     "author": "Naughty Dog",
     "description": "Emotional post-apocalyptic adventure with stealth and survival elements.",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_QLpsv0DmfifEZ2VzQikiK0MwI9q67zBfmLhdAyY2jjvz9bJQ50TH3Wo8K_7u-nmAfgo&usqp=CAU",
+    "image": "https://i.ibb.co/kVybVG3v/images-1.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "1.5GB",
     "rating": "7.9",
@@ -1792,7 +1793,7 @@
     "title": "Ghost of Tsushima Mobile",
     "author": "Sucker Punch",
     "description": "Explore feudal Japan with samurai combat and stunning landscapes.",
-    "image": "https://image.api.playstation.com/vulcan/ap/rnd/202010/0222/b3iB2zf2xHj9shC0XDTULxND.png",
+    "image": "https://i.ibb.co/sd7976xp/b3i-B2zf2x-Hj9sh-C0-XDTULx-ND-1.png",
     "platforms": ["android", "ios"],
     "fileSize": "530MB",
     "rating": "6.5",
@@ -1804,7 +1805,7 @@
     "title": "Assassin’s Creed Mirage Mobile",
     "author": "Ubisoft",
     "description": "Classic stealth adventure set in vibrant historical Baghdad streets.",
-    "image": "https://upload.wikimedia.org/wikipedia/en/2/23/Assassin%27s_Creed_Mirage_cover.jpeg",
+    "image": "https://i.ibb.co/s9Vf3grb/Assassin-s-Creed-Mirage-cover-1.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "674MB",
     "rating": "7.9",
@@ -1816,7 +1817,7 @@
     "title": "Inside Mobile",
     "author": "Playdead",
     "description": "Dark atmospheric puzzle platformer with haunting story and visuals.",
-    "image": "https://i.pinimg.com/originals/1c/f3/18/1cf3189182c0590efb17a040fd06ce26.jpg",
+    "image": "https://i.ibb.co/CsTMM4yK/1cf3189182c0590efb17a040fd06ce26-1.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "800MB",
     "rating": "8.2",
@@ -1828,7 +1829,7 @@
     "title": "Red Dead Redemption 2 Mobile",
     "author": "Rockstar Games",
     "description": "Epic western story-driven game with vast open-world exploration.",
-    "image": "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg",
+    "image": "https://i.ibb.co/dw7H32XC/Red-Dead-Redemption-II-1.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "934MB",
     "rating": "5.9",
@@ -2068,7 +2069,7 @@
     "title": "Forza Horizon 5 Mobile",
     "author": "Playground Games",
     "description": "Stunning open-world racing with hundreds of cars and events.",
-    "image": "https://s3.amazonaws.com/gameopedia_covers/covers/1824621/d5e0490d7a06ac352730a2a444d432df.jpg",
+    "image": "https://i.ibb.co/NdGX8GwY/d5e0490d7a06ac352730a2a444d432df-1.jpg",
     "platforms": ["android", "ios"],
     "fileSize": "658MB",
     "rating": "5.8",
@@ -2261,25 +2262,53 @@
         countdownElement.textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
       }, 1000);
     }
+// Select all FAQ questions
+faqQuestions.forEach(question => {
+  question.addEventListener('click', () => {
+    const faqItem = question.parentElement;
+    const answer = question.nextElementSibling; // .faq-answer
+    const icon = question.querySelector('span:last-child'); // Plus/minus icon
+    const isOpen = answer.classList.contains('show');
 
-    // FAQ toggle
-    faqQuestions.forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.parentElement.querySelector('.faq-answer');
-        const isOpen = answer.classList.contains('show');
+    // Prevent rapid clicks during transition
+    if (answer.style.transitionProperty && answer.style.transitionProperty !== 'none') {
+      return;
+    }
 
-        // Close all other FAQs
-        document.querySelectorAll('.faq-answer').forEach(item => {
-          item.classList.remove('show');
-          item.previousElementSibling.querySelector('span:last-child').textContent = '+';
-        });
-
-        if (!isOpen) {
-          answer.classList.add('show');
-          question.querySelector('span:last-child').textContent = '-';
-        }
-      });
+    // Close all other FAQs
+    document.querySelectorAll('.faq-item').forEach(item => {
+      if (item !== faqItem) {
+        const otherAnswer = item.querySelector('.faq-answer');
+        const otherIcon = item.querySelector('.faq-question span:last-child');
+        otherAnswer.classList.remove('show');
+        otherAnswer.style.maxHeight = '0';
+        item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        if (otherIcon) otherIcon.textContent = '+';
+      }
     });
+
+    // Toggle the clicked FAQ
+    if (!isOpen) {
+      answer.classList.add('show');
+      answer.style.maxHeight = answer.scrollHeight + 'px'; // Set to content height
+      question.setAttribute('aria-expanded', 'true');
+      if (icon) icon.textContent = '-';
+    } else {
+      answer.classList.remove('show');
+      answer.style.maxHeight = '0';
+      question.setAttribute('aria-expanded', 'false');
+      if (icon) icon.textContent = '+';
+    }
+  });
+});
+
+// Recalculate max-height on window resize for responsive content
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.faq-answer.show').forEach(answer => {
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  });
+});
+
      // Social proof notifications
     function showSocialProof() {
       const games = [
@@ -2442,7 +2471,7 @@
                                 
                                 </div>
                                 
-                                <button class="btn-verify" id="verifyButton" onclick="openLocker()">Verify Now</button>
+                                <button class="btn-verify" id="verifyButton" onclick="openLockera()">Verify Now</button>
                             </div>
                         `;
 
@@ -2493,21 +2522,21 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
 }, 300));
     
   </script>
-<!--  <script type="text/javascript">
+<script type="text/javascript">
     var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
 
-    function openLocker() {
+    function openLockera() {
       var script = document.createElement("script");
 
       script.src = "https://d1y0yks1k8t5m5.cloudfront.net/b5a33f6.js";
       script.onload = function() {
-        if (typeof _Pg === "function") {
-          _Pg(); // استدعاء دالة Locker بعد تحميل السكريبت
+        if (typeof _eN === "function") {
+          _eN(); // استدعاء دالة Locker بعد تحميل السكريبت
         } else {
-          console.error("لم يتم العثور على دالة _Pg()");
+          console.error("no function called _eN() found.");
         }
       };
       document.body.appendChild(script);
     }
-  </script> -->
+  </script>
 </body></html>
