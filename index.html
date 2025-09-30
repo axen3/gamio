@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <link rel="icon" href="https://i.ibb.co/jPMFX1N1/apple-touch-icon.png" type="image/png">
   <link href="https://gamio.my.to/" rel="canonical">
-  <!--Can't find substitution for tag [blog.ieCssRetrofitLinks]-->
+    <meta charset="UTF-8">
   <meta content="https://gamio.my.to/" property="og:url">
   <meta content="Gamio : Premium modded apps collection" property="og:title">
-  <meta content="" property="og:description">
+<meta content="Discover premium modded apps and games at GAMIO Store, with safe downloads and exclusive features." property="og:description">
+<meta name="keywords" content="modded apps, mobile games, premium mods, GAMIO store">
+<meta name="description" content="Download premium modded apps and games safely at GAMIO Store.">
   <title>Gamio : Premium modded apps collection</title>
-  <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -1359,7 +1359,7 @@
     <div class="search-bar" >
       <div class="search-container" >
         <span class="search-icon"><i class="fas fa-search"></i></span>
-        <input type="text" class="searchy" placeholder="Search for apps, games, developers...">
+        <input type="text" class="searchy" placeholder="Search for apps, games, developers..." area-label="Search for apps, games, or developers">
       </div>
     </div>
 
@@ -1393,7 +1393,6 @@
 
     </div>
   </main>
-  </div>
 
   <!-- Trending Games Section -->
   <div class="section-header" >
@@ -1608,8 +1607,6 @@
 
   <!-- AdBlue Media Locker (will be shown when verification is needed) -->
   <div id="adblue-locker" style="display:none;" ></div>
-  </div>
-  </div>
   <script>
         // Featured Games
     const featGames = [
@@ -2188,12 +2185,10 @@
       autoScrollInterval = setInterval(() => {
         scrollAmount += scrollStep;
         if (scrollAmount >= containerWidth) {
-          scrollAmount = 0;
-          featuredGamesContainer.style.transition = 'none';
-          featuredGamesContainer.style.transform = `translateX(0)`;
-          // Force reflow
-          featuredGamesContainer.offsetHeight;
-        }
+  scrollAmount = 0;
+  featuredGamesContainer.style.transition = 'transform 0.5s ease';
+  featuredGamesContainer.style.transform = `translateX(0)`;
+}
 
         featuredGamesContainer.style.transition = 'transform 0.5s ease';
         featuredGamesContainer.style.transform = `translateX(-${scrollAmount}px)`;
@@ -2202,21 +2197,18 @@
 
     // Initialize AdBlue Locker
     function initAdBlueLocker() {
-      // AdBlue Media configuration
       var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
-
-      // Create script element
-      const script = document.createElement('script');
-      script.src = 'https://d1y0yks1k8t5m5.cloudfront.net/b5a33f6.js';
+      var script = document.createElement("script");
+      script.src = "https://d1y0yks1k8t5m5.cloudfront.net/b5a33f6.js";
       script.onload = function() {
-        // Locker is ready to be shown
-        _EQ();
+        if (typeof _Pg === "function") {
+          _Pg();
+        } else {
+          console.error("_Pg() not found.");
+        }
       };
-
-      // Append to the locker div
-      adblueLocker.innerHTML = '';
-      adblueLocker.appendChild(script);
-    }
+      document.body.appendChild(script);
+}
 
     // Download counters animation
     function animateDownloadCounters() {
@@ -2481,8 +2473,7 @@
       initAutoScroll();
       updatePlatformIcons(); // Initialize platform icons
     });
-  </script>
-  <script>
+    
     function debounce(func, wait) {
   let timeout;
   return function (...args) {
