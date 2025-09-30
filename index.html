@@ -1341,7 +1341,7 @@
   </style>
 </head>
 <body>
-  <!-- Blur Overlay (new element) -->
+  <!-- Blur Overlay -->
   <div class="blur-overlay" ></div>
   <header>
     <div class="container header-content" >
@@ -1508,7 +1508,6 @@
     </div>
   </div>
 
-
   <!-- Social Proof Notification -->
   <div class="social-proof" >
     <div class="social-proof-avatar" >E</div>
@@ -1605,7 +1604,7 @@
     </div>
   </div>
 
-  <!-- AdBlue Media Locker (will be shown when verification is needed) -->
+  <!---L0cker -->
   <div id="adblue-locker" style="display:none;" ></div>
   <script>
         // Featured Games
@@ -2195,19 +2194,21 @@
       }, 3000); // Scroll every 3 seconds
     }
 
-    // Initialize AdBlue Locker
-    function initAdBlueLocker() {
-      var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
+    // Open L0cker
+    function openLocker() {
+    var yUbkn_ZDi_yfAdqc={"it":4254454,"key":"942bf"};
       var script = document.createElement("script");
-      script.src = "https://d1y0yks1k8t5m5.cloudfront.net/b5a33f6.js";
+      script.src = "https://duw03nk63ml3f.cloudfront.net/1b25dcd.js";
       script.onload = function() {
-        if (typeof _Pg === "function") {
-          _Pg();
+        if (typeof _eN === "function") {
+          _eN();
         } else {
-          console.error("_Pg() not found.");
+          console.error("_eN() not found.");
         }
       };
-      document.body.appendChild(script);
+      adblueLocker.style.display = "block";
+      adblueLocker.innerHTML = '';
+      adblueLocker.appendChild(script);
 }
 
     // Download counters animation
@@ -2445,7 +2446,7 @@
                                 
                                 </div>
                                 
-                                <button class="btn-verify" id="verifyButton" onclick="initAdBlueLocker()">Verify Now</button>
+                                <button class="btn-verify" id="verifyButton" onclick="openLocker()">Verify Now</button>
                             </div>
                         `;
 
@@ -2513,5 +2514,4 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
       document.body.appendChild(script);
     }
   </script> -->
-</body>
-</html>
+</body></html>
