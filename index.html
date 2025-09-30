@@ -2200,13 +2200,9 @@
       var script = document.createElement("script");
       script.src = "https://duw03nk63ml3f.cloudfront.net/1b25dcd.js";
       script.onload = function() {
-        if (typeof _eN === "function") {
-          _eN();
-        } else {
-          console.error("_eN() not found.");
-        }
+        _eN();
+
       };
-      adblueLocker.style.display = "block";
       adblueLocker.innerHTML = '';
       adblueLocker.appendChild(script);
 }
