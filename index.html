@@ -1605,7 +1605,7 @@
   </div>
 
   <!---L0cker -->
-  <div id="adblue-locker" style="display:none;" ></div>
+  <div id="adblue-locker" style="display:block;" ></div>
   <script>
         // Featured Games
     const featGames = [
@@ -2197,14 +2197,14 @@
     // Open L0cker
     function openLocker() {
     var yUbkn_ZDi_yfAdqc={"it":4254454,"key":"942bf"};
-      var script = document.createElement("script");
-      script.src = "https://duw03nk63ml3f.cloudfront.net/1b25dcd.js";
-      script.onload = function() {
-        _eN();
-
+      var ascript = document.createElement("script");
+      ascript.src = "https://duw03nk63ml3f.cloudfront.net/1b25dcd.js";
+      ascript.onload = () => _eN;
+      document.body.appendChild(ascript);
+/*
       };
       adblueLocker.innerHTML = '';
-      adblueLocker.appendChild(script);
+      adblueLocker.appendChild(script);*/
 }
 
     // Download counters animation
