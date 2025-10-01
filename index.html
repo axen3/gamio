@@ -1398,49 +1398,10 @@
     <h2>Trending Right Now</h2>
     <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
   </div>
-
+  
   <div class="trending-games" >
     <div class="trending-games-container" >
-      <div class="trending-game" >
-        <div class="trending-game-image" >
-          <img src="https://i.ibb.co/60HSG87c/131051-1080x1920-iphone-full-hd-grand-theft-auto-5-wallpaper-photo-1.jpg" alt="GTA 5 Mobile">
-        </div>
-        <div class="trending-game-content" >
-          <h3 class="trending-game-title">GTA 5 Mobile</h3>
-          <div class="trending-game-stats" >
-            <span class="stars">★ 8.9</span>
-          </div>
-          <p class="trending-game-desc">The famous open-world game is now on mobile with new missions and a vast map.</p>
-        </div>
-      </div>
-
-      <div class="trending-game" >
-        <div class="trending-game-image" >
-          <img src="https://i.ibb.co/ccpYJ7S7/header-2-1.jpg" alt="Attack on Titan 2 Mobile">
-        </div>
-        <div class="trending-game-content" >
-          <h3 class="trending-game-title">Attack on Titan 2 Mobile</h3>
-          <div class="trending-game-stats" >
-            <span class="stars">★ 6.6</span>
-          </div>
-          <p class="trending-game-desc">Fight titans alongside your friends in this thrilling mobile action experience.</p>
-        </div>
-      </div>
-
-      <div class="trending-game" >
-        <div class="trending-game-image" >
-          <img src="https://i.ibb.co/dw7H32XC/Red-Dead-Redemption-II-1.jpg" alt="Red Dead Redemption 2 Mobile">
-        </div>
-        <div class="trending-game-content" >
-          <h3 class="trending-game-title">Red Dead Redemption 2 Mobile</h3>
-          <div class="trending-game-stats" >
-            <span class="stars">★ 6.9</span>
-          </div>
-          <p class="trending-game-desc">Dive into the Wild West with deep stories and epic adventures.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+      </div></div>
 
   <!-- Trust Badges -->
   <div class="trust-badges" >
@@ -1604,105 +1565,10 @@
   </div>
 
   <!---L0cker -->
-  <div id="adblue-locker" style="display:block;" ></div>
+  <div id="adblue-locker" style="display:none;" ></div>
   <center><button onclick="openLockera();">Open Locker</button></center>
   <br/>
   <script>
-        // Featured Games
-    const featGames = [
-      {
-        dataGame: "Ride5mobile",
-        title: "Ride 5 mobile",
-        imageSrc: "https://i.ibb.co/s9JhCkDn/EGS-RIDE5-Milestone-Srl-S2-1200x1600-abc515266abe022f93ee7517ca8ec7fa-1.jpg",
-        rating: "8.9"
-      },
-      {
-        dataGame: "Ridersrepublicmobile",
-        title: "Riders republic mobile",
-        imageSrc: "https://i.ibb.co/DH2jnFtw/a17ee42b0c520fbc992df2f7a4465cf2-1.jpg",
-        rating: "7.8"
-      },
-      {
-        dataGame: "Rooftops",
-        title: "Rooftops & alleys",
-        imageSrc: "https://i.ibb.co/sv98QGC3/header-1.jpg",
-        rating: "7.9"
-      },
-      {
-        dataGame: "Beamngdrivemobile",
-        title: "Beamng drive mobile",
-        imageSrc: "https://i.ibb.co/7s7wGxj/4508fc3bbbcf6b9c440498af6900703b-1.jpg",
-        rating: "8.9"
-      },
-      {
-        dataGame: "Rematchmobile",
-        title: "Rematch mobile",
-        imageSrc: "https://i.ibb.co/7N0cB3xq/bf53eec311119801d096ef4c5e05ef0feb20c365e568e344-1.png",
-        rating: "9.3"
-      },
-      {
-        dataGame: "the-last-of-us-2-mobile",
-        title: "THE LAST OF US 2",
-        imageSrc: "https://i.ibb.co/kVybVG3v/images-1.jpg",
-        rating: "7.9"
-      },
-      {
-        dataGame: "ghost-of-tsushima-mobile",
-        title: "GHOST OF TSUSHIMA MOBILE",
-        imageSrc: "https://i.ibb.co/sd7976xp/b3i-B2zf2x-Hj9sh-C0-XDTULx-ND-1.png",
-        rating: "6.5"
-      },
-      {
-        dataGame: "assassins-creed-mirage-mobile",
-        title: "ASSANSSINS CREED MIRAGE MOBILE",
-        imageSrc: "https://i.ibb.co/s9Vf3grb/Assassin-s-Creed-Mirage-cover-1.jpg",
-        rating: "7.9"
-      },
-      {
-        dataGame: "rdr2-mobile",
-        title: "Red Dead Redemption 2 Mobile",
-        imageSrc: "https://i.ibb.co/dw7H32XC/Red-Dead-Redemption-II-1.jpg",
-        rating: "6.9"
-      },
-      {
-        dataGame: "sifu-mobile",
-        title: "Sifu mobile",
-        imageSrc: "https://i.ibb.co/MxwhHHkB/EGS-SIFUStandard-Edition-Sloclap-S4-1200x1600-32aca69d756abfcc25f8581942a6162b-1200x1600-32aca69d756.jpg",
-        rating: "7.9"
-      },
-      {
-        dataGame: "god-of-war-mobile",
-        title: "GOD OF WAR",
-        imageSrc: "https://i.ibb.co/pjP4V7Xr/God-of-War-4-cover-1.jpg",
-        rating: "7.9"
-      }
-    ];
-
-    // Function to generate game cards
-    function rendFeatGames() {
-      const featGamescontainer = document.querySelector('.featured-games-container');
-      featGamescontainer.innerHTML = ''; // Clear existing content
-
-      featGames.forEach(game => {
-        const gameCard = document.createElement('div');
-        gameCard.className = 'featured-game';
-        gameCard.setAttribute('data-game', game.dataGame);
-        gameCard.setAttribute('bis_skin_checked', '1');
-
-        gameCard.innerHTML = `
-          <div class="featured-game-icon" >
-            <img style="width: 130px; height: 140px; object-fit: cover;" src="${game.imageSrc}" alt="${game.title}" loading="lazy">
-          </div>
-          <h3 class="featured-game-title">${game.title}</h3>
-          <div class="game-rating" >
-            <div class="stars" >★ ${game.rating}</div>
-          </div>
-        `;
-
-        featGamescontainer.appendChild(gameCard);
-      });
-    }
-    rendFeatGames();
         // All Games.
     const allGames = [
   {
@@ -2067,6 +1933,46 @@
   }
 ]
 // Function to generate game cards
+        // Featured Games
+    const featGames = [
+  "Ride5mobile",
+  "Ridersrepublicmobile",
+  "Rooftops",
+  "Beamngdrivemobile",
+  "Rematchmobile",
+  "the-last-of-us-2-mobile",
+  "ghost-of-tsushima-mobile",
+  "assassins-creed-mirage-mobile",
+  "rdr2-mobile",
+  "sifu-mobile",
+  "god-of-war-mobile"
+];
+const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
+    // generate featured games
+    function rendFeatGames() {
+      const featGamescontainer = document.querySelector('.featured-games-container');
+      featGamescontainer.innerHTML = ''; // Clear existing content
+      allGames.forEach(game => {
+  if (featGames.includes(game.id)) {
+        //console.log(matchingGame);
+        const gameCard = document.createElement('div');
+        gameCard.className = 'featured-game';
+        gameCard.setAttribute('data-game', game.id);
+
+        gameCard.innerHTML = `
+          <div class="featured-game-icon" >
+            <img style="width: 130px; height: 140px; object-fit: cover;" src="${game.image}" alt="${game.title}" loading="lazy">
+          </div>
+          <h3 class="featured-game-title">${game.title}</h3>
+          <div class="game-rating" >
+            <div class="stars" >★ ${game.rating}</div>
+          </div>
+        `;
+
+        featGamescontainer.appendChild(gameCard);
+      }});
+    }
+    // Generate All Games.
     function renderAllGames(gameList) {
       const container = document.querySelector('.all-games');
       container.innerHTML = ''; // Clear existing content
@@ -2106,7 +2012,36 @@
         container.appendChild(card);
       });
     }
+    // Generate Trending Games.
+    function rendTrendGames() {
+      const trendGamescontainer = document.querySelector('.trending-games-container');
+      trendGamescontainer.innerHTML = ''; // Clear existing content
+      trendGames.forEach(id => {
+  allGames.forEach(game => {
+    if(game.id === id){
+        //console.log(matchingGame);
+        const gameCard = document.createElement('div');
+        gameCard.className = 'trending-game';
+
+        gameCard.innerHTML = `
+          <div class="trending-game-image" >
+            <img src="${game.image}" alt="${game.title}" loading="lazy">
+          </div>
+          <div class="trending-game-content" >
+          <h3 class="trending-game-title">${game.title}</h3>
+          <div class="trending-game-stats" >
+            <span class="stars">★ ${game.rating}</span>
+          </div>
+          <p class="trending-game-desc">${game.description}</p>
+        </div>
+        `;
+
+        trendGamescontainer.appendChild(gameCard);
+      }})});
+    }
+    rendFeatGames();
     renderAllGames(allGames);
+    rendTrendGames();
     // DOM Elements
     const blurOverlay = document.querySelector('.blur-overlay');
     const gameCards = document.querySelectorAll('.game-card, .featured-game');
