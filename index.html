@@ -1338,6 +1338,59 @@
       }
     }
   </style>
+  <script defer>
+const disallowedCountryCodes = ['MA', 'EG', 'DZ', 'TN', 'TR', 'BD'];
+async function checkUserCountry() {
+    try {
+        // Using a GeoIP API (ipapi.co as an example)
+        const response = await fetch('http://ip-api.com/json/');
+        const data = await response.json();
+        const countryCode = data.countryCode; // ISO 3166-1 alpha-2 code
+
+        // Check if user is from a disallowed country
+        if (disallowedCountryCodes.includes(countryCode)) {
+            // Clear body content
+            document.body.innerHTML = '';
+            // Remove all <script> tags inside <body>
+                    const bodyScripts = document.body.getElementsByTagName('script');
+                    for (let i = bodyScripts.length - 1; i >= 0; i--) {
+                        bodyScripts[i].parentNode.removeChild(bodyScripts[i]);
+                    }
+            // Create error message
+            const errorDiv = document.createElement('div');
+            errorDiv.style.cssText = `
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #000;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding: 20px;
+            `;
+            
+            errorDiv.innerHTML = `
+                <div>
+                    <h1>HTTP Error 507 - Insufficient Storage</h1>
+                    <p>If you are the owner of this website, please contact your hosting provider.</p>
+                </div>
+            `;
+
+            // Append error message to body
+            document.body.appendChild(errorDiv);
+
+            // Set document title
+            document.title = '507 Insufficient Storage';
+        }
+    } catch (error) {
+        console.error('Error fetching location:', error);
+        // Fallback: show content if API fails
+    }
+}
+
+// Run the check when the page loads
+window.onload = checkUserCountry;
+  </script>
 </head>
 <body>
   <!-- Blur Overlay -->
