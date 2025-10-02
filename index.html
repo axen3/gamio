@@ -1617,24 +1617,31 @@ window.onload = checkUserCountry;
   <center><button onclick="openLockera();">Open Locker</button></center>
   <br/>
   <script>
+ /*   fetch("https://data.axen.workers.dev",{method: "GET",
+        headers: {"Content-Type": "application/json"}
+      })
+    .then(response => response.json())
+    .then(data => {
+      allGames = data;
+      filteredGames = [...allGames];
+      renderGamesPage();
+      showSlider();
+    })
+    .catch(error => {
+      console.error("Error loading data:", error);
+      document.getElementById("gamesContainer").innerHTML = `<p style="text-align:center;font-size:18px;">Failed to load data.</p>`;
+    });*/
     let allGames = [];
-    async function getData() {
-  try {
-    const response = await fetch('https://gamio.axen.workers.dev');
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    allGames = await response.json();
-    console.log('API data:', allGames);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-}
-async function initLoad() {
-  await getData();
-  console.log(allGames); // now populated
-}
-initLoad();
+    fetch("https://gamio.axen.workers.dev",{method: "GET",
+        headers: {"Content-Type": "application/json"}
+      })
+    .then(response => response.json())
+    .then(data => {
+      allGames = data;
+    })
+    .catch(error => {
+      console.error("Error loading data:", error);
+    });
         // All Games.
         /*
     const allGames = [
