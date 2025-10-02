@@ -1625,13 +1625,16 @@ window.onload = checkUserCountry;
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     allGames = await response.json();
-  //  console.log('API data:', data);
+    console.log('API data:', allGames);
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 }
-
-getData();
+async function initLoad() {
+  await getData();
+  console.log(allGames); // now populated
+}
+initLoad();
         // All Games.
         /*
     const allGames = [
