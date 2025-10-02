@@ -1617,7 +1617,23 @@ window.onload = checkUserCountry;
   <center><button onclick="openLockera();">Open Locker</button></center>
   <br/>
   <script>
+    const allGames = [];
+    async function getData() {
+  try {
+    const response = await fetch('https://gamio.axen.workers.dev');
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    allGames = await response.json();
+  //  console.log('API data:', data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+getData();
         // All Games.
+        /*
     const allGames = [
   {
     "id": "Ride5mobile",
@@ -1980,6 +1996,7 @@ window.onload = checkUserCountry;
     "longDesc": "Race across stunning open roads and exotic locations in the mobile edition of Forza Horizon 5."
   }
 ]
+*/
 // Function to generate game cards
         // Featured Games
     const featGames = [
