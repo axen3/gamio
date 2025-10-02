@@ -1617,7 +1617,7 @@ window.onload = checkUserCountry;
   <center><button onclick="openLockera();">Open Locker</button></center>
   <br/>
   <script>
-    const allGames = [];
+    let allGames = [];
     async function getData() {
   try {
     const response = await fetch('https://gamio.axen.workers.dev');
