@@ -1600,7 +1600,7 @@ window.location.replace("/host.html");
       rendFeatGames()
       renderAllGames(allGames);
       rendTrendGames();
-      cardsHandler();
+    //  cardsHandler();
       initAutoScroll();
       updatePlatformIcons();
     })
@@ -1687,6 +1687,7 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
   imgDiv.style.setProperty('--before-bg', `url("${game.image}")`);
         container.appendChild(card);
       });
+      cardsHandler();
     }
     // Generate Trending Games.
     function rendTrendGames() {
