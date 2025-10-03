@@ -1602,7 +1602,7 @@ window.location.replace("/host.html");
       rendTrendGames();
     //  cardsHandler();
       initAutoScroll();
-      updatePlatformIcons();
+     // updatePlatformIcons();
     })
     .catch(error => {
       console.error("Error loading data:", error);
@@ -1776,7 +1776,7 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
     // Initialize auto-scroll for featured games
     function initAutoScroll() {
       let scrollAmount = 0;
-      const scrollStep = 180; // Width of featured game card + gap
+      const scrollStep = 160; // Width of featured game card + gap
       const containerWidth = featuredGamesContainer.scrollWidth;
 
       autoScrollInterval = setInterval(() => {
@@ -1929,7 +1929,7 @@ faqQuestions.forEach(question => {
     setTimeout(showSocialProof, 5000);
 
     // Add click event to all game cards
-    function cardsHandler(){
+    function cardsHandler() {
     gameCards.forEach(card => {
       card.addEventListener('click', () => {
         const gameId = card.getAttribute('data-game');
@@ -1959,7 +1959,7 @@ faqQuestions.forEach(question => {
         installModal.classList.add('active');
         togglePopup(true);
       });
-    })};
+    })}
 
     // Close modal when close button is clicked
     closeModal.addEventListener('click', () => {
@@ -2086,15 +2086,6 @@ faqQuestions.forEach(question => {
         clearInterval(installInterval);
       }
     });
-/*
-    // Initialize animations and features
-    document.addEventListener('DOMContentLoaded', () => {
-      animateDownloadCounters();
-      updateCountdown();
-      initAutoScroll();
-      updatePlatformIcons(); // Initialize platform icons
-    });
-    */
     function debounce(func, wait) {
   let timeout;
   return function (...args) {
