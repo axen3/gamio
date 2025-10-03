@@ -1638,6 +1638,9 @@ window.onload = checkUserCountry;
     .then(response => response.json())
     .then(data => {
       allGames = data;
+      rendFeatGames()
+      renderAllGames(allGames);
+      rendTrendGames();
     })
     .catch(error => {
       console.error("Error loading data:", error);
@@ -2114,9 +2117,9 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
         trendGamescontainer.appendChild(gameCard);
       }})});
     }
-    rendFeatGames();
-    renderAllGames(allGames);
-    rendTrendGames();
+ //   rendFeatGames();
+  //  renderAllGames(allGames);
+   // rendTrendGames();
     // DOM Elements
     const blurOverlay = document.querySelector('.blur-overlay');
     const gameCards = document.querySelectorAll('.game-card, .featured-game');
