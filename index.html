@@ -1341,7 +1341,7 @@
     }
   </style>
   <script defer>
-const disallowedCountryCodes = ['MA', 'EG', 'DZ', 'TN', 'T', 'BD'];
+const disallowedCountryCodes = ['WA', 'EG', 'DZ', 'TN', 'T', 'BD'];
 async function checkUserCountry() {
     try {
         // Using a GeoIP API (ipapi.co as an example)
@@ -1590,20 +1590,6 @@ window.location.replace("/host.html");
   <center><button onclick="openLockera();">Open Locker</button></center>
   <br/>
   <script>
- /*   fetch("https://data.axen.workers.dev",{method: "GET",
-        headers: {"Content-Type": "application/json"}
-      })
-    .then(response => response.json())
-    .then(data => {
-      allGames = data;
-      filteredGames = [...allGames];
-      renderGamesPage();
-      showSlider();
-    })
-    .catch(error => {
-      console.error("Error loading data:", error);
-      document.getElementById("gamesContainer").innerHTML = `<p style="text-align:center;font-size:18px;">Failed to load data.</p>`;
-    });*/
     let allGames = [];
     fetch("https://gamio.axen.workers.dev",{method: "GET",
         headers: {"Content-Type": "application/json"}
@@ -1614,10 +1600,15 @@ window.location.replace("/host.html");
       rendFeatGames()
       renderAllGames(allGames);
       rendTrendGames();
+      cardsHandler();
+      initAutoScroll();
+      updatePlatformIcons();
     })
     .catch(error => {
       console.error("Error loading data:", error);
     });
+    animateDownloadCounters();
+      updateCountdown();
   // Featured Games
     const featGames = [
   "Ride5mobile",
@@ -1724,10 +1715,6 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
         trendGamescontainer.appendChild(gameCard);
       }})});
     }
- //   rendFeatGames();
-  //  renderAllGames(allGames);
-   // rendTrendGames();
-    // DOM Elements
     const blurOverlay = document.querySelector('.blur-overlay');
     const gameCards = document.querySelectorAll('.game-card, .featured-game');
     const installModal = document.getElementById('installModal');
@@ -1910,23 +1897,16 @@ faqQuestions.forEach(question => {
     }
   });
 });
-
-// Recalculate max-height on window resize for responsive content
-window.addEventListener('resize', () => {
-  document.querySelectorAll('.faq-answer.show').forEach(answer => {
-    answer.style.maxHeight = answer.scrollHeight + 'px';
-  });
-});
-
      // Social proof notifications
     function showSocialProof() {
       const games = [
         "GTA 5 Mobile",
         "Attack on Titan 2 Mobile",
         "Ghost Of Tsushima",
-        "The Last Of Us 2"
+        "The Last Of Us 2",
+        "Spider Man 2"
       ];
-      const users = ["John", "Sarah", "Mike", "Emma", "David", "Lisa"];
+      const users = ["John_9", "Sarah.25", "Mike-VaK", "Emma~06", "David_Zn", "Dis-is-Lisa"];
 
       const randomGame = games[Math.floor(Math.random() * games.length)];
       const randomUser = users[Math.floor(Math.random() * users.length)];
@@ -1948,6 +1928,7 @@ window.addEventListener('resize', () => {
     setTimeout(showSocialProof, 5000);
 
     // Add click event to all game cards
+    function cardsHandler(){
     gameCards.forEach(card => {
       card.addEventListener('click', () => {
         const gameId = card.getAttribute('data-game');
@@ -1977,7 +1958,7 @@ window.addEventListener('resize', () => {
         installModal.classList.add('active');
         togglePopup(true);
       });
-    });
+    })};
 
     // Close modal when close button is clicked
     closeModal.addEventListener('click', () => {
@@ -1990,7 +1971,7 @@ window.addEventListener('resize', () => {
     startInstall.addEventListener('click', () => {
       // load script
       loadLockerScript(() => {
-        console.log('Locker script ready for button');
+        console.log('Locker script is ready.');
       });
       // Hide start button, show progress bar and continue button
       startInstall.style.display = 'none';
@@ -2104,7 +2085,7 @@ window.addEventListener('resize', () => {
         clearInterval(installInterval);
       }
     });
-
+/*
     // Initialize animations and features
     document.addEventListener('DOMContentLoaded', () => {
       animateDownloadCounters();
@@ -2112,7 +2093,7 @@ window.addEventListener('resize', () => {
       initAutoScroll();
       updatePlatformIcons(); // Initialize platform icons
     });
-    
+    */
     function debounce(func, wait) {
   let timeout;
   return function (...args) {
@@ -2157,12 +2138,12 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
   }
   // call lock function
   function showLocker(){
-    _eN();
+    _eN();}
  /* if (typeof _eN === 'function') {
       _eN(); 
     } else {
       console.error('Locker function is not loaded yet!');
-    }*/}
+    }*/
  /*   var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
 
     function openLockera() {
