@@ -201,7 +201,21 @@
     .view-all:hover {
       color: var(--primary);
     }
-
+    /* Loader */
+    .loader {
+  text-align: center;
+  padding: 20px;
+  color: var(--gray-light);
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.loader i {
+  font-size: 1.2rem;
+  color: var(--primary-light);
+}
     /* Featured Games */
     .featured-games {
       overflow-x: hidden;
@@ -1396,6 +1410,10 @@ window.location.replace("/host.html");
 
     <div class="featured-games" >
       <div class="featured-games-container" id="featuredContainer">
+        <!-- Featured Games Loader -->
+<div id="featuredLoader" class="loader">
+  <i class="fas fa-spinner fa-spin"></i> Loading Featured Games...
+</div>
     </div>
     </div>
 
@@ -1416,7 +1434,10 @@ window.location.replace("/host.html");
     </div>
 
     <div class="all-games">
-
+      <!-- All Games Loader -->
+<div id="allGamesLoader" class="loader">
+  <i class="fas fa-spinner fa-spin"></i> Loading All Games...
+</div>
     </div>
 
   <!-- Trending Games Section -->
@@ -1591,9 +1612,12 @@ window.location.replace("/host.html");
 
   <!---L0cker -->
   <div id="adblue-locker" style="display:none;" ></div>
-  <center><button onclick="openLockera();">Open Locker</button></center>
+  <center><button onclick="showLocker();">Open Locker</button></center>
   <br/>
   <script>
+    // Show loaders initially
+document.getElementById('featuredLoader').style.display = 'flex';
+document.getElementById('allGamesLoader').style.display = 'flex';
     let allGames = [];
     fetch("https://gamio.axen.workers.dev",{method: "GET",
         headers: {"Content-Type": "application/json"}
@@ -1601,6 +1625,8 @@ window.location.replace("/host.html");
     .then(response => response.json())
     .then(data => {
       allGames = data;
+      document.getElementById('featuredLoader').style.display = 'none';
+  document.getElementById('allGamesLoader').style.display = 'none';
       rendFeatGames();
       renderAllGames(allGames);
       rendTrendGames();
@@ -1609,6 +1635,8 @@ window.location.replace("/host.html");
     })
     .catch(error => {
       console.error("Error loading data:", error);
+      document.getElementById('featuredLoader').innerHTML = "❌ Failed to load Featured Games";
+  document.getElementById('allGamesLoader').innerHTML = "❌ Failed to load All Games";
     });
       updateCountdown();
   // Featured Games
@@ -1771,11 +1799,9 @@ function scrollStepByCard(dir) {
   if (currentTranslate <= maxTranslate) {
     currentTranslate = maxTranslate;
     direction = 1; // Reverse to backward (right)
-    console.log('🔄 Hit end: Reversed to backward');
   } else if (currentTranslate >= 0) {
     currentTranslate = 0;
     direction = -1; // Reverse to forward (left)
-    console.log('🔄 Hit start: Reversed to forward');
   }
   
   updateTransform(currentTranslate);
@@ -1784,7 +1810,6 @@ function scrollStepByCard(dir) {
 function startAutoScroll() {
   if (isPaused || autoScrollInterval) return;
   autoScrollInterval = setInterval(() => scrollStepByCard(direction), 3000);
-  console.log('▶️ Auto-scroll started');
 }
 
 function pauseAutoScroll() {
@@ -2039,9 +2064,7 @@ faqQuestions.forEach(question => {
 
     // Start installation process
     startInstall.addEventListener('click', () => {
-      // load script
       loadLockerScript();
-      // Hide start button, show progress bar and continue button
       startInstall.style.display = 'none';
       modalProgress.style.display = 'block';
       continueInstall.style.display = 'flex';
@@ -2173,9 +2196,7 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
     card.style.display = title.includes(searchText) || desc.includes(searchText) || author.includes(searchText) ? 'block' : 'none';
   });
 }, 300));
-    
-  </script>
-<script type="text/javascript">
+    // Locker Handler
   var KOGeH_wfr_PVdBrc={"it":4254454,"key":"942bf"};
   let lockerScriptLoaded = false;
   function loadLockerScript() {
@@ -2186,7 +2207,6 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
     const script = document.createElement('script');
     script.src = 'https://d1y0yks1k8t5m5.cloudfront.net/88ee55f.js';
     script.type = 'text/javascript';
-  //  script.crossorigin = 'anonymous';
     script.onload = () => {
       console.log('Locker script loaded');
       lockerScriptLoaded = true;
@@ -2196,26 +2216,10 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
   }
   // call lock function
   function showLocker(){
-    return _du();}
- /* if (typeof _eN === 'function') {
-      _eN(); 
+   if (typeof _du === 'function') {
+      _du(); 
     } else {
       console.error('Locker function is not loaded yet!');
-    }*/
-   var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
-
-    function openLockera() {
-      var script = document.createElement("script");
-
-      script.src = "https://d1y0yks1k8t5m5.cloudfront.net/b5a33f6.js";
-      script.onload = function() {
-        if (typeof _eN === "function") {
-          _eN(); // استدعاء دالة Locker بعد تحميل السكريبت
-        } else {
-          console.error("no function called _eN() found.");
-        }
-      };
-      document.body.appendChild(script);
-    }
+    }}
   </script>
 </body></html>
