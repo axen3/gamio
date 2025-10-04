@@ -1606,12 +1606,10 @@ window.location.replace("/host.html");
       rendTrendGames();
      cardsHandler();
       initAutoScroll();
-     // updatePlatformIcons();
     })
     .catch(error => {
       console.error("Error loading data:", error);
     });
-    animateDownloadCounters();
       updateCountdown();
   // Featured Games
     const featGames = [
@@ -1691,7 +1689,6 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
   imgDiv.style.setProperty('--before-bg', `url("${game.image}")`);
         container.appendChild(card);
       });
-     // cardsHandler();
     }
     // Generate Trending Games.
     function rendTrendGames() {
@@ -1748,23 +1745,6 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
     let currentGame = null;
     let installInterval;
 
-    // Function to update platform icons (JS implementation)
-    function updatePlatformIcons() {
-      const androidIcons = document.querySelectorAll('.platform-icon.android');
-      const iosIcons = document.querySelectorAll('.platform-icon.ios');
-
-      // Make all platform icons white
-      androidIcons.forEach(icon => {
-        icon.style.color = 'white';
-        icon.style.fontWeight = 'bold';
-      });
-
-      iosIcons.forEach(icon => {
-        icon.style.color = 'white';
-        icon.style.fontWeight = 'bold';
-      });
-    }
-
     // Function to toggle popup and blur
     function togglePopup(show) {
       if (show) {
@@ -1776,8 +1756,6 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
       }
     }
 
-    // Initialize auto-scroll for featured games
-    // Global vars (your existing ones—add if missing)
 let isPaused = false;
 let autoScrollInterval;
 let currentTranslate = 0;
@@ -1890,17 +1868,15 @@ function initAutoScroll() {
   window.addEventListener('beforeunload', () => pauseAutoScroll());
 }
 
-// FIXED: Modal Close Handler (Full—Replace Your Existing One)
-
+// Close Handler
 closeModal.addEventListener('click', () => {
   installModal.classList.remove('active');
-  togglePopup(false); // Your blur/body toggle
-  
-  // FIXED: Resume scroll
+  togglePopup(false);
   isPaused = false;
-  pauseAutoScroll(); // Clear any stale
-  setTimeout(startAutoScroll, 100); // Resume after settle
-  console.log('🔄 Modal closed—scroll resumed!');
+  pauseAutoScroll();
+  clearInterval(installInterval);
+  clearInterval(autoScrollInterval);
+  setTimeout(startAutoScroll, 100);
 });
 
 // Backdrop close (outside click)
@@ -1916,36 +1892,15 @@ installModal.addEventListener('click', (e) => {
     // Open L0cker
     function openLocker() {
     var yUbkn_ZDi_yfAdqc={"it":4254454,"key":"942bf"};
-      var ascript = document.createElement("script");
-      ascript.src = "https://duw03nk63ml3f.cloudfront.net/1b25dcd.js";
+      var script = document.createElement("script");
+      script.src = "https://duw03nk63ml3f.cloudfront.net/1b25dcd.js";
       ascript.onload = () => _eN;
-      document.body.appendChild(ascript);
+      document.body.appendChild(script);
 /*
       };
       adblueLocker.innerHTML = '';
       adblueLocker.appendChild(script);*/
 }
-
-    // Download counters animation
-    function animateDownloadCounters() {
-      const downloadCounts = document.querySelectorAll('.download-count');
-      downloadCounts.forEach(counter => {
-        const target = Math.floor(Math.random() * 500) + 50;
-        let current = 0;
-        const increment = target / 30;
-
-        const updateCounter = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            clearInterval(updateCounter);
-            counter.textContent = target;
-          } else {
-            counter.textContent = Math.floor(current);
-          }
-        }, 50);
-      });
-    }
-
     // Countdown timer
     function updateCountdown() {
       let hours = 23;
@@ -2082,22 +2037,10 @@ faqQuestions.forEach(question => {
       });
     })}
 
-    // Close modal when close button is clicked
-    closeModal.addEventListener('click', () => {
-      installModal.classList.remove('active');
-      togglePopup(false);
-      clearInterval(installInterval);
-      isPaused = false; // Reset pause flag
-  clearInterval(autoScrollInterval); // Clear any stale interval
-  setTimeout(startAutoScroll, 100);
-    });
-
     // Start installation process
     startInstall.addEventListener('click', () => {
       // load script
-      loadLockerScript(() => {
-        console.log('Locker script is ready.');
-      });
+      loadLockerScript();
       // Hide start button, show progress bar and continue button
       startInstall.style.display = 'none';
       modalProgress.style.display = 'block';
@@ -2233,34 +2176,33 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
     
   </script>
 <script type="text/javascript">
+  var KOGeH_wfr_PVdBrc={"it":4254454,"key":"942bf"};
   let lockerScriptLoaded = false;
-  function loadLockerScript(callback) {
+  function loadLockerScript() {
     if (lockerScriptLoaded) {
-      callback();
+      console.log("script created.");
       return;
     }
-    var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
     const script = document.createElement('script');
-    script.src = 'https://d1y0yks1k8t5m5.cloudfront.net/b5a33f6.js';
+    script.src = 'https://d1y0yks1k8t5m5.cloudfront.net/88ee55f.js';
     script.type = 'text/javascript';
-    script.crossorigin = 'anonymous';
+  //  script.crossorigin = 'anonymous';
     script.onload = () => {
       console.log('Locker script loaded');
       lockerScriptLoaded = true;
-      callback();
     };
     script.onerror = () => console.error('Failed to load locker script');
     document.body.appendChild(script);
   }
   // call lock function
   function showLocker(){
-    _eN();}
+    return _du();}
  /* if (typeof _eN === 'function') {
       _eN(); 
     } else {
       console.error('Locker function is not loaded yet!');
     }*/
- /*   var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
+   var MFSme_tss_hXagZc={"it":4254454,"key":"942bf"};
 
     function openLockera() {
       var script = document.createElement("script");
@@ -2274,6 +2216,6 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
         }
       };
       document.body.appendChild(script);
-    }*/
+    }
   </script>
 </body></html>
