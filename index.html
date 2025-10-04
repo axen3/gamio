@@ -1228,6 +1228,10 @@
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
+      .featured-game {
+    width: 140px; /* Smaller on mobile for ~2 visible cards */
+    padding: 12px;
+  }
       .all-games {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: 15px;
@@ -1391,7 +1395,7 @@ window.location.replace("/host.html");
     </div>
 
     <div class="featured-games" >
-      <div class="featured-games-container"  style="transition: transform 0.5s; transform: translateX(-720px);">
+      <div class="featured-games-container" id="featuredContainer">
     </div>
     </div>
 
@@ -1597,10 +1601,10 @@ window.location.replace("/host.html");
     .then(response => response.json())
     .then(data => {
       allGames = data;
-      rendFeatGames()
+      rendFeatGames();
       renderAllGames(allGames);
       rendTrendGames();
-    //  cardsHandler();
+     cardsHandler();
       initAutoScroll();
      // updatePlatformIcons();
     })
@@ -1687,7 +1691,7 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
   imgDiv.style.setProperty('--before-bg', `url("${game.image}")`);
         container.appendChild(card);
       });
-      cardsHandler();
+     // cardsHandler();
     }
     // Generate Trending Games.
     function rendTrendGames() {
@@ -1743,7 +1747,6 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
     // Current selected game
     let currentGame = null;
     let installInterval;
-    let autoScrollInterval;
 
     // Function to update platform icons (JS implementation)
     function updatePlatformIcons() {
@@ -1774,24 +1777,142 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
     }
 
     // Initialize auto-scroll for featured games
-    function initAutoScroll() {
-      let scrollAmount = 0;
-      const scrollStep = 160; // Width of featured game card + gap
-      const containerWidth = featuredGamesContainer.scrollWidth;
+    // Global vars (your existing ones—add if missing)
+let isPaused = false;
+let autoScrollInterval;
+let currentTranslate = 0;
+let direction = -1; // -1 = forward/left
+let slideStep = 0; // Will be set in init
+let maxTranslate = 0; // Will be set in init
 
-      autoScrollInterval = setInterval(() => {
-        scrollAmount += scrollStep;
-        if (scrollAmount >= containerWidth) {
-  scrollAmount = 0;
-  featuredGamesContainer.style.transition = 'transform 0.5s ease';
-  featuredGamesContainer.style.transform = `translateX(0)`;
+// Core Functions (Hoisted to Global—Accessible Everywhere)
+function scrollStepByCard(dir) {
+  const step = slideStep * dir;
+  currentTranslate += step;
+  
+  if (currentTranslate <= maxTranslate) {
+    currentTranslate = maxTranslate;
+    direction = 1; // Reverse to backward (right)
+    console.log('🔄 Hit end: Reversed to backward');
+  } else if (currentTranslate >= 0) {
+    currentTranslate = 0;
+    direction = -1; // Reverse to forward (left)
+    console.log('🔄 Hit start: Reversed to forward');
+  }
+  
+  updateTransform(currentTranslate);
 }
 
-        featuredGamesContainer.style.transition = 'transform 0.5s ease';
-        featuredGamesContainer.style.transform = `translateX(-${scrollAmount}px)`;
-      }, 3000); // Scroll every 3 seconds
-    }
+function startAutoScroll() {
+  if (isPaused || autoScrollInterval) return;
+  autoScrollInterval = setInterval(() => scrollStepByCard(direction), 3000);
+  console.log('▶️ Auto-scroll started');
+}
 
+function pauseAutoScroll() {
+  clearInterval(autoScrollInterval);
+  autoScrollInterval = null;
+}
+
+function updateTransform(translateX) {
+  if (!featuredGamesContainer) return;
+  featuredGamesContainer.style.transform = `translateX(${translateX}px)`;
+  featuredGamesContainer.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
+}
+
+// Main Init Function (Setup Only)
+function initAutoScroll() {
+  const featuredGamesWrapper = document.querySelector('.featured-games');
+
+  const cards = featuredGamesContainer.querySelectorAll('.featured-game');
+  
+  if (cards.length === 0) {
+    console.warn('No featured games to scroll!');
+    return;
+  }
+
+  // Dynamic calculations (set globals for core functions)
+  const cardWidth = cards[0].offsetWidth;
+  const gap = 20;
+  slideStep = cardWidth + gap;
+  const totalContentWidth = (cards.length * cardWidth) + ((cards.length - 1) * gap);
+  const containerWidth = featuredGamesWrapper.offsetWidth;
+  const visibleCards = Math.floor(containerWidth / slideStep);
+  maxTranslate = -(totalContentWidth - (visibleCards * slideStep));
+
+  console.log(`Slider Setup: Cards=${cards.length}, Step=${slideStep}px, Visible=${visibleCards}, MaxTranslate=${maxTranslate}px`);
+
+  // Pause on hover (only if modal closed)
+  featuredGamesWrapper.addEventListener('mouseenter', () => {
+    if (!installModal.classList.contains('active')) {
+      isPaused = true;
+      pauseAutoScroll();
+      console.log('⏸️ Paused on hover');
+    }
+  });
+  
+  featuredGamesWrapper.addEventListener('mouseleave', () => {
+    if (!installModal.classList.contains('active')) {
+      isPaused = false;
+      startAutoScroll();
+      console.log('▶️ Resumed on leave');
+    }
+  });
+
+  // Manual Navigation (Arrows)
+  const prevBtn = document.getElementById('prevSlide');
+  const nextBtn = document.getElementById('nextSlide');
+
+  if (prevBtn && nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      scrollStepByCard(-1);
+      pauseAutoScroll();
+      setTimeout(() => { isPaused = false; startAutoScroll(); }, 2000);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      scrollStepByCard(1);
+      pauseAutoScroll();
+      setTimeout(() => { isPaused = false; startAutoScroll(); }, 2000);
+    });
+  }
+
+  // Initial setup
+  currentTranslate = 0;
+  featuredGamesContainer.style.transform = 'translateX(0px)';
+  featuredGamesContainer.style.transition = 'none';
+  setTimeout(() => {
+    featuredGamesContainer.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
+    startAutoScroll();
+  }, 100);
+
+  // Clean up
+  window.addEventListener('beforeunload', () => pauseAutoScroll());
+}
+
+// FIXED: Modal Close Handler (Full—Replace Your Existing One)
+
+closeModal.addEventListener('click', () => {
+  installModal.classList.remove('active');
+  togglePopup(false); // Your blur/body toggle
+  
+  // FIXED: Resume scroll
+  isPaused = false;
+  pauseAutoScroll(); // Clear any stale
+  setTimeout(startAutoScroll, 100); // Resume after settle
+  console.log('🔄 Modal closed—scroll resumed!');
+});
+
+// Backdrop close (outside click)
+installModal.addEventListener('click', (e) => {
+  if (e.target === installModal) {
+    installModal.classList.remove('active');
+    togglePopup(false);
+    isPaused = false;
+    pauseAutoScroll();
+    setTimeout(startAutoScroll, 100);
+  }
+});
     // Open L0cker
     function openLocker() {
     var yUbkn_ZDi_yfAdqc={"it":4254454,"key":"942bf"};
@@ -1930,7 +2051,8 @@ faqQuestions.forEach(question => {
 
     // Add click event to all game cards
     function cardsHandler() {
-    gameCards.forEach(card => {
+      const gmCards = document.querySelectorAll('.game-card, .featured-game');
+    gmCards.forEach(card => {
       card.addEventListener('click', () => {
         const gameId = card.getAttribute('data-game');
         currentGame = allGames.find(game=> game.id === gameId);
@@ -1938,7 +2060,6 @@ faqQuestions.forEach(question => {
         console.log("no game found with that id.");
         return;
       }
-
         // Update modal content
         document.getElementById('modalGameTitle').textContent = currentGame.title;
         modalGameBanner.setAttribute('data-game', gameId);
@@ -1966,6 +2087,9 @@ faqQuestions.forEach(question => {
       installModal.classList.remove('active');
       togglePopup(false);
       clearInterval(installInterval);
+      isPaused = false; // Reset pause flag
+  clearInterval(autoScrollInterval); // Clear any stale interval
+  setTimeout(startAutoScroll, 100);
     });
 
     // Start installation process
