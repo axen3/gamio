@@ -1362,13 +1362,10 @@
 const disallowedCountryCodes = ['WA', 'EG', 'DZ', 'TN', 'T', 'BD'];
 async function checkUserCountry() {
     try {
-        // Using a GeoIP API (ipapi.co as an example)
         const response = await fetch('https://gamio-geo.axen.workers.dev');
         const data = await response.json();
         const countryCode = data.countryCode;
-        // Check if user is from a disallowed country
         if (disallowedCountryCodes.includes(countryCode)) {
-            // Clear body content
             document.body.innerHTML = '';
 window.location.replace("/host.html");
             document.title = '507 Insufficient Storage';
@@ -1611,7 +1608,7 @@ window.location.replace("/host.html");
   </div>
 
   <!---L0cker -->
-  <div id="adblue-locker" style="display:none;" ></div>
+<!--  <div id="adblue-locker" style="display:noneshowLocker -->
   <center><button onclick="showLocker();">Open Locker</button></center>
   <br/>
   <script>
@@ -1660,7 +1657,6 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
       featGamescontainer.innerHTML = ''; // Clear existing content
       allGames.forEach(game => {
   if (featGames.includes(game.id)) {
-        //console.log(matchingGame);
         const gameCard = document.createElement('div');
         gameCard.className = 'featured-game';
         gameCard.setAttribute('data-game', game.id);
@@ -1681,8 +1677,7 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
     // Generate All Games.
     function renderAllGames(gameList) {
       const container = document.querySelector('.all-games');
-      container.innerHTML = ''; // Clear existing content
-
+      container.innerHTML = '';
       gameList.forEach(game => {
         const card = document.createElement('div');
         card.classList.add('game-card');
@@ -1721,11 +1716,10 @@ const trendGames = ["gta-5-mobile","attack-on-titan-2-mobile","rdr2-mobile"];
     // Generate Trending Games.
     function rendTrendGames() {
       const trendGamescontainer = document.querySelector('.trending-games-container');
-      trendGamescontainer.innerHTML = ''; // Clear existing content
+      trendGamescontainer.innerHTML = '';
       trendGames.forEach(id => {
   allGames.forEach(game => {
     if(game.id === id){
-        //console.log(matchingGame);
         const gameCard = document.createElement('div');
         gameCard.className = 'trending-game';
 
@@ -1791,7 +1785,6 @@ let direction = -1; // -1 = forward/left
 let slideStep = 0; // Will be set in init
 let maxTranslate = 0; // Will be set in init
 
-// Core Functions (Hoisted to Global—Accessible Everywhere)
 function scrollStepByCard(dir) {
   const step = slideStep * dir;
   currentTranslate += step;
@@ -1914,17 +1907,35 @@ installModal.addEventListener('click', (e) => {
     setTimeout(startAutoScroll, 100);
   }
 });
-    // Open L0cker
-    function openLocker() {
-    var yUbkn_ZDi_yfAdqc={"it":4254454,"key":"942bf"};
-      var script = document.createElement("script");
-      script.src = "https://duw03nk63ml3f.cloudfront.net/1b25dcd.js";
-      ascript.onload = () => _eN;
-      document.body.appendChild(script);
-/*
-      };
-      adblueLocker.innerHTML = '';
-      adblueLocker.appendChild(script);*/
+// random download testimony
+// List of names to randomly pick from
+const names = [
+  "John",
+  "Jane",
+  "Bob",
+  "Alice",
+  "Charlie",
+  "Diana",
+  "Eve",
+  "Frank",
+  "Grace",
+  "Henry"
+];
+
+// Function to randomly update the testimonial author text
+function updateTestimonialAuthor() {
+  // Pick a random name
+  const randomName = names[Math.floor(Math.random() * names.length)];
+  
+  // Pick a random number between 100 and 500 (adjust range as needed)
+  const randomNum = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+  
+  // Find the div by class
+  const div = document.querySelector('.testimonial-author');
+  div.innerText = '';
+  if (div) {
+    div.innerText = `- ${randomName}, ${randomNum}K users`;
+  }
 }
     // Countdown timer
     function updateCountdown() {
@@ -2048,7 +2059,7 @@ faqQuestions.forEach(question => {
         document.getElementById('modalGameDownloads').textContent = currentGame.downloads;
         document.getElementById('modalGameDesc').textContent = currentGame.longDesc;
         processingGameName.textContent = currentGame.title;
-
+        updateTestimonialAuthor();
         // Reset progress bar and buttons
         modalProgress.style.display = 'none';
         startInstall.style.display = 'flex';
