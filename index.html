@@ -1615,7 +1615,7 @@ window.location.replace("/host.html");
 document.getElementById('featuredLoader').style.display = 'flex';
 document.getElementById('allGamesLoader').style.display = 'flex';
     let allGames = [];
-    fetch("https://gamio.workers.dev",{method: "GET",
+    fetch("https://gamio.axen.workers.dev",{method: "GET",
         headers: {"Content-Type": "application/json"}
       })
     .then(response => response.json())
