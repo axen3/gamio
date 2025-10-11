@@ -1606,7 +1606,6 @@ window.location.replace("/host.html");
       </div>
     </div>
   </div>
-
   <!---L0cker -->
 <!--  <div id="adblue-locker" style="display:noneshowLocker -->
 <!--  <center><button onclick="showLocker();">Open Locker</button></center>
@@ -1616,7 +1615,7 @@ window.location.replace("/host.html");
 document.getElementById('featuredLoader').style.display = 'flex';
 document.getElementById('allGamesLoader').style.display = 'flex';
     let allGames = [];
-    fetch("https://gamio.axen.workers.dev",{method: "GET",
+    fetch("https://gamio.workers.dev",{method: "GET",
         headers: {"Content-Type": "application/json"}
       })
     .then(response => response.json())
@@ -2207,6 +2206,73 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
     card.style.display = title.includes(searchText) || desc.includes(searchText) || author.includes(searchText) ? 'block' : 'none';
   });
 }, 300));
+    // imaged Handle
+const placeholderImage = 'https://i.ibb.co/q34wyZPx/no-image-1.jpg';
+    const maxPlaceholderRetries = 2; // Max retries for placeholder
+    const maxOriginalRetries = 3; // Max retries for original image
+    const retryDelay = 5000; // Delay in milliseconds (5 seconds) before retrying original
+
+    // Function to handle image load errors
+    function handleImageError(img, placeholderRetryCount = 0) {
+      // Store original src if not already stored
+      if (!img.dataset.originalSrc) {
+        img.dataset.originalSrc = img.src;
+        img.dataset.originalRetryCount = 0; // Initialize original retry count
+      }
+
+      // If max placeholder retries reached, hide the image
+      if (placeholderRetryCount >= maxPlaceholderRetries) {
+        img.style.display = 'none';
+        console.warn(`Image ${img.src} failed to load after ${maxPlaceholderRetries} placeholder attempts.`);
+        return;
+      }
+
+      // Replace with placeholder
+      img.src = placeholderImage;
+      img.alt = 'Placeholder image';
+      img.dataset.placeholderRetryCount = placeholderRetryCount + 1;
+
+      // Recheck if placeholder loads
+      img.onerror = () => {
+        handleImageError(img, parseInt(img.dataset.placeholderRetryCount));
+      };
+
+      // Schedule retry for original image
+      if (parseInt(img.dataset.originalRetryCount) < maxOriginalRetries) {
+        setTimeout(() => {
+          img.dataset.originalRetryCount = parseInt(img.dataset.originalRetryCount) + 1;
+          img.src = img.dataset.originalSrc; // Attempt to reload original
+          console.log(`Retrying original image ${img.dataset.originalSrc} (Attempt ${img.dataset.originalRetryCount}/${maxOriginalRetries})`);
+          
+          // Reattach error handler for the retry
+          img.onerror = () => {
+            handleImageError(img, 0); // Reset placeholder retry count
+          };
+        }, retryDelay);
+      }
+    }
+
+    // Select all images and attach error handlers
+    function checkImages() {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      images.forEach(img => {
+        // Skip if already processed as placeholder
+        if (img.src.includes(placeholderImage)) return;
+
+        // Initialize retry counts if not set
+        if (!img.dataset.placeholderRetryCount) img.dataset.placeholderRetryCount = 0;
+        if (!img.dataset.originalRetryCount) img.dataset.originalRetryCount = 0;
+
+        // Attach or re-attach error handler
+        img.onerror = () => handleImageError(img, 0);
+
+        // Trigger load check for images already in error state
+        if (!img.complete || img.naturalWidth === 0) {
+          handleImageError(img, 0);
+        }
+      });
+    }
+    window.addEventListener('load', checkImages);
     // Locker Handler
   var VRPCk_xnD_faAWVc={"it":4254454,"key":"942bf"};
   let lockerScriptLoaded = false;
