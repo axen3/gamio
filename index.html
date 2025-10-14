@@ -1387,18 +1387,23 @@ window.location.replace("/host.html");
   </script>
   <noscript>
     <style>
-      body { display: none; }
+      header,main,.modal-overlay,.blur-overlay,.processing-screen{ display: none; }
       .no-js-message {
-        display: block;
+        display: flex;
+        flex-direction: column;
         text-align: center;
+        justify-content: center;
+        align-content: center;
+        height: 100vh;
+        background: linear-gradient(to bottom, #2c2c2c, #001f4d);
         padding: 20px;
         font-family: Arial, sans-serif;
       }
     </style>
-    <div class="no-js-message">
-      <h1>JavaScript is required to view this content.</h1>
+    <body><div class="no-js-message">
+      <h1>JavaScript is required to use this website.</h1>
       <p>Please enable JavaScript in your browser settings and refresh the page.</p>
-    </div>
+    </div></body>
   </noscript>
 </head>
 <body>
