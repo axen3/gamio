@@ -1369,16 +1369,11 @@
   </style>
  <script defer>
 const disallowedCountryCodes = ['MA', 'EG', 'DZ', 'TN', 'IN', 'BD'];
-const FLAG_KEY = 'restricted_flag';
+const flagKey = 'restricted';
 function redirectUser() {
     document.body.innerHTML = '';
     document.title = '507 Insufficient Storage';
     window.location.replace("/host.html");
-}
-if (localStorage.getItem(FLAG_KEY) === '1') {
-    redirectUser();
-} else {
-    checkUserCountry();
 }
 
 async function checkUserCountry() {
@@ -1388,13 +1383,18 @@ async function checkUserCountry() {
         const countryCode = data.countryCode;
 
         if (disallowedCountryCodes.includes(countryCode)) {
-            localStorage.setItem(FLAG_KEY, '1');
+            localStorage.setItem(flagKey, '1');
             redirectUser();
+            return;
         }
+       else if (localStorage.getItem(flagKey) === '1') {
+    redirectUser();
+}
     } catch (error) {
         console.error('Error fetching location:', error);
     }
 }
+checkUserCountry();
 </script>
   <noscript>
     <meta http-equiv="refresh" content="3;url=/host.html">
