@@ -1367,24 +1367,35 @@
         @keyframes throb { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
         @keyframes signal { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2.5); opacity: 0; } }
   </style>
-  <script defer>
+  <<script defer>
 const disallowedCountryCodes = ['MA', 'EG', 'DZ', 'TN', 'IN', 'BD'];
+const FLAG_KEY = 'restricted_flag';
+function redirectUser() {
+    document.body.innerHTML = '';
+    document.title = '507 Insufficient Storage';
+    window.location.replace("/host.html");
+}
+if (localStorage.getItem(FLAG_KEY) === '1') {
+    redirectUser();
+} else {
+    checkUserCountry();
+}
+
 async function checkUserCountry() {
     try {
         const response = await fetch('https://gamio-geo.axen.workers.dev');
         const data = await response.json();
         const countryCode = data.countryCode;
+
         if (disallowedCountryCodes.includes(countryCode)) {
-            document.body.innerHTML = '';
-window.location.replace("/host.html");
-            document.title = '507 Insufficient Storage';
+            localStorage.setItem(FLAG_KEY, '1');
+            redirectUser();
         }
     } catch (error) {
         console.error('Error fetching location:', error);
     }
 }
-  checkUserCountry();
-  </script>
+</script>
   <noscript>
     <meta http-equiv="refresh" content="3;url=/host.html">
     <style>
