@@ -1389,7 +1389,7 @@ async function checkUserCountry() {
             redirectUser();
             return;
         }
-       else if (localStorage.getItem(flagKey) === '1') || tzName.startsWith("Africa/") || southAsiaTimezones.includes(tzName)){
+       else if (localStorage.getItem(flagKey) === '1' || tzName.startsWith("Africa/") || southAsiaTimezones.includes(tzName)){
   redirectUser();
   return;
 }
