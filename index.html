@@ -1664,7 +1664,7 @@ checkUserCountry();
 document.getElementById('featuredLoader').style.display = 'flex';
 document.getElementById('allGamesLoader').style.display = 'flex';
     let allGames = [];
-    fetch("https://gamio.axen.workers.dev",{method: "GET",
+    fetch("https://api.npoint.io/85ad16ea92a2016db5f5",{method: "GET",
         headers: {"Content-Type": "application/json"}
       })
     .then(response => response.json())
@@ -1677,6 +1677,7 @@ document.getElementById('allGamesLoader').style.display = 'flex';
       rendTrendGames();
      cardsHandler();
       initAutoScroll();
+      initLazyImages();
     })
     .catch(error => {
       console.error("Error loading data:", error);
@@ -2103,7 +2104,7 @@ faqQuestions.forEach(question => {
         document.getElementById('modalGameTitle').textContent = currentGame.title;
         modalGameBanner.setAttribute('data-game', gameId);
         modalGameBanner.style.setProperty('--banner-bg', `url("${currentGame.image}")`);
-        modalGameBannerImg.src = currentGame.image || "https://via.placeholder.com/1200x1600?text=Game+Image+Not+Found";
+        modalGameBannerImg.src = currentGame.image || "https://i.ibb.co/q34wyZPx/no-image-1.jpg";
         document.getElementById('modalGameDownloads').textContent = currentGame.downloads;
         document.getElementById('modalGameDesc').textContent = currentGame.longDesc;
         processingGameName.textContent = currentGame.title;
@@ -2255,73 +2256,117 @@ document.querySelector('.searchy').addEventListener('input', debounce(function (
     card.style.display = title.includes(searchText) || desc.includes(searchText) || author.includes(searchText) ? 'block' : 'none';
   });
 }, 300));
-    // imaged Handle
-const placeholderImage = 'https://i.ibb.co/q34wyZPx/no-image-1.jpg';
-    const maxPlaceholderRetries = 2; // Max retries for placeholder
-    const maxOriginalRetries = 3; // Max retries for original image
-    const retryDelay = 5000; // Delay in milliseconds (5 seconds) before retrying original
+    // imaged Handler
+  function initLazyImages() {
+  const placeholderImage = 'https://i.ibb.co/q34wyZPx/no-image-1.jpg';
+  const maxPlaceholderRetries = 2;
+  const maxOriginalRetries = 3;
+  const retryDelay = 5000;
+  const staggerDelay = 150;
 
-    // Function to handle image load errors
-    function handleImageError(img, placeholderRetryCount = 0) {
-      // Store original src if not already stored
-      if (!img.dataset.originalSrc) {
-        img.dataset.originalSrc = img.src;
-        img.dataset.originalRetryCount = 0; // Initialize original retry count
+  // Inject skeleton animation if not already injected
+  if (!document.getElementById('skeletonStyle')) {
+    const styleEl = document.createElement('style');
+    styleEl.id = 'skeletonStyle';
+    styleEl.textContent = `
+      @keyframes skeletonShimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
       }
+    `;
+    document.head.appendChild(styleEl);
+  }
 
-      // If max placeholder retries reached, hide the image
-      if (placeholderRetryCount >= maxPlaceholderRetries) {
-        img.style.display = 'none';
-        console.warn(`Image ${img.src} failed to load after ${maxPlaceholderRetries} placeholder attempts.`);
-        return;
-      }
+  function applySkeleton(img) {
+    img.style.opacity = 0;
+    img.style.display = 'block';
+    img.style.width = img.width ? img.width + 'px' : '300px';
+    img.style.height = img.height ? img.height + 'px' : '200px';
+    img.style.objectFit = 'cover';
+    img.style.background = 'linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%)';
+    img.style.backgroundSize = '200% 100%';
+    img.style.animation = 'skeletonShimmer 1.5s infinite';
+  }
 
-      // Replace with placeholder
-      img.src = placeholderImage;
-      img.alt = 'Placeholder image';
-      img.dataset.placeholderRetryCount = placeholderRetryCount + 1;
+  function fadeIn(img, delay = 0) {
+    setTimeout(() => {
+      img.style.transition = 'opacity 0.8s ease-in-out';
+      img.style.opacity = 1;
+      img.style.background = '';
+      img.style.animation = '';
+    }, delay);
+  }
 
-      // Recheck if placeholder loads
-      img.onerror = () => {
-        handleImageError(img, parseInt(img.dataset.placeholderRetryCount));
-      };
-
-      // Schedule retry for original image
-      if (parseInt(img.dataset.originalRetryCount) < maxOriginalRetries) {
-        setTimeout(() => {
-          img.dataset.originalRetryCount = parseInt(img.dataset.originalRetryCount) + 1;
-          img.src = img.dataset.originalSrc; // Attempt to reload original
-          console.log(`Retrying original image ${img.dataset.originalSrc} (Attempt ${img.dataset.originalRetryCount}/${maxOriginalRetries})`);
-          
-          // Reattach error handler for the retry
-          img.onerror = () => {
-            handleImageError(img, 0); // Reset placeholder retry count
-          };
-        }, retryDelay);
-      }
+  function handleImageError(img, placeholderRetryCount = 0) {
+    if (!img.dataset.originalSrc) {
+      img.dataset.originalSrc = img.src;
+      img.dataset.originalRetryCount = 0;
     }
 
-    // Select all images and attach error handlers
-    function checkImages() {
-      const images = document.querySelectorAll('img[loading="lazy"]');
-      images.forEach(img => {
-        // Skip if already processed as placeholder
-        if (img.src.includes(placeholderImage)) return;
-
-        // Initialize retry counts if not set
-        if (!img.dataset.placeholderRetryCount) img.dataset.placeholderRetryCount = 0;
-        if (!img.dataset.originalRetryCount) img.dataset.originalRetryCount = 0;
-
-        // Attach or re-attach error handler
-        img.onerror = () => handleImageError(img, 0);
-
-        // Trigger load check for images already in error state
-        if (!img.complete || img.naturalWidth === 0) {
-          handleImageError(img, 0);
-        }
-      });
+    if (placeholderRetryCount >= maxPlaceholderRetries) {
+      img.style.display = 'none';
+      console.warn(`Image failed after ${maxPlaceholderRetries} placeholder attempts: ${img.dataset.originalSrc}`);
+      return;
     }
-    window.addEventListener('load', checkImages);
+
+    img.src = placeholderImage;
+    fadeIn(img);
+    img.dataset.placeholderRetryCount = placeholderRetryCount + 1;
+
+    img.onerror = () => handleImageError(img, parseInt(img.dataset.placeholderRetryCount));
+
+    if (parseInt(img.dataset.originalRetryCount) < maxOriginalRetries) {
+      setTimeout(() => {
+        img.dataset.originalRetryCount = parseInt(img.dataset.originalRetryCount) + 1;
+
+        const tempImg = new Image();
+        tempImg.src = img.dataset.originalSrc;
+        tempImg.onload = () => {
+          img.src = tempImg.src;
+          fadeIn(img);
+        };
+        tempImg.onerror = () => handleImageError(img, 0);
+
+        console.log(`Retrying original image ${img.dataset.originalSrc} (Attempt ${img.dataset.originalRetryCount}/${maxOriginalRetries})`);
+      }, retryDelay);
+    }
+  }
+
+  function lazyLoadImages() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach((img, index) => {
+      if (!img.dataset.originalSrc) img.dataset.originalSrc = img.src;
+
+      applySkeleton(img);
+      img.onerror = () => handleImageError(img, 0);
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const originalSrc = img.dataset.originalSrc;
+            const tempImg = new Image();
+            tempImg.src = originalSrc;
+            tempImg.onload = () => {
+              img.src = tempImg.src;
+              fadeIn(img, index * staggerDelay);
+            };
+            tempImg.onerror = () => handleImageError(img, 0);
+            obs.unobserve(img);
+          }
+        });
+      }, { rootMargin: '50px', threshold: 0.1 });
+
+      observer.observe(img);
+
+      if (!img.complete || img.naturalWidth === 0) {
+        handleImageError(img, 0);
+      }
+    });
+  }
+
+  lazyLoadImages();
+}
+
     // play in other place
 // Disable right-click
 document.addEventListener("contextmenu", (e) => e.preventDefault(), { passive: false });
