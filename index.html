@@ -1664,7 +1664,7 @@ checkUserCountry();
 document.getElementById('featuredLoader').style.display = 'flex';
 document.getElementById('allGamesLoader').style.display = 'flex';
     let allGames = [];
-    fetch("https://api.npoint.io/85ad16ea92a2016db5f5",{method: "GET",
+    fetch("https://gamio-geo.axen.workers.dev",{method: "GET",
         headers: {"Content-Type": "application/json"}
       })
     .then(response => response.json())
