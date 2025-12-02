@@ -129,9 +129,25 @@
         .loader i { color: var(--primary); }
 
         /* --- Featured Games (Horizontal Scroll) --- */
-        .featured-scroll { overflow-x: hidden; padding: 10px 0 30px; position: relative; }
-        .featured-track { display: flex; gap: 20px; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); width: max-content; }
-        
+/* Find this section in your CSS and ensure it looks like this */
+.featured-scroll { 
+    overflow-x: auto; 
+    /* Hides the default scrollbar for a cleaner look */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    padding: 10px 0 30px; 
+    position: relative; 
+    width: 100%; /* Ensure wrapper takes full width */
+}
+.featured-scroll::-webkit-scrollbar {
+    display: none;
+}
+.featured-track { 
+    display: flex; 
+    gap: 20px; 
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); 
+    width: max-content; /* Critical: Forces the track to be as wide as all cards combined */
+}
         .feat-card {
             width: 160px;
             background: var(--bg-card);
@@ -163,24 +179,50 @@
         
         .game-card:hover { transform: translateY(-8px); border-color: rgba(108, 92, 231, 0.5); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
 
-        .card-img-wrap {
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        /* Glass blur effect on image background */
-        .card-img-wrap::before {
-            content: ''; position: absolute; inset: 0;
-            background-image: var(--bg-image); background-size: cover; background-position: center;
-            filter: blur(15px) brightness(0.6); opacity: 0.8; z-index: 1;
-        }
-        
-        .card-img {
-            position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain;
-            transition: transform 0.4s ease;
-        }
+        /* Find and replace these classes in your CSS */
+
+.card-img-wrap {
+    width: 100%;
+    /* 1. Force a perfect square shape (Fixed Aspect Ratio) */
+    aspect-ratio: 1 / 1; 
+    
+    /* 2. Rounded corners (Rounded Square) */
+    border-radius: 18px; 
+    
+    overflow: hidden;
+    position: relative;
+    background-color: var(--bg-card-hover); /* Background for transparent logos */
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Inner shadow for depth */
+}
+
+/* Glass blur effect behind the logo */
+.card-img-wrap::before {
+    content: ''; 
+    position: absolute; 
+    inset: 0;
+    background-image: var(--bg-image); 
+    background-size: cover; 
+    background-position: center;
+    filter: blur(20px) brightness(0.5); 
+    opacity: 0.6; 
+    z-index: 1;
+}
+
+.card-img {
+    position: relative; 
+    z-index: 2; 
+    width: 100%; 
+    height: 100%; 
+    
+    /* 3. This ensures the image fills the square perfectly without stretching */
+    object-fit: cover; 
+    
+    /* OPTIONAL: Use 'contain' if you want the full logo visible with padding */
+    /* object-fit: contain; padding: 10px; */
+    
+    transition: transform 0.4s ease;
+}
         .game-card:hover .card-img { transform: scale(1.05); }
 
         .card-badge { position: absolute; top: 10px; right: 10px; background: var(--primary); color: white; padding: 4px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; z-index: 3; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
@@ -481,7 +523,7 @@
     <script>
         // --- DATA & CONFIG ---
         const API_URL = "https://api.npoint.io/85ad16ea92a2016db5f5";
-        const FEAT_IDS = ["Ride5mobile", "Ridersrepublicmobile", "Rooftops", "Beamngdrivemobile", "the-last-of-us-2-mobile", "god-of-war-mobile", "rdr2-mobile"];
+        const FEAT_IDS = ["Ride5mobile", "attack-on-titan-2-mobile", "Rooftops", "Beamngdrivemobile", "the-last-of-us-2-mobile", "god-of-war-mobile", "rdr2-mobile"];
         const TREND_IDS = ["gta-5-mobile", "attack-on-titan-2-mobile", "rdr2-mobile"];
         
         let allGamesData = [];
@@ -588,7 +630,7 @@
                 card.innerHTML = `
                     <img src="${g.image}" class="feat-img" loading="lazy" alt="${g.title}">
                     <div class="feat-title">${g.title}</div>
-                    <div class="rating">★ ${g.rating} Trending</div>
+                    <div class="rating">★ ${g.rating} • Trending</div>
                 `;
                 els.trendContainer.appendChild(card);
             });
@@ -673,20 +715,53 @@
 
         // --- UTILS (Scrolling, FAQ, etc) ---
         function initAutoScroll() {
-            const track = document.getElementById('featuredContainer');
-            let scrollAmount = 0;
-            let direction = 1;
-            
-            setInterval(() => {
-                // Only scroll if not hovering
-                if(!track.matches(':hover')) {
-                    scrollAmount += (180 * direction); // card width + gap
-                    if(scrollAmount >= track.scrollWidth - track.clientWidth) direction = -1;
-                    if(scrollAmount <= 0) direction = 1;
-                    track.style.transform = `translateX(-${Math.max(0, scrollAmount)}px)`;
-                }
-            }, 2500);
+    const track = document.getElementById('featuredContainer');
+    const wrapper = document.getElementById('featuredWrapper'); // The parent div
+    
+    let scrollPosition = 0;
+    let direction = 1; // 1 = moving right (forward), -1 = moving left (backward)
+    
+    // Check if we have cards to scroll
+    if (!track || !wrapper) return;
+
+    setInterval(() => {
+        // 1. Pause if user is touching/hovering
+        if(track.matches(':hover')) return;
+
+        // 2. Get dynamic measurements (fixes issues if screen rotates or images load late)
+        // Get the width of one card + the gap (20px from CSS)
+        const firstCard = track.firstElementChild;
+        const cardStep = firstCard ? firstCard.offsetWidth + 20 : 180; 
+        
+        // Calculate the maximum distance we can scroll
+        // (Total width of all cards) MINUS (Width of the screen)
+        const maxScroll = track.scrollWidth - wrapper.clientWidth;
+
+        // If content is smaller than screen, don't scroll
+        if (maxScroll <= 0) {
+            track.style.transform = `translateX(0px)`;
+            return;
         }
+
+        // 3. Update the position
+        scrollPosition += (cardStep * direction);
+
+        // 4. Boundary Logic
+        if (scrollPosition >= maxScroll) {
+            // If we went past the end, snap to the very end and switch direction
+            scrollPosition = maxScroll;
+            direction = -1; // Go backward
+        } else if (scrollPosition <= 0) {
+            // If we went past the start, snap to 0 and switch direction
+            scrollPosition = 0;
+            direction = 1; // Go forward
+        }
+
+        // 5. Apply the movement
+        track.style.transform = `translateX(-${scrollPosition}px)`;
+
+    }, 2500); // Speed: moves every 2.5 seconds
+}
 
         function initFAQ() {
             document.querySelectorAll('.faq-question').forEach(q => {
