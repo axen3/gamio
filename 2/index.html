@@ -1,1 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVault | Premium Mobile Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CSS Variables & Theme --- */
+        :root {
+            --bg-dark: #0f1014;
+            --bg-card: #1a1c23;
+            --accent: #ff4655; /* Gaming Red */
+            --success: #4caf50;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --header-height: 70px;
+            --transition: all 0.3s ease;
+        }
 
+        /* --- Global Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Explicitly using Segoe UI as requested */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Header & Search --- */
+        header {
+            position: sticky;
+            top: 0;
+            height: var(--header-height);
+            background: rgba(15, 16, 20, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+            border-bottom: 1px solid #2a2d35;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .search-container {
+            flex: 0 1 400px;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        #gameSearch {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #222;
+            color: white;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+        }
+
+        #gameSearch:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 8px rgba(255, 70, 85, 0.3);
+        }
+
+        /* --- Main Content Layout --- */
+        main {
+            padding: 20px 5%;
+            flex: 1;
+        }
+
+        h2 {
+            margin: 25px 0 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+        }
+
+        /* --- Featured Carousel --- */
+        .featured-wrapper {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .featured-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 10px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .featured-carousel::-webkit-scrollbar { display: none; }
+
+        .featured-card {
+            flex: 0 0 280px;
+            height: 180px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            scroll-snap-align: start;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .featured-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-card:hover img { transform: scale(1.1); }
+
+        .featured-card .info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 15px 10px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 10px;
+            font-size: 0.75rem;
+            margin-top: 5px;
+            color: var(--accent);
+        }
+
+        /* --- All Games Grid --- */
+        .games-grid {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .game-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: #333;
+        }
+
+        .game-card .thumb-wrapper {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-card .details {
+            padding: 12px;
+            flex: 1;
+        }
+
+        .game-card h3 {
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 8px;
+        }
+
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            border-top: 1px solid #2a2d35;
+            padding-top: 8px;
+        }
+
+        .card-stats span i {
+            margin-right: 4px;
+            color: var(--accent);
+        }
+
+        /* --- Modal System --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            z-index: 10;
+            background: rgba(0,0,0,0.5);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-header img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .meta-item i { margin-right: 5px; color: var(--accent); }
+        .meta-item b { color: #fff; }
+
+        .install-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+
+        .install-btn:hover { background: #e63e4c; }
+
+        /* --- Vertical Install Flow --- */
+        #install-flow {
+            display: none;
+            padding: 40px 30px;
+        }
+
+        .process-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            opacity: 0.2;
+            color: var(--text-dim);
+            transition: opacity 0.5s ease, color 0.5s ease;
+            font-size: 1rem;
+        }
+
+        .process-step i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .process-step.active {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .process-step.completed {
+            opacity: 1;
+            color: var(--success);
+        }
+
+        /* --- Verification Screen --- */
+        #verification-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .verify-btn {
+            background: var(--success);
+            padding: 18px 40px;
+            text-transform: uppercase;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #0a0b0e;
+            padding: 30px 5%;
+            text-align: center;
+            border-top: 1px solid #2a2d35;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Breakpoints --- */
+        @media (min-width: 600px) {
+            .games-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (min-width: 900px) {
+            .games-grid { grid-template-columns: repeat(4, 1fr); }
+            header, main, footer { padding-left: 10%; padding-right: 10%; }
+        }
+
+        @media (min-width: 1200px) {
+            .games-grid { grid-template-columns: repeat(6, 1fr); }
+        }
+
+        .no-scroll { overflow: hidden; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">GameVault</div>
+    <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="gameSearch" placeholder="Search games...">
+    </div>
+</header>
+
+<main>
+    <section id="featured-section">
+        <h2><i class="fa-solid fa-fire"></i> Featured Games</h2>
+        <div class="featured-wrapper">
+            <div class="featured-carousel" id="featuredCarousel"></div>
+        </div>
+    </section>
+
+    <section id="all-games-section">
+        <h2><i class="fa-solid fa-gamepad"></i> All Games</h2>
+        <div class="games-grid" id="gamesGrid"></div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 GameVault Premium. All rights reserved.</p>
+    <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">Optimized for high-end mobile devices and tablets.</p>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        
+        <div id="game-details-view">
+            <div class="modal-header">
+                <img src="" alt="" id="modalImg">
+            </div>
+            <div class="modal-body">
+                <h2 id="modalTitle" style="color:white; margin-top:0;"></h2>
+                <div class="meta-row">
+                    <span class="meta-item"><i class="fa-solid fa-file-zipper"></i> Size: <b id="modalSize"></b></span>
+                    <span class="meta-item"><i class="fa-solid fa-star"></i> Rating: <b id="modalRating"></b></span>
+                </div>
+                <div class="meta-row" style="margin-top: -10px;">
+                    <span class="meta-item"><i class="fa-solid fa-download"></i> Downloads: <b id="modalDownloads"></b></span>
+                </div>
+                <p id="modalDesc" style="color: var(--text-dim); margin-top: 15px;"></p>
+                <button class="install-btn" id="startInstall"><i class="fa-solid fa-bolt"></i> INSTALL NOW</button>
+            </div>
+        </div>
+
+        <div id="install-flow">
+            <h3 style="margin-bottom: 10px; text-align: center;">Processing Request...</h3>
+            <ul class="process-list" id="processList">
+                </ul>
+        </div>
+
+        <div id="verification-screen">
+            <i class="fa-solid fa-user-shield" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+            <h2 style="color: #fff;">Human Verification</h2>
+            <p style="margin: 15px 0; color: var(--text-dim);">To complete the installation of <span id="verifGameName" style="color: #fff; font-weight: bold;"></span>, please verify you are human.</p>
+            <button class="install-btn verify-btn" onclick="redirectToCPA()"><i class="fa-solid fa-circle-check"></i> Verify Now</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    /**
+     * DYNAMIC DATA LOADING SCRIPT
+     */
+
+    let GAMES_DATA = [];
+
+    const featuredCarousel = document.getElementById('featuredCarousel');
+    const gamesGrid = document.getElementById('gamesGrid');
+    const gameSearch = document.getElementById('gameSearch');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeModal = document.getElementById('closeModal');
+    const startInstallBtn = document.getElementById('startInstall');
+
+    let selectedGame = null;
+
+    async function init() {
+        try {
+            // Fetching data from external JSON instead of local array
+            const response = await fetch('data/data.json');
+            GAMES_DATA = await response.json();
+            
+            renderFeatured();
+            renderAllGames(GAMES_DATA);
+            setupEventListeners();
+        } catch (error) {
+            console.error("Critical: Could not load data.json", error);
+        }
+    }
+
+    function renderFeatured() {
+        const featured = GAMES_DATA.filter(g => g.featured);
+        featuredCarousel.innerHTML = featured.map(game => `
+            <div class="featured-card" onclick="openGameModal('${game.id}')">
+                <img src="${game.image}" alt="${game.title}">
+                <div class="info">
+                    <div style="font-weight:bold;">${game.title}</div>
+                    <div class="featured-meta">
+                        <span><i class="fa-solid fa-file-zipper"></i> ${game.fileSize}</span>
+                        <span><i class="fa-solid fa-star"></i> ${game.rating}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderAllGames(games) {
+        if (games.length === 0) {
+            gamesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; padding: 40px;">No games found.</p>';
+            return;
+        }
+        gamesGrid.innerHTML = games.map(game => `
+            <div class="game-card" onclick="openGameModal('${game.id}')">
+                <div class="thumb-wrapper">
+                    <img src="${game.image}" alt="${game.title}" loading="lazy">
+                </div>
+                <div class="details">
+                    <h3>${game.title}</h3>
+                    <div class="card-stats">
+                        <span><i class="fa-solid fa-file-zipper"></i> ${game.fileSize}</span>
+                        <span><i class="fa-solid fa-star"></i> ${game.rating}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    window.openGameModal = function(gameId) {
+        selectedGame = GAMES_DATA.find(g => g.id === gameId);
+        if (!selectedGame) return;
+
+        document.getElementById('game-details-view').style.display = 'block';
+        document.getElementById('install-flow').style.display = 'none';
+        document.getElementById('verification-screen').style.display = 'none';
+
+        document.getElementById('modalImg').src = selectedGame.image;
+        document.getElementById('modalTitle').textContent = selectedGame.title;
+        document.getElementById('modalSize').textContent = selectedGame.fileSize;
+        document.getElementById('modalRating').textContent = selectedGame.rating + "/10";
+        document.getElementById('modalDownloads').textContent = selectedGame.downloads;
+        document.getElementById('modalDesc').textContent = selectedGame.longDesc || selectedGame.description;
+        document.getElementById('verifGameName').textContent = selectedGame.title;
+
+        modalOverlay.style.display = 'flex';
+        document.body.classList.add('no-scroll');
+    };
+
+    function closeGameModal() {
+        modalOverlay.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+    }
+
+    async function startInstallation() {
+        const detailView = document.getElementById('game-details-view');
+        const flowView = document.getElementById('install-flow');
+        const processList = document.getElementById('processList');
+
+        detailView.style.display = 'none';
+        flowView.style.display = 'block';
+        processList.innerHTML = '';
+
+        const steps = [
+            { text: `Connecting to secure server...`, icon: 'fa-server' },
+            { text: `Fetching ${selectedGame.title} files...`, icon: 'fa-cloud-download' },
+            { text: "Unpacking game resources...", icon: 'fa-box-open' },
+            { text: "Applying premium modifications...", icon: 'fa-wand-magic-sparkles' },
+            { text: "Verifying user environment...", icon: 'fa-microchip' },
+            { text: "Finalizing installation package...", icon: 'fa-circle-check' }
+        ];
+
+        // Create steps in list
+        steps.forEach((step, index) => {
+            const li = document.createElement('li');
+            li.className = 'process-step';
+            li.id = `step-${index}`;
+            li.innerHTML = `<i class="fa-solid ${step.icon}"></i> <span>${step.text}</span>`;
+            processList.appendChild(li);
+        });
+
+        // Slowed down the installation process loop as requested
+        for (let i = 0; i < steps.length; i++) {
+            const currentEl = document.getElementById(`step-${i}`);
+            currentEl.classList.add('active');
+            
+            const icon = currentEl.querySelector('i');
+            const originalClass = steps[i].icon;
+            icon.className = 'fa-solid fa-circle-notch fa-spin';
+
+            // Increased wait time to 1.8 seconds per step to slow the process
+            await new Promise(r => setTimeout(r, 1800)); 
+
+            currentEl.classList.remove('active');
+            currentEl.classList.add('completed');
+            icon.className = `fa-solid ${originalClass}`;
+        }
+
+        await new Promise(r => setTimeout(r, 800));
+        flowView.style.display = 'none';
+        document.getElementById('verification-screen').style.display = 'block';
+    }
+
+    function redirectToCPA() {
+        window.location.href = "https://www.google.com/search?q=CPA+Verification+Link+Placeholder";
+    }
+
+    function setupEventListeners() {
+        gameSearch.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = GAMES_DATA.filter(game => 
+                game.title.toLowerCase().includes(term)
+            );
+            renderAllGames(filtered);
+        });
+
+        closeModal.addEventListener('click', closeGameModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeGameModal();
+        });
+        startInstallBtn.addEventListener('click', startInstallation);
+    }
+
+    init();
+</script>
+
+</body>
+</html>
