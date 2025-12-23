@@ -8,7 +8,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "1.4GB",
         "rating": "8.3",
-        "downloads": "720K+ downloads",
+        "downloads": "720K",
         "longDesc": "Valorant Mobile brings the iconic 5v5 tactical shooter to your phone. Master precise gunplay, unleash unique Agent abilities, and dominate every match on the go."
     },
     {
@@ -20,7 +20,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "820MB",
         "rating": "8.9",
-        "downloads": "950K+ downloads",
+        "downloads": "950K",
         "featured": true,
         "longDesc": "Take control of the fastest superbikes and race across challenging tracks in Ride 5 Mobile. Experience ultra-realistic physics, thrilling competitions, and become the ultimate champion on two wheels—anytime, anywhere."
     },
@@ -33,7 +33,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "820MB",
         "rating": "8.9",
-        "downloads": "950K+ downloads",
+        "downloads": "950K",
         "longDesc": "Embark on a journey of revenge where every fight sharpens your kung-fu mastery in a stylish, action-packed world."
     },
     {
@@ -45,7 +45,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "890MB",
         "rating": "7.9",
-        "downloads": "990K+ downloads",
+        "downloads": "990K",
         "longDesc": "Run, jump, and parkour through the urban jungle in Rooftops & Alleys Mobile. Master wall-runs, flips, and daring stunts as you explore the rooftops of a vibrant city full of challenges."
     },
     {
@@ -57,7 +57,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "876MB",
         "rating": "8.9",
-        "downloads": "750K+ downloads",
+        "downloads": "750K",
         "longDesc": "Experience the most realistic driving simulation ever brought to mobile. In BeamNG Drive Mobile, crash, drift, and test vehicles with true-to-life soft-body physics in open-world environments."
     },
     {
@@ -69,7 +69,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "587MB",
         "rating": "9.3",
-        "downloads": "690K+ downloads",
+        "downloads": "690K",
         "longDesc": "Step into the arena with Rematch Mobile—an action-packed competitive fighter. Test your skills in fast-paced duels, challenge friends worldwide, and prove you’re the true champion."
     },
     {
@@ -81,7 +81,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "1.5GB",
         "rating": "7.9",
-        "downloads": "1.5M+ downloads",
+        "downloads": "1.5M",
         "longDesc": "Survive in a post-apocalyptic world with Ellie in this emotional and action-packed adventure game adapted for mobile."
     },
     {
@@ -93,7 +93,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "530MB",
         "rating": "7.3",
-        "downloads": "950K+ downloads",
+        "downloads": "950K",
         "longDesc": "Experience the journey of a samurai defending Tsushima island in this stunning open-world mobile adaptation."
     },
     {
@@ -105,7 +105,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "674MB",
         "rating": "7.9",
-        "downloads": "1.8M+ downloads",
+        "downloads": "1.8M",
         "longDesc": "Step into the shadows of Baghdad and become a master assassin in this action-adventure mobile version of Mirage."
     },
     {
@@ -117,7 +117,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "800MB",
         "rating": "8.2",
-        "downloads": "1.2M+ downloads",
+        "downloads": "1.2M",
         "longDesc": "Immerse yourself in a dark and atmospheric puzzle-platformer with stunning visuals and emotional storytelling."
     },
     {
@@ -129,7 +129,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "934MB",
         "rating": "6.9",
-        "downloads": "2.5M+ downloads",
+        "downloads": "2.5M",
         "longDesc": "Explore the vast Wild West as Arthur Morgan in this rich narrative-driven mobile experience."
     },
     {
@@ -141,7 +141,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "850MB",
         "rating": "7.4",
-        "downloads": "850K+ downloads",
+        "downloads": "850K",
         "longDesc": "Join Kratos and Atreus in their mythological journey through Norse realms in this epic mobile adaptation."
     },
     {
@@ -153,7 +153,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "960MB",
         "rating": "7.0",
-        "downloads": "400K+ downloads",
+        "downloads": "400K",
         "longDesc": "Hack the city as Marcus Holloway and take down a corrupt system in this open-world mobile game."
     },
     {
@@ -165,7 +165,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "1.4GB",
         "rating": "8.4",
-        "downloads": "620K+ downloads",
+        "downloads": "620K",
         "featured": true,
         "longDesc": "Experience fast-paced anime battles with your favorite Dragon Ball characters on mobile."
     },
@@ -178,7 +178,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "635MB",
         "rating": "6.9",
-        "downloads": "450K+ downloads",
+        "downloads": "450K",
         "longDesc": "Fight titans and defend humanity in this intense action RPG based on the popular anime."
     },
     {
@@ -190,7 +190,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "867MB",
         "rating": "7.2",
-        "downloads": "3.2M+ downloads",
+        "downloads": "3.2M",
         "longDesc": "Battle with legendary ninja in epic story and versus modes in this action-packed fighting game."
     },
     {
@@ -202,7 +202,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "1.3GB",
         "rating": "8.9",
-        "downloads": "2.8M+ downloads",
+        "downloads": "2.8M",
         "longDesc": "Dive into the open world of Los Santos with missions, chaos, and endless exploration."
     },
     {
@@ -214,7 +214,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "1.0GB",
         "rating": "7.2",
-        "downloads": "1.5M+ downloads",
+        "downloads": "1.5M",
         "longDesc": "Create, survive, and explore endless worlds in the iconic sandbox game now on mobile."
     },
     {
@@ -226,7 +226,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "900MB",
         "rating": "7.7",
-        "downloads": "2.1M+ downloads",
+        "downloads": "2.1M",
         "longDesc": "Dodge bullets and battle bosses in this hand-drawn, vintage-style platformer shooter."
     },
     {
@@ -238,7 +238,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "730MB",
         "rating": "6.8",
-        "downloads": "1.3M+ downloads",
+        "downloads": "1.3M",
         "longDesc": "Swing through New York and face iconic villains in this thrilling superhero mobile game."
     },
     {
@@ -250,7 +250,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "820MB",
         "rating": "7.6",
-        "downloads": "980K+ downloads",
+        "downloads": "980K",
         "longDesc": "Experience tactical multiplayer combat in the mobile edition of this iconic FPS franchise."
     },
     {
@@ -262,7 +262,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "540MB",
         "rating": "6.5",
-        "downloads": "870K+ downloads",
+        "downloads": "870K",
         "longDesc": "Fight alongside anime legends from DBZ, Naruto, One Piece, and more in epic 3D battles."
     },
     {
@@ -274,7 +274,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "243MB",
         "rating": "8.5",
-        "downloads": "650K+ downloads",
+        "downloads": "650K",
         "longDesc": "Car game with Brazilian streets and mods."
     },
     {
@@ -286,7 +286,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "2GB",
         "rating": "6.5",
-        "downloads": "530K+ downloads",
+        "downloads": "530K",
         "longDesc": "Embark on a journey of revenge where every fight sharpens your kung-fu mastery in a stylish, action-packed world."
     },
     {
@@ -298,7 +298,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "1.2GB",
         "rating": "6.9",
-        "downloads": "650K+ downloads",
+        "downloads": "650K",
         "longDesc": "Online car football matches."
     },
     {
@@ -310,7 +310,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "780MB",
         "rating": "6.5",
-        "downloads": "640K+ downloads",
+        "downloads": "640K",
         "longDesc": "A fighting game likely featuring characters from the One Piece anime using the MUGEN engine."
     },
     {
@@ -322,7 +322,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "1.9GB",
         "rating": "9.5",
-        "downloads": "490K+ downloads",
+        "downloads": "490K",
         "longDesc": "A game possibly focusing on battles and fights from the One Piece universe."
     },
     {
@@ -334,7 +334,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "140MB",
         "rating": "7.5",
-        "downloads": "950K+ downloads",
+        "downloads": "950K",
         "longDesc": "Probably a mod adding extra content to a racing game."
     },
     {
@@ -346,7 +346,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "100MB",
         "rating": "6.5",
-        "downloads": "890K+ downloads",
+        "downloads": "890K",
         "longDesc": "A sequel or expansion to Hollow Knight."
     },
     {
@@ -358,7 +358,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "2.6GB",
         "rating": "6.4",
-        "downloads": "780K+ downloads",
+        "downloads": "780K",
         "featured": true,
         "longDesc": "Could be a fighting or action game inspired by the Demon Slayer series."
     },
@@ -371,7 +371,7 @@
         "platforms": ["android", "ios"],
         "fileSize": "658MB",
         "rating": "6.7",
-        "downloads": "1.2M+ downloads",
+        "downloads": "1.2M",
         "longDesc": "Race across stunning open roads and exotic locations in the mobile edition of Forza Horizon 5."
     }
 ]
