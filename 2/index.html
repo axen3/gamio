@@ -10,8 +10,9 @@
         :root {
             --bg-dark: #0f1014;
             --bg-card: #1a1c23;
-            --accent: #ff4655; /* Gaming Red */
+            --accent: #ff4655; 
             --success: #4caf50;
+            --star-yellow: #ffca28; /* Yellow for ratings */
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
             --header-height: 70px;
@@ -23,8 +24,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Explicitly using Segoe UI as requested */
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -155,8 +155,10 @@
             gap: 10px;
             font-size: 0.75rem;
             margin-top: 5px;
-            color: var(--accent);
         }
+
+        /* Rating Star Color */
+        .fa-star { color: var(--star-yellow); }
 
         /* --- All Games Grid --- */
         .games-grid {
@@ -212,11 +214,6 @@
             color: var(--text-dim);
             border-top: 1px solid #2a2d35;
             padding-top: 8px;
-        }
-
-        .card-stats span i {
-            margin-right: 4px;
-            color: var(--accent);
         }
 
         /* --- Modal System --- */
@@ -278,17 +275,6 @@
             padding: 25px;
         }
 
-        .meta-row {
-            display: flex;
-            gap: 15px;
-            margin: 15px 0;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .meta-item i { margin-right: 5px; color: var(--accent); }
-        .meta-item b { color: #fff; }
-
         .install-btn {
             display: block;
             width: 100%;
@@ -343,17 +329,75 @@
             color: var(--success);
         }
 
-        /* --- Verification Screen --- */
+        /* --- Improved Human Verification Screen --- */
         #verification-screen {
             display: none;
             text-align: center;
-            padding: 40px 30px;
+            padding: 50px 30px;
+            animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .verif-icon-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .main-verif-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            position: relative;
+            z-index: 2;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 70, 85, 0.2);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+
+        .verify-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--accent);
+            border: 1px solid rgba(255, 70, 85, 0.3);
         }
 
         .verify-btn {
             background: var(--success);
             padding: 18px 40px;
             text-transform: uppercase;
+            margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+            animation: buttonAttention 3s infinite ease-in-out;
+        }
+
+        @keyframes buttonAttention {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* --- Footer --- */
@@ -366,20 +410,12 @@
             font-size: 0.9rem;
         }
 
-        /* --- Responsive Breakpoints --- */
-        @media (min-width: 600px) {
-            .games-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (min-width: 900px) {
+        @media (min-width: 600px) { .games-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 900px) { 
             .games-grid { grid-template-columns: repeat(4, 1fr); }
             header, main, footer { padding-left: 10%; padding-right: 10%; }
         }
-
-        @media (min-width: 1200px) {
-            .games-grid { grid-template-columns: repeat(6, 1fr); }
-        }
-
+        @media (min-width: 1200px) { .games-grid { grid-template-columns: repeat(6, 1fr); } }
         .no-scroll { overflow: hidden; }
     </style>
 </head>
@@ -409,7 +445,6 @@
 
 <footer>
     <p>&copy; 2025 GameVault Premium. All rights reserved.</p>
-    <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">Optimized for high-end mobile devices and tablets.</p>
 </footer>
 
 <div class="modal-overlay" id="modalOverlay">
@@ -421,39 +456,66 @@
                 <img src="" alt="" id="modalImg">
             </div>
             <div class="modal-body">
-                <h2 id="modalTitle" style="color:white; margin-top:0;"></h2>
-                <div class="meta-row">
-                    <span class="meta-item"><i class="fa-solid fa-file-zipper"></i> Size: <b id="modalSize"></b></span>
-                    <span class="meta-item"><i class="fa-solid fa-star"></i> Rating: <b id="modalRating"></b></span>
+                <h2 id="modalTitle" style="color:white; margin: 0 0 20px 0; font-size: 1.8rem; text-align: center;"></h2>
+                
+                <div class="meta-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px;">
+                    <div class="meta-box" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-file-zipper" style="color: var(--accent); display: block; margin-bottom: 6px; font-size: 1.2rem;"></i>
+                        <span style="font-size: 0.7rem; color: var(--text-dim); display: block; text-transform: uppercase; letter-spacing: 1px;">Size</span>
+                        <b id="modalSize" style="font-size: 0.95rem; color: #fff;"></b>
+                    </div>
+                    <div class="meta-box" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-download" style="color: var(--accent); display: block; margin-bottom: 6px; font-size: 1.2rem;"></i>
+                        <span style="font-size: 0.7rem; color: var(--text-dim); display: block; text-transform: uppercase; letter-spacing: 1px;">Downloads</span>
+                        <b id="modalDownloads" style="font-size: 0.95rem; color: #fff;"></b>
+                    </div>
+                    <div class="meta-box" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-star" style="color: var(--star-yellow); display: block; margin-bottom: 6px; font-size: 1.2rem;"></i>
+                        <span style="font-size: 0.7rem; color: var(--text-dim); display: block; text-transform: uppercase; letter-spacing: 1px;">Rate</span>
+                        <b id="modalRating" style="font-size: 0.95rem; color: #fff;"></b>
+                    </div>
+                    <div class="meta-box" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-mobile-screen-button" style="color: var(--accent); display: block; margin-bottom: 6px; font-size: 1.2rem;"></i>
+                        <span style="font-size: 0.7rem; color: var(--text-dim); display: block; text-transform: uppercase; letter-spacing: 1px;">Devices</span>
+                        <div id="modalDevices" style="font-size: 0.95rem; color: #fff; display: flex; justify-content: center; gap: 8px;"></div>
+                    </div>
                 </div>
-                <div class="meta-row" style="margin-top: -10px;">
-                    <span class="meta-item"><i class="fa-solid fa-download"></i> Downloads: <b id="modalDownloads"></b></span>
+
+                <div class="description-container" style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; border-left: 3px solid var(--accent); margin-bottom: 20px;">
+                    <h4 style="font-size: 0.75rem; color: var(--accent); margin-bottom: 5px; text-transform: uppercase;">About this game</h4>
+                    <p id="modalDesc" style="color: var(--text-main); font-size: 0.9rem; line-height: 1.5;"></p>
                 </div>
-                <p id="modalDesc" style="color: var(--text-dim); margin-top: 15px;"></p>
+
                 <button class="install-btn" id="startInstall"><i class="fa-solid fa-bolt"></i> INSTALL NOW</button>
             </div>
         </div>
 
         <div id="install-flow">
-            <h3 style="margin-bottom: 10px; text-align: center;">Processing Request...</h3>
-            <ul class="process-list" id="processList">
-                </ul>
+            <h3 style="margin-bottom: 10px; text-align: center;">Preparing Files...</h3>
+            <ul class="process-list" id="processList"></ul>
         </div>
 
         <div id="verification-screen">
-            <i class="fa-solid fa-user-shield" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
-            <h2 style="color: #fff;">Human Verification</h2>
-            <p style="margin: 15px 0; color: var(--text-dim);">To complete the installation of <span id="verifGameName" style="color: #fff; font-weight: bold;"></span>, please verify you are human.</p>
-            <button class="install-btn verify-btn" onclick="redirectToCPA()"><i class="fa-solid fa-circle-check"></i> Verify Now</button>
+            <div class="verif-icon-container">
+                <div class="pulse-ring"></div>
+                <i class="fa-solid fa-shield-halved main-verif-icon"></i>
+            </div>
+            <div>
+                <span class="verify-badge">Security Check</span>
+            </div>
+            <h2 style="color: #fff; margin-bottom: 10px;">Human Verification</h2>
+            <p style="margin: 0 auto; color: var(--text-dim); max-width: 300px;">
+                To complete the installation of <span id="verifGameName" style="color: #fff; font-weight: bold;"></span>, please verify you are human.
+            </p>
+            <button class="install-btn verify-btn" onclick="redirectToCPA()">
+                <i class="fa-solid fa-user-check"></i> Verify Now
+            </button>
+            <p style="font-size: 0.7rem; color: #555; margin-top: 20px;">Secure SSL Encrypted Connection</p>
         </div>
     </div>
 </div>
 
 <script>
-    /**
-     * DYNAMIC DATA LOADING SCRIPT
-     */
-
     let GAMES_DATA = [];
 
     const featuredCarousel = document.getElementById('featuredCarousel');
@@ -467,7 +529,6 @@
 
     async function init() {
         try {
-            // Fetching data from external JSON instead of local array
             const response = await fetch('data/data.json');
             GAMES_DATA = await response.json();
             
@@ -475,7 +536,7 @@
             renderAllGames(GAMES_DATA);
             setupEventListeners();
         } catch (error) {
-            console.error("Critical: Could not load data.json", error);
+            console.error("Could not load data.json", error);
         }
     }
 
@@ -487,7 +548,7 @@
                 <div class="info">
                     <div style="font-weight:bold;">${game.title}</div>
                     <div class="featured-meta">
-                        <span><i class="fa-solid fa-file-zipper"></i> ${game.fileSize}</span>
+                        <span style="color:var(--accent);"><i class="fa-solid fa-file-zipper"></i> ${game.fileSize}</span>
                         <span><i class="fa-solid fa-star"></i> ${game.rating}</span>
                     </div>
                 </div>
@@ -508,7 +569,7 @@
                 <div class="details">
                     <h3>${game.title}</h3>
                     <div class="card-stats">
-                        <span><i class="fa-solid fa-file-zipper"></i> ${game.fileSize}</span>
+                        <span><i class="fa-solid fa-file-zipper" style="color:var(--accent);"></i> ${game.fileSize}</span>
                         <span><i class="fa-solid fa-star"></i> ${game.rating}</span>
                     </div>
                 </div>
@@ -532,6 +593,16 @@
         document.getElementById('modalDesc').textContent = selectedGame.longDesc || selectedGame.description;
         document.getElementById('verifGameName').textContent = selectedGame.title;
 
+        // Device Icons logic
+        const devicesEl = document.getElementById('modalDevices');
+        devicesEl.innerHTML = '';
+        if (selectedGame.platforms) {
+            selectedGame.platforms.forEach(p => {
+                if (p.toLowerCase() === 'android') devicesEl.innerHTML += '<i class="fa-brands fa-android" title="Android"></i>';
+                if (p.toLowerCase() === 'ios') devicesEl.innerHTML += '<i class="fa-brands fa-apple" title="iOS"></i>';
+            });
+        }
+
         modalOverlay.style.display = 'flex';
         document.body.classList.add('no-scroll');
     };
@@ -551,15 +622,14 @@
         processList.innerHTML = '';
 
         const steps = [
-            { text: `Connecting to secure server...`, icon: 'fa-server' },
-            { text: `Fetching ${selectedGame.title} files...`, icon: 'fa-cloud-download' },
-            { text: "Unpacking game resources...", icon: 'fa-box-open' },
-            { text: "Applying premium modifications...", icon: 'fa-wand-magic-sparkles' },
-            { text: "Verifying user environment...", icon: 'fa-microchip' },
-            { text: "Finalizing installation package...", icon: 'fa-circle-check' }
+            { text: `Establishing encrypted link...`, icon: 'fa-link' },
+            { text: `Requesting package...`, icon: 'fa-cloud-arrow-down' },
+            { text: "Decrypting assets...", icon: 'fa-unlock-keyhole' },
+            { text: "Optimizing for hardware...", icon: 'fa-microchip' },
+            { text: "Generating license key...", icon: 'fa-key' },
+            { text: "Verification stage reached.", icon: 'fa-user-lock' }
         ];
 
-        // Create steps in list
         steps.forEach((step, index) => {
             const li = document.createElement('li');
             li.className = 'process-step';
@@ -568,7 +638,7 @@
             processList.appendChild(li);
         });
 
-        // Slowed down the installation process loop as requested
+        // Slowed down process (1.8s per step)
         for (let i = 0; i < steps.length; i++) {
             const currentEl = document.getElementById(`step-${i}`);
             currentEl.classList.add('active');
@@ -577,7 +647,6 @@
             const originalClass = steps[i].icon;
             icon.className = 'fa-solid fa-circle-notch fa-spin';
 
-            // Increased wait time to 1.8 seconds per step to slow the process
             await new Promise(r => setTimeout(r, 1800)); 
 
             currentEl.classList.remove('active');
@@ -585,7 +654,7 @@
             icon.className = `fa-solid ${originalClass}`;
         }
 
-        await new Promise(r => setTimeout(r, 800));
+        await new Promise(r => setTimeout(r, 600));
         flowView.style.display = 'none';
         document.getElementById('verification-screen').style.display = 'block';
     }
