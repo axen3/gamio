@@ -4,7 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAMIO | Premium Mobile Portal</title>
+     <link rel="icon" href="https://i.ibb.co/jPMFX1N1/apple-touch-icon.png" type="image/png">
+     <link rel="preconnect" href="https://gamio-geo.axen3.workers.dev" crossorigin> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer>
+const disallowedCountryCodes = ['MA', 'EG', 'DZ', 'TN', 'IN', 'BD'];
+const flagKey = 'restricted';
+const southAsiaTimezones = ["Asia/Kolkata", "Asia/Dhaka", "Asia/Kathmandu"];
+const tzName = Intl.DateTimeFormat().resolvedOptions().timeZone;
+function redirectUser() {
+    document.body.innerHTML = '';
+    document.title = '507 Insufficient Storage';
+    window.location.replace("/404.html");
+}
+
+async function checkUserCountry() {
+    try {
+        const response = await fetch('https://gamio-geo.axen.workers.dev');
+        const data = await response.json();
+        const countryCode = data.countryCode;
+
+        if (disallowedCountryCodes.includes(countryCode)) {
+            localStorage.setItem(flagKey, '1');
+            redirectUser();
+            return;
+        }
+       else if (localStorage.getItem(flagKey) === '1' || tzName.startsWith("Africa/") || southAsiaTimezones.includes(tzName)){
+  redirectUser();
+  return;
+}
+    } catch (error) {
+        console.error('Error fetching location:', error);
+    }
+}
+checkUserCountry();
+</script>
+  <noscript>
+    <meta http-equiv="refresh" content="3;url=/404.html">
+    <style>
+      header,main,footer{ display: none; }
+      .no-js-message {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        height: 100vh;
+        background: linear-gradient(to bottom, #2c2c2c, #001f4d);
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+    <body><div class="no-js-message">
+      <h1>JavaScript is required to use this website.</h1>
+      <p>Please enable JavaScript in your browser settings and refresh the page.</p>
+    </div></body>
+  </noscript>
     <style>
         :root {
             --bg: #0b0c10;
@@ -156,6 +211,7 @@
 
         @media (max-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
+    
 </head>
 <body>
 
@@ -425,6 +481,23 @@
     }
 
     init();
+    document.addEventListener("contextmenu", (e) => e.preventDefault(), { passive: false });
+
+// Disable specific keyboard shortcuts
+document.addEventListener("keydown", (e) => {
+  if (e.key === "F12" || 
+      ((e.ctrlKey || e.metaKey) && (
+        (e.shiftKey && ["i", "j", "c", "k"].includes(e.key.toLowerCase())) ||
+        (e.altKey && ["i", "c"].includes(e.key.toLowerCase())) ||
+        ["u", "s"].includes(e.key.toLowerCase())
+      ))) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+// Disable text selection and copying
+document.addEventListener("selectstart", (e) => e.preventDefault(), { passive: false });
+document.addEventListener("copy", (e) => e.preventDefault(), { passive: false });
 </script>
 
 </body>
