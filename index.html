@@ -168,8 +168,10 @@ checkUserCountry();
             background: rgba(0,0,0,0.5); border-radius: 50%; color: white;
             display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;
         }
-        .m-header img { width: 100%; height: 220px; object-fit: cover; }
-
+        .m-header{position:relative;}
+        .m-header #mImg { width: 100%; height: 140px; object-fit: cover;filter:blur(12px);transform:scale(1);transition:transform 0.5s ease, filter 0.5s ease; }
+        .m-header #logoImg{width:100px;height:100px;position:absolute;bottom:-90px;right:50%;left:50%;transform:translate(-50%,-50%);border-radius:25px;border:2px solid #161b22}
+        .m-body{padding:25px;margin-top:30px;}
         .platform-icons {
             display: flex; gap: 16px; font-size: 1.8rem; margin: 20px 0;
         }
@@ -247,9 +249,10 @@ checkUserCountry();
 
         <div class="m-header">
             <img id="mImg" src="" alt="Game banner">
+            <img id="logoImg" src="" alt="Game logo">
         </div>
 
-        <div class="m-body" style="padding: 25px;">
+        <div class="m-body">
 
             <!-- Game Details View -->
             <div id="details-view">
@@ -369,6 +372,7 @@ checkUserCountry();
         currentSessionId++;
 
         document.getElementById('mImg').src = game.image;
+        document.getElementById('logoImg').src = game.image;
         document.getElementById('mTitle').innerText = game.title;
         document.getElementById('mAuthorName').innerText = game.author;
         document.getElementById('mDesc').innerText = game.longDesc || game.description;
