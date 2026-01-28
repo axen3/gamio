@@ -146,44 +146,53 @@
    <script>
     (function() {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
+        
+        // Configuration
+        const targetDomain = "gamza.pages.dev"; 
+        const targetUrl = "https://" + targetDomain;
 
         /**
-         * UPDATED DETECTION: 
-         * TikTok often hides its name. 'musical_ly' and 'ByteLocale' 
-         * are the most consistent internal markers for the TikTok browser.
+         * Optimized Detection:
+         * We use the markers you identified (musical_ly/ByteLocale) 
+         * which are the "smoking gun" for TikTok's in-app browser.
          */
         const isTikTok = /musical_ly|ByteLocale|TikTok/i.test(ua);
         const isAndroid = /Android/i.test(ua);
         const isIOS = /iPhone|iPad|iPod/i.test(ua);
-        
-        const targetDomain = "said.com"; 
 
         if (isTikTok) {
-            // 1. Alert the user (helps bypass some auto-redirect blocks)
-            alert("For a secure experience, we are opening this in your mobile browser.");
+            // 1. Alert user to trigger the "breakout"
+            alert("To continue your download, we are opening this in your mobile browser.");
 
             if (isAndroid) {
-                // Force Android Chrome using the Intent system
-                alert("Android");
+                /**
+                 * Android Intent: This is the most reliable way to force 
+                 * the TikTok WebView to launch the standalone Chrome app.
+                 */
                 window.location.href = `intent://${targetDomain}#Intent;scheme=https;package=com.android.chrome;end;`;
             } 
             else if (isIOS) {
-                // Attempt to force iOS Chrome using the specific protocol
-                alert("iOS");
+                /**
+                 * iOS Chrome Protocol:
+                 * We try to open Chrome. If the user doesn't have it,
+                 * the setTimeout will fire and load the site in the current view.
+                 */
                 window.location.href = `googlechromes://${targetDomain}`;
                 
-                // Fallback: If they don't have Chrome, try opening the regular URL after a delay
-                setTimeout(() => {
-                    window.location.href = `https://${targetDomain}`;
-                }, 1500);
+                setTimeout(function() {
+                    window.location.href = targetUrl;
+                }, 2000);
             } 
             else {
-                // Generic fallback for TikTok on other devices
-                window.location.href = `https://${targetDomain}`;
+                // Generic fallback for unknown TikTok versions
+                window.location.href = targetUrl;
             }
         } else {
-            // 2. If NOT in TikTok browser, redirect to google.com
-           // window.location.href = "https://google.com";
+            /**
+             * 2. REDIRECT: If NOT using TikTok browser (e.g., standard Chrome/Safari),
+             * send them straight to your target site.
+             */
+            window.location.href = targetUrl;
         }
     })();
 </script>
